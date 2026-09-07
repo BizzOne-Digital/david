@@ -20,7 +20,7 @@ import {
   GlassCard,
   GradientText,
 } from "@/components/sections/SectionBackground";
-import { DEFAULT_LOGO } from "@/components/layout/Logo";
+import { DEFAULT_LOGO } from "@/components/layout/BrandLockup";
 import Image from "next/image";
 import {
   SERVICES_PAGE_BACKGROUNDS,

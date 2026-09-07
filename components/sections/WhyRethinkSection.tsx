@@ -13,7 +13,7 @@ import {
   SECTION_BACKGROUNDS,
   whyRethinkItems,
 } from "@/lib/content/homepage-sections";
-import { DEFAULT_LOGO } from "@/components/layout/Logo";
+import { DEFAULT_LOGO } from "@/components/layout/BrandLockup";
 import type { PageSection } from "@/types";
 
 export function WhyRethinkSection({ section }: { section?: PageSection }) {

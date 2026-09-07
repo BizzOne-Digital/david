@@ -17,11 +17,6 @@ export default async function AboutPage() {
   const content = await getPageContent("about");
 
   return (
-    <AboutPageContent
-      storySection={getSection(content, "story")}
-      missionSection={getSection(content, "mission")}
-      visionSection={getSection(content, "vision")}
-      valuesSection={getSection(content, "values")}
-    />
+    <AboutPageContent storySection={getSection(content, "story")} />
   );
 }

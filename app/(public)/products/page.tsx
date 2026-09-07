@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ProductsPageContent } from "@/components/products/ProductsPageContent";
 
 export const metadata: Metadata = {
-  title: "Products",
+  title: "Solutions",
   description:
-    "Explore Rethink Automotive marketing solutions — AI-powered and email-driven systems for modern dealerships.",
+    "Targeted email marketing, AI chaser follow-up, and service-to-sales solutions for modern dealerships.",
 };
 
 export default function ProductsPage() {

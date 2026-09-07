@@ -4,14 +4,15 @@ import type { AppointmentStatus } from "@/types";
 export interface IAppointment extends Document {
   name: string;
   dealershipName: string;
+  title?: string;
   workEmail: string;
   phone: string;
   website?: string;
   numberOfLocations?: number;
   interestedIn?: string;
-  preferredDate: Date;
-  preferredTime: string;
-  timezone: string;
+  preferredDate?: Date;
+  preferredTime?: string;
+  timezone?: string;
   message?: string;
   consentGiven: boolean;
   status: AppointmentStatus;
@@ -24,14 +25,15 @@ const AppointmentSchema = new Schema<IAppointment>(
   {
     name: { type: String, required: true },
     dealershipName: { type: String, required: true },
+    title: { type: String },
     workEmail: { type: String, required: true, lowercase: true },
     phone: { type: String, required: true },
     website: { type: String },
     numberOfLocations: { type: Number, min: 1 },
     interestedIn: { type: String },
-    preferredDate: { type: Date, required: true },
-    preferredTime: { type: String, required: true },
-    timezone: { type: String, required: true },
+    preferredDate: { type: Date },
+    preferredTime: { type: String },
+    timezone: { type: String },
     message: { type: String },
     consentGiven: { type: Boolean, required: true },
     status: {

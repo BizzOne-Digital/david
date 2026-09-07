@@ -3,9 +3,18 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { Button } from "@/components/ui/button";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { Logo } from "./Logo";
+import { DemoCtaButton } from "@/components/ui/ConversionCta";
+import { BrandLockup, DEFAULT_LOGO } from "./BrandLockup";
+
+const mockupNav = [
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/products" },
+  { label: "How It Works", href: "/#rethink-in-action" },
+  { label: "About", href: "/about" },
+  { label: "Consulting", href: "/consulting" },
+  { label: "Contact", href: "/contact" },
+];
 
 interface MobileMenuProps {
   open: boolean;
@@ -15,7 +24,8 @@ interface MobileMenuProps {
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const { navigation, settings } = useSiteSettings();
   const reducedMotion = useReducedMotion();
-  const links = navigation.filter((item) => item.isActive);
+  const cmsLinks = navigation.filter((item) => item.isActive);
+  const links = cmsLinks.length > 0 ? cmsLinks : mockupNav;
 
   return (
     <AnimatePresence>
@@ -35,16 +45,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={reducedMotion ? undefined : { x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            className="fixed right-0 top-0 z-50 flex h-full w-[min(100%,320px)] flex-col border-l border-white/10 bg-graphite lg:hidden"
+            className="fixed right-0 top-0 z-50 flex h-full w-[min(100%,320px)] flex-col border-l border-white/10 bg-[#12121c] lg:hidden"
             aria-label="Mobile navigation"
           >
             <div className="flex items-center justify-between border-b border-white/10 p-6">
-              <Logo
-                logoSrc={settings.logo || undefined}
-                width={140}
-                height={56}
-                imageClassName="h-9 w-auto"
-              />
+              <BrandLockup logoSrc={settings.logo || DEFAULT_LOGO} alt={settings.businessName} />
               <button
                 type="button"
                 onClick={onClose}
@@ -67,12 +72,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 </li>
               ))}
             </ul>
-            <div className="border-t border-white/10 p-4">
-              <Button asChild className="w-full">
-                <Link href={settings.headerCtaUrl} onClick={onClose}>
-                  {settings.headerCtaLabel}
-                </Link>
-              </Button>
+            <div className="border-t border-white/10 p-4" onClick={onClose}>
+              <DemoCtaButton className="w-full" />
             </div>
           </motion.nav>
         </>

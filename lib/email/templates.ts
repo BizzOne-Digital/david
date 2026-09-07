@@ -54,30 +54,32 @@ export function inquiryEmailTemplate(data: {
 export function appointmentEmailTemplate(data: {
   name: string;
   dealershipName: string;
+  title?: string;
   workEmail: string;
   phone: string;
-  preferredDate: Date | string;
-  preferredTime: string;
-  timezone: string;
+  preferredDate?: Date | string;
+  preferredTime?: string;
+  timezone?: string;
   interestedIn?: string;
   message?: string;
 }): { subject: string; html: string } {
   const body = `
-    <h2 style="margin-top: 0;">New Appointment Request</h2>
+    <h2 style="margin-top: 0;">New Demo Request</h2>
     <table style="width: 100%; border-collapse: collapse;">
       <tr><td style="padding: 8px 0; font-weight: 600;">Name</td><td>${escapeHtml(data.name)}</td></tr>
       <tr><td style="padding: 8px 0; font-weight: 600;">Dealership</td><td>${escapeHtml(data.dealershipName)}</td></tr>
+      ${data.title ? `<tr><td style="padding: 8px 0; font-weight: 600;">Title</td><td>${escapeHtml(data.title)}</td></tr>` : ""}
       <tr><td style="padding: 8px 0; font-weight: 600;">Email</td><td>${escapeHtml(data.workEmail)}</td></tr>
       <tr><td style="padding: 8px 0; font-weight: 600;">Phone</td><td>${escapeHtml(data.phone)}</td></tr>
-      <tr><td style="padding: 8px 0; font-weight: 600;">Preferred Date</td><td>${formatDate(data.preferredDate)}</td></tr>
-      <tr><td style="padding: 8px 0; font-weight: 600;">Preferred Time</td><td>${escapeHtml(data.preferredTime)} (${escapeHtml(data.timezone)})</td></tr>
+      ${data.preferredDate ? `<tr><td style="padding: 8px 0; font-weight: 600;">Preferred Date</td><td>${formatDate(data.preferredDate)}</td></tr>` : ""}
+      ${data.preferredTime ? `<tr><td style="padding: 8px 0; font-weight: 600;">Preferred Time</td><td>${escapeHtml(data.preferredTime)}${data.timezone ? ` (${escapeHtml(data.timezone)})` : ""}</td></tr>` : ""}
       ${data.interestedIn ? `<tr><td style="padding: 8px 0; font-weight: 600;">Interested In</td><td>${escapeHtml(data.interestedIn)}</td></tr>` : ""}
     </table>
-    ${data.message ? `<h3>Message</h3><p style="background: #f9fafb; padding: 16px; border-radius: 8px;">${escapeHtml(data.message)}</p>` : ""}
+    ${data.message ? `<h3>What They Want to Improve</h3><p style="background: #f9fafb; padding: 16px; border-radius: 8px;">${escapeHtml(data.message)}</p>` : ""}
   `;
   return {
-    subject: `New Appointment Request from ${data.name}`,
-    html: wrapHtml("New Appointment", body),
+    subject: `New Demo Request from ${data.name}`,
+    html: wrapHtml("New Demo Request", body),
   };
 }
 

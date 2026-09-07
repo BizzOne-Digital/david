@@ -4,11 +4,54 @@ import { revalidatePath } from "next/cache";
 import connectDB from "@/lib/db/connect";
 import Appointment from "@/models/Appointment";
 import { requireRole } from "@/lib/auth/session";
-import { appointmentSchema, updateAppointmentSchema } from "@/lib/validation/schemas";
+import { appointmentSchema, demoRequestSchema, updateAppointmentSchema } from "@/lib/validation/schemas";
 import { sendToContactReceiver } from "@/lib/email/send";
 import { appointmentEmailTemplate } from "@/lib/email/templates";
 import { rateLimit } from "@/lib/security";
 import type { ActionResult } from "@/actions/auth";
+
+export async function submitDemoRequestAction(
+  data: unknown
+): Promise<ActionResult<{ id: string }>> {
+  const parsed = demoRequestSchema.safeParse(data);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: "Validation failed",
+      fieldErrors: parsed.error.flatten().fieldErrors as Record<string, string[]>,
+    };
+  }
+
+  const limit = rateLimit(`demo:${parsed.data.workEmail}`, 3, 3600000);
+  if (!limit.success) {
+    return { success: false, error: "Too many requests. Please try again later." };
+  }
+
+  await connectDB();
+  const appointment = await Appointment.create({
+    ...parsed.data,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  });
+
+  const { subject, html } = appointmentEmailTemplate({
+    name: parsed.data.name,
+    dealershipName: parsed.data.dealershipName,
+    title: parsed.data.title,
+    workEmail: parsed.data.workEmail,
+    phone: parsed.data.phone,
+    message: parsed.data.message,
+  });
+
+  await sendToContactReceiver({
+    subject,
+    html,
+    replyTo: parsed.data.workEmail,
+  });
+
+  revalidatePath("/admin/appointments");
+  return { success: true, data: { id: appointment._id.toString() } };
+}
 
 export async function submitAppointmentAction(
   data: unknown

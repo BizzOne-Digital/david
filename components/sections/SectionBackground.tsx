@@ -1,9 +1,7 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { getSectionBackgroundImageClass } from "@/lib/utils/background-image";
 
 interface SectionBackgroundProps {
-  src: string;
+  src?: string;
   alt?: string;
   overlay?: "dark" | "left" | "center" | "bottom";
   position?: string;
@@ -14,17 +12,14 @@ interface SectionBackgroundProps {
 }
 
 const overlays = {
-  dark: "bg-black/65",
-  left: "bg-gradient-to-r from-black/90 via-black/70 to-black/40 max-md:from-black/92 max-md:via-black/80 max-md:to-black/70",
-  center: "bg-[radial-gradient(ellipse_80%_70%_at_50%_50%,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.85)_100%)]",
-  bottom: "bg-gradient-to-t from-black via-black/60 to-black/30",
+  dark: "bg-black/20",
+  left: "bg-gradient-to-r from-black/30 via-transparent to-transparent",
+  center: "bg-[radial-gradient(ellipse_80%_70%_at_50%_50%,rgba(0,210,255,0.04)_0%,transparent_70%)]",
+  bottom: "bg-gradient-to-t from-black/40 via-transparent to-transparent",
 };
 
 export function SectionBackground({
-  src,
-  alt = "",
   overlay = "dark",
-  position = "object-cover object-center",
   className,
   children,
   as: Tag = "section",
@@ -33,20 +28,12 @@ export function SectionBackground({
   return (
     <Tag
       id={id}
-      className={cn("relative isolate w-full max-w-full overflow-hidden", className)}
+      className={cn(
+        "relative isolate w-full max-w-full overflow-hidden bg-graphite",
+        className
+      )}
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          quality={85}
-          sizes="100vw"
-          className={getSectionBackgroundImageClass(position)}
-          aria-hidden={!alt}
-        />
-      </div>
-      <div className={cn("absolute inset-0", overlays[overlay])} aria-hidden />
+      <div className={cn("absolute inset-0 bg-graphite", overlays[overlay])} aria-hidden />
       <div className="relative z-10">{children}</div>
     </Tag>
   );

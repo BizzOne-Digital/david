@@ -1,10 +1,14 @@
 import { HeroSection } from "@/components/sections/HeroSection";
-import { BrandStatement } from "@/components/sections/BrandStatement";
-import { FlagshipProducts } from "@/components/sections/FlagshipProducts";
-import { AIJourneySection } from "@/components/sections/AIJourneySection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { WhyRethinkSection } from "@/components/sections/WhyRethinkSection";
-import { ProcessSection } from "@/components/sections/ProcessSection";
+import { DealerIntelligenceSection } from "@/components/sections/DealerIntelligenceSection";
+import { RethinkInActionSection } from "@/components/sections/RethinkInActionSection";
+import { FourCapabilitiesSection } from "@/components/sections/FourCapabilitiesSection";
+import { ProofSection } from "@/components/sections/ProofSection";
+import {
+  ConsultingTeaserSection,
+  FutureFuelTeaserSection,
+  AboutTeaserSection,
+  FinalDemoCtaSection,
+} from "@/components/sections/HomeClosingSections";
 import { getPageContent } from "@/lib/data/page-content";
 import { getSection } from "@/lib/utils/page-content";
 
@@ -14,12 +18,14 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection section={getSection(content, "hero")} />
-      <BrandStatement section={getSection(content, "brandStatement")} />
-      <FlagshipProducts />
-      <AIJourneySection />
-      <ServicesSection />
-      <WhyRethinkSection section={getSection(content, "whyRethink")} />
-      <ProcessSection section={getSection(content, "process")} />
+      <DealerIntelligenceSection />
+      <RethinkInActionSection />
+      <FourCapabilitiesSection section={getSection(content, "whyRethink")} />
+      <ProofSection />
+      <ConsultingTeaserSection />
+      <FutureFuelTeaserSection />
+      <AboutTeaserSection />
+      <FinalDemoCtaSection />
     </>
   );
 }

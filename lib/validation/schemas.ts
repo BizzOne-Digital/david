@@ -96,14 +96,25 @@ export const updateOrderSchema = z.object({
 export const appointmentSchema = z.object({
   name: z.string().min(1, "Name is required").max(200),
   dealershipName: z.string().min(1, "Dealership name is required").max(200),
+  title: z.string().min(1, "Title is required").max(200).optional(),
   workEmail: z.email("Invalid email"),
   phone: z.string().min(7, "Phone is required").max(30),
   website: z.string().url().optional().or(z.literal("")),
   numberOfLocations: z.coerce.number().int().min(1).optional(),
   interestedIn: z.string().max(200).optional(),
-  preferredDate: z.coerce.date({ message: "Preferred date is required" }),
-  preferredTime: z.string().min(1, "Preferred time is required"),
-  timezone: z.string().min(1, "Timezone is required"),
+  preferredDate: z.coerce.date({ message: "Preferred date is required" }).optional(),
+  preferredTime: z.string().max(100).optional(),
+  timezone: z.string().min(1, "Timezone is required").optional(),
+  message: z.string().max(5000).optional(),
+  consentGiven: z.literal(true, { message: "You must agree to continue" }),
+});
+
+export const demoRequestSchema = z.object({
+  name: z.string().min(1, "Name is required").max(200),
+  dealershipName: z.string().min(1, "Dealership / group is required").max(200),
+  title: z.string().min(1, "Title is required").max(200),
+  workEmail: z.email("Invalid email"),
+  phone: z.string().min(7, "Phone is required").max(30),
   message: z.string().max(5000).optional(),
   consentGiven: z.literal(true, { message: "You must agree to continue" }),
 });

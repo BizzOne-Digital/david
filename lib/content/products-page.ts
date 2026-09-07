@@ -22,37 +22,51 @@ export const productFilters: { id: ProductFilter; label: string }[] = [
 
 export const featuredProductsPage = [
   {
-    id: "ai-suite",
-    filter: "ai" as const,
-    slug: "ai-lead-response-suite",
-    category: "AI Marketing",
-    name: "AI Marketing Suite",
-    tagline: "Attract. Engage. Convert. Smarter.",
-    description:
-      "Replace with client-approved product copy. An AI-powered marketing solution designed to help dealerships identify, engage, and convert more opportunities.",
-    visual: PRODUCT_VISUALS.aiSuite,
-    features: [
-      "AI-powered audience targeting",
-      "Real-time performance insights",
-      "Automated lead engagement workflows",
-      "CRM-ready integrations",
-    ],
-  },
-  {
     id: "email-engine",
     filter: "email" as const,
     slug: "email-campaign-engine",
-    category: "Email Marketing",
-    name: "Dealer Email Engine",
-    tagline: "More Conversations. More Opportunities.",
+    category: "Targeted Email Marketing",
+    name: "Stop Blasting. Start Targeting.",
+    tagline: "Opportunity-based email built for dealership outcomes.",
     description:
-      "Replace with client-approved product copy. A dealership-focused email marketing platform built for segmentation, automation, and measurable results.",
+      "Filtered, opportunity-based email marketing built around the customer, inventory and dealership objective. Rethink helps create the audience, message and campaign — then measures what happens next.",
     visual: PRODUCT_VISUALS.emailEngine,
     features: [
-      "Automated lifecycle campaigns",
-      "Audience segmentation tools",
-      "Seamless integration support",
-      "Performance reporting dashboards",
+      "Database activation and reactivation",
+      "Inventory-specific targeting",
+      "Campaign dashboard and results visibility",
+    ],
+  },
+  {
+    id: "ai-suite",
+    filter: "ai" as const,
+    slug: "ai-lead-response-suite",
+    category: "AI Chaser / Follow-Up",
+    name: "The Lead Should Not Die Because Your Team Got Busy.",
+    tagline: "Persistent AI engagement with management visibility.",
+    description:
+      "AI-supported engagement helps keep conversations alive, responds quickly, nurtures interest and moves qualified customers toward an appointment — while management retains visibility.",
+    visual: PRODUCT_VISUALS.aiSuite,
+    features: [
+      "Fast personalized engagement",
+      "Persistent follow-up",
+      "Qualified handoff to dealership staff",
+    ],
+  },
+  {
+    id: "service-sales",
+    filter: "all" as const,
+    slug: "service-to-sales",
+    category: "Service to Sales",
+    name: "Your Next Deal May Already Be in the Service Drive.",
+    tagline: "Connect fixed ops signals to sales conversations.",
+    description:
+      "Rethink helps identify service customers whose repair, ownership or vehicle lifecycle signals may justify a sales conversation — then creates the communication and follow-up strategy to act on it.",
+    visual: PRODUCT_VISUALS.aiSuite,
+    features: [
+      "Service lane opportunity identification",
+      "Lifecycle signal analysis",
+      "Communication and follow-up strategy",
     ],
   },
 ] as const;

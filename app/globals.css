@@ -102,6 +102,12 @@
     );
   }
 
+  .hero-signature {
+    font-family: var(--font-caveat), "Segoe Script", cursive;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
   .text-gradient-silver {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(180deg, #ffffff 0%, var(--color-silver) 50%, var(--color-electric) 100%);

@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils";
 export function getSectionBackgroundImageClass(position = "object-cover object-center") {
   const base = "h-full w-full object-cover object-center scale-[1.08] md:scale-100";
 
+  if (position.includes("object-[88%_42%]")) {
+    return cn(base, "object-[88%_42%] md:object-[72%_center]");
+  }
   if (position.includes("object-[72%_center]")) {
     return cn(base, "md:object-[72%_center]");
   }

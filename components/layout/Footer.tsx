@@ -1,7 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,12 +9,10 @@ import {
   Phone,
 } from "lucide-react";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { MagneticButton } from "@/components/animations/MagneticButton";
+import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { GradientText } from "@/components/sections/SectionBackground";
-import { getSectionBackgroundImageClass } from "@/lib/utils/background-image";
-import { Logo } from "./Logo";
+import { Logo, DEFAULT_LOGO } from "./Logo";
 import {
-  FOOTER_BACKGROUND,
   footerExploreLinks,
   footerLegalLinks,
   footerSolutionLinks,
@@ -85,24 +82,9 @@ export function Footer() {
   const activeSocials = settings.socialLinks.filter((link) => link.isActive);
 
   return (
-    <footer className="relative isolate w-full max-w-full overflow-hidden border-t border-white/10">
-      <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src={FOOTER_BACKGROUND}
-          alt=""
-          fill
-          quality={85}
-          sizes="100vw"
-          className={getSectionBackgroundImageClass("object-cover object-[70%_center]")}
-          aria-hidden
-        />
-      </div>
+    <footer className="relative isolate w-full max-w-full overflow-hidden border-t border-white/10 bg-black">
       <div
-        className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/88 to-black/55 max-md:from-black/94 max-md:via-black/86 max-md:to-black/78"
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40"
+        className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-graphite"
         aria-hidden
       />
 
@@ -120,14 +102,9 @@ export function Footer() {
                 </p>
               </div>
 
-              <MagneticButton
-                href={settings.headerCtaUrl}
-                className="w-full shrink-0 justify-center uppercase tracking-[0.08em] sm:w-auto sm:tracking-[0.1em]"
-              >
-                <Calendar className="mr-2 h-4 w-4" />
+              <DemoCtaButton href={settings.headerCtaUrl} className="w-full shrink-0 justify-center uppercase tracking-[0.08em] sm:w-auto sm:tracking-[0.1em]">
                 {settings.headerCtaLabel}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </MagneticButton>
+              </DemoCtaButton>
 
               <div className="hidden items-center gap-4 xl:flex">
                 <span className="h-10 w-px bg-white/15" aria-hidden />
@@ -143,7 +120,7 @@ export function Footer() {
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
             <div className="xl:border-r xl:border-white/10 xl:pr-8">
               <Logo
-                logoSrc={settings.logo || undefined}
+                logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
                 width={240}
                 height={96}

@@ -1,4 +1,5 @@
 import type { NavItem, SiteSettingsData } from "@/types";
+import { DEMO_CTA_HREF, DEMO_CTA_LABEL } from "@/lib/content/revisions";
 
 export const defaultSiteSettings: SiteSettingsData = {
   businessName: "Rethink Automotive Inc.",
@@ -14,25 +15,25 @@ export const defaultSiteSettings: SiteSettingsData = {
   ],
   defaultSeoTitle: "Rethink Automotive Inc. | Dealership Marketing Solutions",
   defaultSeoDescription:
-    "AI-powered and email-driven marketing systems for automotive dealerships.",
-  headerCtaLabel: "Book a Strategy Call",
-  headerCtaUrl: "/book-appointment",
+    "Find the deals you're not closing. AI-powered targeting, follow-up and service-to-sales for modern dealerships.",
+  headerCtaLabel: DEMO_CTA_LABEL,
+  headerCtaUrl: DEMO_CTA_HREF,
   announcementBar: {
     enabled: true,
-    text: "Schedule your complimentary marketing strategy session.",
-    link: "/book-appointment",
+    text: "See what your dealership may be missing — request a demo today.",
+    link: DEMO_CTA_HREF,
   },
   footerContent: {
     brandStatement:
-      "Smarter marketing systems for modern dealerships.",
+      "Creative + Campaign + AI + Dashboard + Advisory for dealership growth.",
     copyright: "© 2026 Rethink Automotive Inc. All rights reserved.",
   },
   brandColors: {
     primary: "#00d2ff",
     secondary: "#6b00ff",
-    accent: "#ff00ff",
+    accent: "#ff6b00",
   },
-  contactForPricingLabel: "Contact for Pricing",
+  contactForPricingLabel: "Request Demo",
   currency: "USD",
   taxRate: 0,
   purchasingEnabled: false,
@@ -42,8 +43,10 @@ export const defaultSiteSettings: SiteSettingsData = {
 
 export const defaultNavigation: NavItem[] = [
   { label: "Home", href: "/", order: 0, isActive: true },
-  { label: "About", href: "/about", order: 1, isActive: true },
-  { label: "Products", href: "/products", order: 2, isActive: true },
-  { label: "Services", href: "/services", order: 3, isActive: true },
-  { label: "Contact", href: "/contact", order: 4, isActive: true },
+  { label: "Solutions", href: "/products", order: 1, isActive: true },
+  { label: "Consulting", href: "/consulting", order: 2, isActive: true },
+  { label: "Future Fuel", href: "/future-fuel", order: 3, isActive: true },
+  { label: "Insights", href: "/insights", order: 4, isActive: true },
+  { label: "About Us", href: "/about", order: 5, isActive: true },
+  { label: "Contact", href: "/contact", order: 6, isActive: true },
 ];
