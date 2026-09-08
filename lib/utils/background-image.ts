@@ -26,5 +26,5 @@ export function getSectionBackgroundImageClass(position = "object-cover object-c
     return cn(base, "md:object-left");
   }
 
-  return cn(base, "md:object-center");
+  return cn(base, position.includes("object-") ? position : "md:object-center");
 }

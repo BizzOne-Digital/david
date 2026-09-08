@@ -192,7 +192,8 @@ async function seed() {
           type: "hero",
           eyebrow: "I'm not lion…",
           title: "You're Sitting on Deals You're Not Closing.",
-          subtitle: "",
+          subtitle:
+            "The opportunities are already in your database, website traffic, service lane and follow-up. Rethink Automotive helps you find them, engage them and turn more of them into real sales conversations.",
           ctaLabel: "Request Demo",
           ctaUrl: "/contact",
           isVisible: true,

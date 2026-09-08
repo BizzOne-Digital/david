@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { getSectionBackgroundImageClass } from "@/lib/utils/background-image";
 import { DemoCtaButton, SecondaryCtaButton } from "@/components/ui/ConversionCta";
+import { homepageCopy } from "@/lib/content/revisions";
 
 const HERO_BACKGROUND = "/images/hero-bg.jpg";
 
@@ -54,9 +54,11 @@ function HeroSignature() {
 }
 
 export function HeroSection() {
+  const copy = homepageCopy.hero;
+
   return (
     <section className="relative isolate w-full max-w-full overflow-hidden bg-black">
-      <div className="absolute inset-0 overflow-hidden max-md:scale-[1.08] max-md:origin-[62%_42%]">
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src={HERO_BACKGROUND}
           alt=""
@@ -64,19 +66,21 @@ export function HeroSection() {
           priority
           quality={90}
           sizes="100vw"
-          className={getSectionBackgroundImageClass(
-            "object-cover object-[58%_42%] sm:object-[68%_44%] md:object-[78%_center] lg:object-[72%_center]"
+          className={cn(
+            "h-full w-full object-cover",
+            "origin-[78%_38%] object-[78%_38%] max-md:scale-[1.12]",
+            "sm:object-[74%_40%] md:scale-100 md:object-[78%_center] lg:object-[72%_center]"
           )}
           aria-hidden
         />
       </div>
 
       <div
-        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.35)_58%,rgba(0,0,0,0.08)_78%,transparent_100%)] max-md:bg-[linear-gradient(108deg,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.72)_32%,rgba(0,0,0,0.35)_58%,rgba(0,0,0,0.08)_78%,transparent_92%)]"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.35)_58%,rgba(0,0,0,0.08)_78%,transparent_100%)] max-md:bg-[linear-gradient(165deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.72)_28%,rgba(0,0,0,0.28)_52%,rgba(0,0,0,0.08)_72%,transparent_88%)]"
         aria-hidden
       />
 
-      <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-var(--site-header-offset,4rem))] items-center px-4 py-8 sm:py-10 md:min-h-[calc(100vh-var(--site-header-offset,4rem))] md:py-16">
+      <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-var(--site-header-offset,4rem))] items-start px-4 pb-28 pt-6 sm:items-center sm:py-10 md:min-h-[calc(100vh-var(--site-header-offset,4rem))] md:py-16">
         <div className="w-full max-w-[34rem] lg:max-w-[38rem]">
           <ScrollReveal>
             <HeroHeadline />
@@ -86,7 +90,13 @@ export function HeroSection() {
             <HeroSignature />
           </ScrollReveal>
 
-          <ScrollReveal delay={0.25} className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <ScrollReveal delay={0.25}>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-silver sm:mt-6 sm:text-base md:mt-8 md:text-lg">
+              {copy.supporting}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.35} className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
             <DemoCtaButton size="lg" />
             <SecondaryCtaButton size="lg" />
           </ScrollReveal>
