@@ -10,7 +10,7 @@ import { BrandLockup, DEFAULT_LOGO } from "./BrandLockup";
 const mockupNav = [
   { label: "Home", href: "/" },
   { label: "Solutions", href: "/products" },
-  { label: "How It Works", href: "/#rethink-in-action" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "About", href: "/about" },
   { label: "Consulting", href: "/consulting" },
   { label: "Contact", href: "/contact" },

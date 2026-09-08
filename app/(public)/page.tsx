@@ -20,7 +20,7 @@ export default async function HomePage() {
       <HeroSection section={getSection(content, "hero")} />
       <DealerIntelligenceSection />
       <RethinkInActionSection />
-      <FourCapabilitiesSection section={getSection(content, "whyRethink")} />
+      <FourCapabilitiesSection />
       <ProofSection />
       <ConsultingTeaserSection />
       <FutureFuelTeaserSection />

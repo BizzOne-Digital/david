@@ -109,31 +109,31 @@ export const productsFaqs = [
   {
     question: "What makes Rethink Automotive different?",
     answer:
-      "Replace with client-approved FAQ answer. We focus exclusively on automotive dealership marketing with connected email and AI-driven systems.",
+      "Rethink is built for dealership leadership—not generic marketing agencies. We combine targeted email, AI follow-up, service-to-sales opportunity, dealer-controlled dashboards and consultative advisory. The focus is finding opportunity already inside your store and turning it into measurable action, not selling disconnected tools.",
   },
   {
     question: "How does onboarding work?",
     answer:
-      "Our team works with your dealership to understand your goals, integrate with existing tools, and configure campaigns aligned to your sales process.",
+      "We start with a short demo and discovery conversation to understand your goals, current marketing, follow-up and fixed ops workflow. From there we align on the right solution, configure campaigns or engagement programs, connect reporting visibility for management, and launch with your team. Applicable programs can launch in as little as 3 days.",
   },
   {
     question: "Do you display fixed pricing?",
     answer:
-      "Pricing is provided on a consultation basis. Contact us for details tailored to your dealership's needs.",
+      "No. Every dealership has different opportunity, inventory, database health and goals. We scope programs after understanding what you want to improve—then recommend the right combination of marketing, AI follow-up or consulting support.",
   },
   {
     question: "Can products work together?",
     answer:
-      "Yes. Our solutions are designed as connected systems that support engagement, nurturing, and conversion across the buyer journey.",
+      "Yes. Targeted email, AI chaser follow-up and service-to-sales are designed to work as one connected system. A lead can enter through email, stay engaged through AI, and service customers can move into sales conversations—with management visibility across the process.",
   },
   {
     question: "How do I get started?",
     answer:
-      "Book a strategy call to discuss your dealership goals and explore which solutions are the right fit.",
+      "Request a demo through the site. Share your dealership, role and what you want to improve. We will show you where opportunity may exist and what a practical next step looks like for your store.",
   },
   {
     question: "Is support included?",
     answer:
-      "Replace with client-approved support details. Ongoing partnership and optimization are core to how we work with dealerships.",
+      "Yes. Rethink is built as a partnership, not a one-time campaign drop. You get launch support, performance visibility, optimization guidance and access to consulting when leadership wants a broader review of marketing, follow-up or future-fuel strategy.",
   },
 ] as const;

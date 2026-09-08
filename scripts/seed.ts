@@ -208,13 +208,28 @@ async function seed() {
         {
           id: "whyRethink",
           type: "whyRethink",
-          title: "Why Rethink Automotive",
+          title: "Four Core Capabilities",
           items: [
-            { title: "Automotive-Focused Strategy", description: "[PLACEHOLDER] Marketing built specifically for dealership operations and sales cycles." },
-            { title: "Connected Marketing Experiences", description: "[PLACEHOLDER] Unified campaigns across email, digital, and lead engagement channels." },
-            { title: "Modern Lead Engagement", description: "[PLACEHOLDER] Tools and workflows designed for today's buyer expectations." },
-            { title: "Clear Dealership Communication", description: "[PLACEHOLDER] Transparent reporting and actionable insights for decision-makers." },
-            { title: "Flexible Digital Solutions", description: "[PLACEHOLDER] Scalable programs that adapt to your dealership's goals." },
+            {
+              title: "Smart Email Targeting",
+              description:
+                "Reach the right customers with the right message, inventory and reason to act.",
+            },
+            {
+              title: "AI Follow-Up",
+              description:
+                "Persistent, intelligent engagement designed to keep qualified opportunities from disappearing.",
+            },
+            {
+              title: "Dealer Control",
+              description:
+                "See campaigns, engagement and opportunities through management dashboard controls.",
+            },
+            {
+              title: "Service to Sales",
+              description:
+                "Identify service customers who may be ready for a replacement, upgrade or trade conversation.",
+            },
           ],
           isVisible: true,
           order: 3,

@@ -9,16 +9,9 @@ import {
 } from "./SectionBackground";
 import { DemoCtaBlock } from "@/components/ui/ConversionCta";
 import { homepageCopy } from "@/lib/content/revisions";
-import type { PageSection } from "@/types";
 
-export function FourCapabilitiesSection({ section }: { section?: PageSection }) {
+export function FourCapabilitiesSection() {
   const copy = homepageCopy.capabilities;
-  const cmsItems = section?.items?.map((item, index) => ({
-    title: String(item.title ?? ""),
-    description: String(item.description ?? ""),
-    icon: copy.items[index]?.icon ?? "Sparkles",
-  }));
-  const items = cmsItems?.length ? cmsItems : copy.items;
 
   return (
     <SectionBackground overlay="dark" className="py-24 md:py-32">
@@ -26,29 +19,29 @@ export function FourCapabilitiesSection({ section }: { section?: PageSection }) 
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             eyebrow="Four Core Capabilities"
-            title={section?.title ?? copy.headline}
+            title={copy.headline}
             align="center"
             className="mx-auto mb-14 w-full text-center"
           />
 
           <div className="grid gap-6 sm:grid-cols-2">
-            {items.map((item, index) => {
+            {copy.items.map((item, index) => {
               const Icon = getLucideIcon(item.icon);
               return (
                 <ScrollReveal key={item.title} delay={index * 0.08}>
                   <GlassCard className="h-full border-white/10">
                     <Icon className="mb-3 h-6 w-6 text-electric" />
-                  <h3 className="font-heading text-lg font-semibold uppercase tracking-wide">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-silver">
-                    {item.description}
-                  </p>
-                </GlassCard>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+                    <h3 className="font-heading text-lg font-semibold uppercase tracking-wide">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-silver">
+                      {item.description}
+                    </p>
+                  </GlassCard>
+                </ScrollReveal>
+              );
+            })}
+          </div>
 
         <ScrollReveal delay={0.25} className="mx-auto mt-12 max-w-3xl">
           <DemoCtaBlock text={copy.ctaBlock} ctaLabel={copy.ctaLabel} />

@@ -3,7 +3,7 @@
 export const DEMO_CTA_LABEL = "Request Demo";
 export const DEMO_CTA_HREF = "/contact";
 export const SECONDARY_CTA_LABEL = "See How It Works";
-export const SECONDARY_CTA_HREF = "/#rethink-in-action";
+export const SECONDARY_CTA_HREF = "/how-it-works";
 
 export const demoConfirmationMessage =
   "You've taken the first step. Let's find what your dealership should rethink.";
@@ -184,6 +184,13 @@ export const solutionsPageCopy = {
   subhead:
     "Targeted email, AI follow-up and service-to-sales — focused on the opportunities already inside your dealership, with management visibility and measurable action.",
   featuredTitle: "Three Core Solutions",
+} as const;
+
+export const howItWorksPageCopy = {
+  eyebrow: "How It Works",
+  headline: "Watch One Missed Lead Become a Real Opportunity.",
+  subhead:
+    "See how Rethink moves a qualified lead from first contact to appointment and handoff—with management visibility at every step.",
 } as const;
 
 export const solutionsCopy = {

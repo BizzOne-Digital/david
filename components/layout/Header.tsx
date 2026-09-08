@@ -14,7 +14,7 @@ import { DemoCtaButton } from "@/components/ui/ConversionCta";
 const mockupNav = [
   { label: "Home", href: "/" },
   { label: "Solutions", href: "/products" },
-  { label: "How It Works", href: "/#rethink-in-action" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "About", href: "/about" },
 ];
 

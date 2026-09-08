@@ -108,7 +108,7 @@ export function ProductsPageContent() {
             ))}
           </ScrollReveal>
 
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="mx-auto flex max-w-3xl flex-col gap-8">
             {visibleProducts.map((product, index) => (
               <ScrollReveal key={product.id} delay={index * 0.08}>
                 <GlassCard className="flex h-full flex-col border-white/10">
