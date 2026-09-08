@@ -54,7 +54,7 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
   };
 
   return (
-    <GlassCard className={cn("border-cyan/20 glow-cyan", className)}>
+    <GlassCard className={cn("border-white/10", className)}>
       <h2 className="font-heading text-2xl font-bold md:text-3xl">
         {contactCopy.formTitle}
       </h2>

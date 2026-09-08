@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function InsightsPage() {
   return (
-    <SectionBackground overlay="center" className="min-h-[70vh] py-24 md:py-32">
+    <SectionBackground overlay="dark" className="min-h-[70vh] py-24 md:py-32">
       <div className="container mx-auto px-4 pt-20">
         <GlassCard className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">
@@ -33,7 +33,7 @@ export default function InsightsPage() {
             <DemoCtaButton size="lg" />
             <Link
               href="/consulting"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-cyan hover:text-white"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"
             >
               Explore Consulting
               <ArrowRight className="h-4 w-4" />

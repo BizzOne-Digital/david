@@ -13,18 +13,22 @@ import { futureFuelCopy } from "@/lib/content/revisions";
 export function FutureFuelPageContent() {
   return (
     <>
-      <SectionBackground overlay="left" className="min-h-[60vh] py-24 md:py-32">
+      <SectionBackground overlay="dark" className="min-h-[60vh] py-24 md:py-32">
         <div className="container mx-auto px-4 pt-16">
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="Future Fuel Intelligence"
-              title={futureFuelCopy.headline}
-              subtitle={futureFuelCopy.copy}
-            />
-            <div className="mt-8">
-              <DemoCtaButton size="lg">{futureFuelCopy.cta}</DemoCtaButton>
-            </div>
-          </ScrollReveal>
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+            <ScrollReveal className="w-full">
+              <SectionHeading
+                eyebrow="Future Fuel Intelligence"
+                title={futureFuelCopy.headline}
+                subtitle={futureFuelCopy.copy}
+                align="center"
+                className="w-full"
+              />
+              <div className="mt-8 flex w-full justify-center">
+                <DemoCtaButton size="lg">{futureFuelCopy.cta}</DemoCtaButton>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </SectionBackground>
 
@@ -34,19 +38,19 @@ export function FutureFuelPageContent() {
             eyebrow="What We Cover"
             title="Future-Fuel Strategy Areas"
             align="center"
-            className="mx-auto mb-14 text-center"
+            className="mx-auto mb-14 w-full text-center"
           />
           <div className="mx-auto grid max-w-3xl gap-4">
             {futureFuelCopy.bullets.map((bullet, index) => (
               <ScrollReveal key={bullet} delay={index * 0.06}>
-                <GlassCard className="flex gap-3 py-5">
+                <GlassCard className="flex gap-3 border-white/10 py-5">
                   <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#ff6b00]" />
                   <p className="text-silver">{bullet}</p>
                 </GlassCard>
               </ScrollReveal>
             ))}
           </div>
-          <ScrollReveal delay={0.2} className="mt-12 text-center">
+          <ScrollReveal delay={0.2} className="mt-12 flex justify-center">
             <DemoCtaButton size="lg">{futureFuelCopy.cta}</DemoCtaButton>
           </ScrollReveal>
         </div>

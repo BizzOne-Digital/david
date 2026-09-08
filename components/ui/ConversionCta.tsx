@@ -66,7 +66,7 @@ export function DemoCtaBlock({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-[#ff6b00]/30 bg-[#ff6b00]/10 p-8 text-center md:p-10",
+        "rounded-2xl border border-[#ff6b00]/40 bg-[#ff6b00]/10 p-8 text-center md:p-10",
         className
       )}
     >

@@ -34,7 +34,7 @@ export interface PlaceholderService {
 export const placeholderProducts: PlaceholderProduct[] = [
   {
     id: "placeholder-email",
-    name: "Targeted Email Marketing",
+    name: "Stop Blasting. Start Targeting.",
     slug: "email-campaign-engine",
     shortDescription:
       "Filtered, opportunity-based email marketing built around the customer, inventory and dealership objective.",
@@ -62,7 +62,7 @@ export const placeholderProducts: PlaceholderProduct[] = [
   },
   {
     id: "placeholder-ai",
-    name: "AI Chaser / Follow-Up",
+    name: "The Lead Should Not Die Because Your Team Got Busy.",
     slug: "ai-lead-response-suite",
     shortDescription:
       "AI-supported engagement that keeps conversations alive and moves qualified customers toward an appointment.",
@@ -89,7 +89,7 @@ export const placeholderProducts: PlaceholderProduct[] = [
   },
   {
     id: "placeholder-service-sales",
-    name: "Service to Sales",
+    name: "Your Next Deal May Already Be in the Service Drive.",
     slug: "service-to-sales",
     shortDescription:
       "Identify service customers ready for a replacement, upgrade or trade conversation.",

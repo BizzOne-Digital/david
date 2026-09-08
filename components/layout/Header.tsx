@@ -29,7 +29,7 @@ function isNavActive(pathname: string, href: string): boolean {
 }
 
 export function Header() {
-  const { settings, navigation } = useSiteSettings();
+  const { settings } = useSiteSettings();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,14 +42,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const cmsLinks = navigation.filter((item) => item.isActive);
-  const links =
-    cmsLinks.length > 0 ?
-      cmsLinks.slice(0, 4).map((item) => ({
-        label: item.label,
-        href: item.href,
-      }))
-    : mockupNav;
+  const links = mockupNav;
 
   return (
     <>

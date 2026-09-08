@@ -83,17 +83,11 @@ export function Footer() {
 
   return (
     <footer className="relative isolate w-full max-w-full overflow-hidden border-t border-white/10 bg-black">
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-graphite"
-        aria-hidden
-      />
-
-      <div className="relative z-10">
         <div className="container mx-auto px-4 pt-10 md:pt-12">
-          <div className="rounded-2xl border border-cyan/20 bg-black/35 p-4 backdrop-blur-xl md:p-5">
+          <div className="rounded-2xl border border-white/10 bg-graphite p-4 md:p-5">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
               <div className="flex items-start gap-4 xl:flex-1">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan/30 bg-gradient-brand-soft shadow-[0_0_20px_rgba(0,210,255,0.2)]">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-graphite">
                   <Calendar className="h-5 w-5 text-cyan" />
                 </div>
                 <p className="max-w-md font-heading text-lg font-semibold leading-snug text-white md:text-xl">
@@ -117,8 +111,8 @@ export function Footer() {
         </div>
 
         <div className="container mx-auto px-4 py-12 md:py-14">
-          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
-            <div className="xl:border-r xl:border-white/10 xl:pr-8">
+          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr] xl:gap-6">
+            <div className="xl:border-r xl:border-white/10 xl:pr-6">
               <Logo
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
@@ -136,17 +130,17 @@ export function Footer() {
               columnKey="explore"
               title="Explore"
               links={footerExploreLinks}
-              className="xl:border-r xl:border-white/10 xl:px-8"
+              className="xl:border-r xl:border-white/10 xl:px-5"
             />
 
             <FooterLinkColumn
               columnKey="solutions"
               title="Solutions"
               links={footerSolutionLinks}
-              className="xl:border-r xl:border-white/10 xl:px-8"
+              className="xl:border-r xl:border-white/10 xl:px-5"
             />
 
-            <div className="xl:pl-8">
+            <div className="xl:-ml-1 xl:pl-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/45">
                 Let&apos;s Connect
               </p>
@@ -156,10 +150,10 @@ export function Footer() {
                     href={`mailto:${settings.contactEmail}`}
                     className="group flex min-w-0 items-center gap-3 text-sm text-white/80 transition-colors hover:text-cyan"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-cyan/30 bg-black/40 shadow-[0_0_16px_rgba(0,210,255,0.15)]">
-                      <Mail className="h-4 w-4 text-cyan" />
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-graphite">
+                      <Mail className="h-4 w-4 text-electric" />
                     </span>
-                    <span className="break-all">{settings.contactEmail}</span>
+                    <span className="whitespace-nowrap">{settings.contactEmail}</span>
                   </a>
                 </li>
                 <li>
@@ -167,8 +161,8 @@ export function Footer() {
                     href={`tel:${settings.contactPhone.replace(/\D/g, "")}`}
                     className="group flex items-center gap-3 text-sm text-white/80 transition-colors hover:text-cyan"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-cyan/30 bg-black/40 shadow-[0_0_16px_rgba(0,210,255,0.15)]">
-                      <Phone className="h-4 w-4 text-cyan" />
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-graphite">
+                      <Phone className="h-4 w-4 text-electric" />
                     </span>
                     {settings.contactPhone}
                   </a>
@@ -233,7 +227,6 @@ export function Footer() {
             </div>
           </div>
         </div>
-      </div>
     </footer>
   );
 }

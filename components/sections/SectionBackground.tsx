@@ -13,9 +13,9 @@ interface SectionBackgroundProps {
 
 const overlays = {
   dark: "bg-black/20",
-  left: "bg-gradient-to-r from-black/30 via-transparent to-transparent",
-  center: "bg-[radial-gradient(ellipse_80%_70%_at_50%_50%,rgba(0,210,255,0.04)_0%,transparent_70%)]",
-  bottom: "bg-gradient-to-t from-black/40 via-transparent to-transparent",
+  left: "bg-black/15",
+  center: "bg-black/10",
+  bottom: "bg-black/25",
 };
 
 export function SectionBackground({
@@ -69,7 +69,12 @@ export function SectionHeading({
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-silver md:text-lg">
+        <p
+          className={cn(
+            "mt-5 max-w-2xl text-base leading-relaxed text-silver md:text-lg",
+            align === "center" && "mx-auto"
+          )}
+        >
           {subtitle}
         </p>
       )}
@@ -87,7 +92,7 @@ export function GlassCard({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-white/15 bg-black/35 p-6 shadow-[0_0_40px_rgba(0,210,255,0.08)] backdrop-blur-xl md:p-8",
+        "rounded-2xl border border-white/10 bg-graphite p-6 md:p-8",
         className
       )}
     >
@@ -97,5 +102,5 @@ export function GlassCard({
 }
 
 export function GradientText({ children }: { children: React.ReactNode }) {
-  return <span className="text-gradient">{children}</span>;
+  return <span className="text-electric">{children}</span>;
 }

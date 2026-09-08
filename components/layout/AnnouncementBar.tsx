@@ -21,7 +21,7 @@ export function AnnouncementBar({ onDismiss, dismissed }: AnnouncementBarProps) 
   );
 
   return (
-    <div className="relative z-50 bg-gradient-brand animate-gradient-shift px-4 py-2.5 text-center text-white">
+    <div className="relative z-50 bg-[#ff6b00] px-4 py-2.5 text-center text-white">
       {bar.link ? (
         <Link href={bar.link} className="hover:underline">
           {content}

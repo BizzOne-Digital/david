@@ -7,7 +7,7 @@ import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { SectionBackground, GlassCard } from "@/components/sections/SectionBackground";
 import { ContactStrategyForm } from "./ContactStrategyForm";
-import { contactCopy } from "@/lib/content/revisions";
+import { contactCopy, demoConfirmationMessage, homepageCopy } from "@/lib/content/revisions";
 import { contactFaqs } from "@/lib/content/contact-page";
 import type { PageSection } from "@/types";
 
@@ -71,9 +71,9 @@ export function ContactPageContent({
 
   return (
     <>
-      <SectionBackground overlay="left" className="relative min-h-[50vh]">
+      <SectionBackground overlay="dark" className="relative min-h-[50vh]">
         <div className="container mx-auto px-4 pb-12 pt-28 md:pt-32">
-          <div className="max-w-2xl">
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <ScrollReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">
                 Request a Demo
@@ -103,7 +103,7 @@ export function ContactPageContent({
 
           <div className="space-y-6">
             <ScrollReveal delay={0.1}>
-              <GlassCard className="border-violet/30 glow-violet">
+              <GlassCard className="border-white/10">
                 <h3 className="font-heading text-lg font-semibold">Contact</h3>
                 <div className="mt-6 space-y-4">
                   <a
@@ -144,13 +144,15 @@ export function ContactPageContent({
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="center" className="py-24 md:py-32">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl font-bold uppercase md:text-4xl">
-            You&apos;re Already Sitting on the Opportunity. Let&apos;s Find It.
-          </h2>
-          <div className="mt-8">
-            <DemoCtaButton size="lg" />
+      <SectionBackground overlay="dark" className="py-24 md:py-32">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+            <h2 className="font-heading text-3xl font-bold uppercase md:text-4xl">
+              {homepageCopy.finalCta.headline}
+            </h2>
+            <div className="mt-8">
+              <DemoCtaButton size="lg" />
+            </div>
           </div>
         </div>
       </SectionBackground>

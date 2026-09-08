@@ -27,15 +27,17 @@ export const featuredProductsPage = [
     slug: "email-campaign-engine",
     category: "Targeted Email Marketing",
     name: "Stop Blasting. Start Targeting.",
-    tagline: "Opportunity-based email built for dealership outcomes.",
     description:
       "Filtered, opportunity-based email marketing built around the customer, inventory and dealership objective. Rethink helps create the audience, message and campaign — then measures what happens next.",
-    visual: PRODUCT_VISUALS.emailEngine,
     features: [
       "Database activation and reactivation",
+      "Conquest marketing",
       "Inventory-specific targeting",
+      "Ownership/lifecycle campaigns",
+      "Creative support and rapid deployment",
       "Campaign dashboard and results visibility",
     ],
+    cta: "Request a Targeted Marketing Demo",
   },
   {
     id: "ai-suite",
@@ -43,15 +45,16 @@ export const featuredProductsPage = [
     slug: "ai-lead-response-suite",
     category: "AI Chaser / Follow-Up",
     name: "The Lead Should Not Die Because Your Team Got Busy.",
-    tagline: "Persistent AI engagement with management visibility.",
     description:
       "AI-supported engagement helps keep conversations alive, responds quickly, nurtures interest and moves qualified customers toward an appointment — while management retains visibility.",
-    visual: PRODUCT_VISUALS.aiSuite,
     features: [
       "Fast personalized engagement",
       "Persistent follow-up",
+      "Appointment-oriented conversations",
+      "Management dashboard controls",
       "Qualified handoff to dealership staff",
     ],
+    cta: "See the AI Chaser Demo",
   },
   {
     id: "service-sales",
@@ -59,15 +62,15 @@ export const featuredProductsPage = [
     slug: "service-to-sales",
     category: "Service to Sales",
     name: "Your Next Deal May Already Be in the Service Drive.",
-    tagline: "Connect fixed ops signals to sales conversations.",
     description:
       "Rethink helps identify service customers whose repair, ownership or vehicle lifecycle signals may justify a sales conversation — then creates the communication and follow-up strategy to act on it.",
-    visual: PRODUCT_VISUALS.aiSuite,
     features: [
       "Service lane opportunity identification",
-      "Lifecycle signal analysis",
+      "Lifecycle and repair signal analysis",
       "Communication and follow-up strategy",
+      "Management dashboard visibility",
     ],
+    cta: "Show Me Service-to-Sales",
   },
 ] as const;
 
