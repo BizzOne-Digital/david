@@ -20,7 +20,7 @@ export function PublicShell({ children }: { children: React.ReactNode }) {
         <div className="overflow-x-clip max-w-full">
           <CursorGlow />
           <Header />
-          <main className="min-h-screen overflow-x-clip pt-16 md:pt-[72px]">
+          <main className="min-h-screen overflow-x-clip pt-[var(--site-header-offset,4rem)]">
             <PageTransition className="overflow-x-clip">{children}</PageTransition>
           </main>
           <Footer />

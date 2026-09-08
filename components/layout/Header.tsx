@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -25,9 +25,14 @@ function isNavActive(pathname: string, href: string): boolean {
 export function Header() {
   const { settings } = useSiteSettings();
   const pathname = usePathname();
+  const headerStackRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [announcementDismissed, setAnnouncementDismissed] = useState(false);
+
+  const showAnnouncement =
+    !announcementDismissed &&
+    Boolean(settings.announcementBar?.enabled && settings.announcementBar?.text);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -36,6 +41,25 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    const stack = headerStackRef.current;
+    if (!stack) return;
+
+    const syncHeaderOffset = () => {
+      root.style.setProperty("--site-header-offset", `${stack.offsetHeight}px`);
+    };
+
+    syncHeaderOffset();
+    const observer = new ResizeObserver(syncHeaderOffset);
+    observer.observe(stack);
+
+    return () => {
+      observer.disconnect();
+      root.style.setProperty("--site-header-offset", "4rem");
+    };
+  }, [showAnnouncement]);
+
   const links = defaultNavigation
     .filter((item) => item.isActive)
     .sort((a, b) => a.order - b.order)
@@ -43,40 +67,39 @@ export function Header() {
 
   return (
     <>
-      <AnnouncementBar
-        dismissed={announcementDismissed}
-        onDismiss={() => setAnnouncementDismissed(true)}
-      />
-      <header
-        className={cn(
-          "fixed left-0 right-0 z-40 border-b border-white/5 bg-[#12121c] transition-shadow duration-300",
-          announcementDismissed || !settings.announcementBar?.enabled ?
-            "top-0"
-          : "top-[42px]",
-          scrolled && "shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
-        )}
-      >
-        <div className="container mx-auto px-3 md:px-4">
-          {/* Mobile: logo | menu | demo */}
-          <div className="grid h-16 grid-cols-[1fr_auto_1fr] items-center gap-2 lg:hidden">
-            <BrandLockup
-              logoSrc={settings.logo || DEFAULT_LOGO}
-              alt={settings.businessName}
-              priority
-              className="min-w-0 justify-self-start"
-            />
+      <div ref={headerStackRef} className="fixed inset-x-0 top-0 z-50">
+        {showAnnouncement ?
+          <AnnouncementBar onDismiss={() => setAnnouncementDismissed(true)} />
+        : null}
+        <header
+          className={cn(
+            "border-b border-white/5 bg-[#12121c] transition-shadow duration-300",
+            scrolled && "shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
+          )}
+        >
+          <div className="container mx-auto px-3 md:px-4">
+            {/* Mobile: logo left, menu + demo right */}
+            <div className="flex h-16 items-center justify-between gap-2 lg:hidden">
+              <BrandLockup
+                logoSrc={settings.logo || DEFAULT_LOGO}
+                alt={settings.businessName}
+                priority
+                className="min-w-0 shrink"
+              />
 
-            <button
-              type="button"
-              className="flex h-10 w-10 items-center justify-center justify-self-center rounded-md border border-white/10 bg-[#0a1628] text-white hover:bg-[#121c30]"
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+              <div className="flex shrink-0 items-center gap-2">
+                <button
+                  type="button"
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-[#0a1628] text-white hover:bg-[#121c30]"
+                  onClick={() => setMenuOpen(true)}
+                  aria-label="Open menu"
+                >
+                  <Menu className="h-5 w-5" />
+                </button>
 
-            <DemoCtaButton className="max-w-[7.5rem] justify-self-end px-2.5 py-2 text-[8px] leading-tight tracking-[0.1em] sm:max-w-none sm:px-3 sm:text-[9px]" />
-          </div>
+                <DemoCtaButton className="px-3 py-2.5 text-[10px] tracking-[0.12em] sm:px-4 sm:text-[11px]" />
+              </div>
+            </div>
 
           {/* Desktop */}
           <div className="hidden h-[72px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 lg:grid">
@@ -116,6 +139,7 @@ export function Header() {
           </div>
         </div>
       </header>
+      </div>
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );

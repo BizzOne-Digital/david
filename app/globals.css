@@ -18,6 +18,10 @@
 }
 
 @layer base {
+  :root {
+    --site-header-offset: 4rem;
+  }
+
   html {
     scroll-behavior: smooth;
     overflow-x: clip;

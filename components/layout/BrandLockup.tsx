@@ -34,7 +34,7 @@ export function BrandLockup({
         width={260}
         height={72}
         priority={priority}
-        className="h-9 w-auto max-w-[128px] object-contain object-left sm:h-10 sm:max-w-[148px] md:h-11 md:max-w-[180px] lg:max-w-[210px]"
+        className="h-8 w-auto max-w-[112px] object-contain object-left sm:h-9 sm:max-w-[132px] md:h-11 md:max-w-[180px] lg:max-w-[210px]"
       />
     </Link>
   );

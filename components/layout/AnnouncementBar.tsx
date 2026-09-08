@@ -7,21 +7,22 @@ import { cn } from "@/lib/utils";
 
 interface AnnouncementBarProps {
   onDismiss?: () => void;
-  dismissed?: boolean;
 }
 
-export function AnnouncementBar({ onDismiss, dismissed }: AnnouncementBarProps) {
+export function AnnouncementBar({ onDismiss }: AnnouncementBarProps) {
   const { settings } = useSiteSettings();
   const bar = settings.announcementBar;
 
-  if (!bar?.enabled || dismissed || !bar.text) return null;
+  if (!bar?.enabled || !bar.text) return null;
 
   const content = (
-    <span className="text-sm font-medium">{bar.text}</span>
+    <span className="block text-xs font-medium leading-snug sm:text-sm">
+      {bar.text}
+    </span>
   );
 
   return (
-    <div className="relative z-50 bg-[#ff6b00] px-4 py-2.5 text-center text-white">
+    <div className="relative border-b border-[#e85f00]/40 bg-[#ff6b00] px-3 py-2 text-center text-white sm:px-4 sm:py-2.5">
       {bar.link ? (
         <Link href={bar.link} className="hover:underline">
           {content}
