@@ -6,15 +6,7 @@ import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { BrandLockup, DEFAULT_LOGO } from "./BrandLockup";
-
-const mockupNav = [
-  { label: "Home", href: "/" },
-  { label: "Solutions", href: "/products" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "About", href: "/about" },
-  { label: "Consulting", href: "/consulting" },
-  { label: "Contact", href: "/contact" },
-];
+import { defaultNavigation } from "@/lib/content/defaults";
 
 interface MobileMenuProps {
   open: boolean;
@@ -22,10 +14,12 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  const { navigation, settings } = useSiteSettings();
+  const { settings } = useSiteSettings();
   const reducedMotion = useReducedMotion();
-  const cmsLinks = navigation.filter((item) => item.isActive);
-  const links = cmsLinks.length > 0 ? cmsLinks : mockupNav;
+  const links = defaultNavigation
+    .filter((item) => item.isActive)
+    .sort((a, b) => a.order - b.order)
+    .map(({ label, href }) => ({ label, href }));
 
   return (
     <AnimatePresence>

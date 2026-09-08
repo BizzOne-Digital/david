@@ -85,7 +85,7 @@ export const homepageCopy = {
   futureFuelTeaser: {
     eyebrow: "Future Fuel",
     headline: "Don't Build an EV Strategy. Build a Future-Fuel Strategy.",
-    copy: "EV. Hybrid. Plug-in hybrid. Alternative fuels. Emerging powertrains. Consumer demand and OEM direction are moving too quickly for one-size-fits-all thinking.",
+    copy: "EV. Hybrid. Plug-in hybrid. Alternative fuels. Emerging powertrains. Consumer demand and OEM direction are moving too quickly for one-size-fits-all thinking. Rethink helps dealerships understand which opportunities matter in their market and how to communicate them to the right customers.",
   },
   aboutTeaser: {
     headline: "We Built Rethink for Dealers Who Know Yesterday's Playbook Isn't Enough.",

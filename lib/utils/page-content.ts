@@ -18,7 +18,6 @@ export const PAGE_PATHS: Record<string, string> = {
   consulting: "/consulting",
   "how-it-works": "/how-it-works",
   "future-fuel": "/future-fuel",
-  insights: "/insights",
   products: "/products",
   contact: "/contact",
   "book-appointment": "/book-appointment",

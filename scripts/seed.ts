@@ -54,14 +54,16 @@ async function seed() {
       defaultSeoTitle: "Rethink Automotive Inc. | Dealership Marketing Solutions",
       defaultSeoDescription:
         "AI-powered and email-driven marketing systems designed to help automotive dealers attract, nurture, and convert more opportunities.",
-      headerCtaLabel: "Book a Strategy Call",
-      headerCtaUrl: "/book-appointment",
+      headerCtaLabel: "Request Demo",
+      headerCtaUrl: "/contact",
       announcementBar: {
-        enabled: false,
-        text: "[PLACEHOLDER] Announcement text — edit in Admin → Settings",
+        enabled: true,
+        text: "See what your dealership may be missing — request a demo today.",
+        link: "/contact",
       },
       footerContent: {
-        brandStatement: "Smarter marketing systems for modern dealerships.",
+        brandStatement:
+          "Creative + Campaign + AI + Dashboard + Advisory for dealership growth.",
         copyright: `© ${new Date().getFullYear()} Rethink Automotive Inc. All rights reserved.`,
       },
       brandColors: {
@@ -85,7 +87,7 @@ async function seed() {
         { sectionId: "productsPreview", isVisible: true, order: 8 },
         { sectionId: "conversion", isVisible: true, order: 9 },
       ],
-      contactForPricingLabel: "Contact for Pricing",
+      contactForPricingLabel: "Request Demo",
       currency: "USD",
       taxRate: 0,
       purchasingEnabled: false,
@@ -93,10 +95,11 @@ async function seed() {
       cookieBannerEnabled: true,
       navigation: [
         { label: "Home", href: "/", order: 0, isActive: true },
-        { label: "About", href: "/about", order: 1, isActive: true },
-        { label: "Products", href: "/products", order: 2, isActive: true },
-        { label: "Services", href: "/services", order: 3, isActive: true },
-        { label: "Contact", href: "/contact", order: 4, isActive: true },
+        { label: "Solutions", href: "/products", order: 1, isActive: true },
+        { label: "Consulting", href: "/consulting", order: 2, isActive: true },
+        { label: "Future Fuel", href: "/future-fuel", order: 3, isActive: true },
+        { label: "About Us", href: "/about", order: 4, isActive: true },
+        { label: "Contact", href: "/contact", order: 5, isActive: true },
       ],
       socialLinks: [
         { platform: "LinkedIn", url: "#", isActive: true },
@@ -199,10 +202,10 @@ async function seed() {
         {
           id: "brandStatement",
           type: "brandStatement",
-          title: "Marketing Has Changed. Your Systems Should Too.",
+          title: "Dealer Intelligence That Sells.",
           content:
-            "[PLACEHOLDER] Automotive marketing has evolved beyond disconnected campaigns. Dealerships need smarter, connected systems that generate demand and nurture leads through every stage.",
-          isVisible: true,
+            "AI-powered targeting, follow-up and service-to-sales conversion built to capture the opportunities already inside your dealership — with dealer-controlled dashboards and campaigns designed around measurable action.",
+          isVisible: false,
           order: 2,
         },
         {
@@ -237,24 +240,24 @@ async function seed() {
         {
           id: "process",
           type: "process",
-          title: "Our Process",
+          title: "Watch One Missed Lead Become a Real Opportunity.",
           items: [
-            { step: "Discover", description: "[PLACEHOLDER] Understand your dealership, audience, and current marketing landscape." },
-            { step: "Build", description: "[PLACEHOLDER] Design and configure your marketing systems and campaigns." },
-            { step: "Launch", description: "[PLACEHOLDER] Deploy programs with proper tracking and team alignment." },
-            { step: "Optimize", description: "[PLACEHOLDER] Continuously refine based on performance data and feedback." },
+            { step: "New Lead", description: "A qualified opportunity enters your pipeline." },
+            { step: "AI Engages", description: "Intelligent follow-up keeps the conversation alive." },
+            { step: "Appointment", description: "Interest moves toward a scheduled conversation." },
+            { step: "Opportunity", description: "Management sees progress and qualified handoff." },
           ],
-          isVisible: true,
+          isVisible: false,
           order: 4,
         },
         {
           id: "conversion",
           type: "conversion",
-          title: "Ready to Rethink Your Dealership's Growth?",
-          subtitle: "Schedule a strategy call to explore how we can help your dealership generate and convert more leads.",
-          ctaLabel: "Book a Strategy Call",
-          ctaUrl: "/book-appointment",
-          isVisible: true,
+          title: "You're Already Sitting on the Opportunity. Let's Find It.",
+          subtitle: "Request a demo to see what your dealership should rethink.",
+          ctaLabel: "Request Demo",
+          ctaUrl: "/contact",
+          isVisible: false,
           order: 5,
         },
       ],
@@ -263,13 +266,15 @@ async function seed() {
       pageSlug: "about",
       pageTitle: "About Us",
       seoTitle: "About Us | Rethink Automotive Inc.",
-      seoDescription: "[PLACEHOLDER] Learn about Rethink Automotive's mission to transform dealership marketing.",
+      seoDescription:
+        "Learn about Rethink Automotive — partners who help dealerships find missed opportunity and turn insight into action.",
       sections: [
         {
           id: "story",
           type: "text",
           title: "Our Story",
-          content: "[PLACEHOLDER] Brand story content will be provided by the client. This section is editable from the admin portal.",
+          content:
+            "Rethink Automotive was created around a simple belief: dealerships do not need another vendor telling them to buy more technology. They need partners who understand automotive retail, recognize where opportunity is being missed, and can help turn insight into action.",
           isVisible: true,
           order: 1,
         },
@@ -277,7 +282,8 @@ async function seed() {
           id: "mission",
           type: "text",
           title: "Mission",
-          content: "[PLACEHOLDER] To help automotive dealerships generate, nurture, and convert leads through intelligent digital marketing systems.",
+          content:
+            "To help automotive dealerships generate, nurture, and convert leads through intelligent digital marketing systems and consultative partnership.",
           isVisible: true,
           order: 2,
         },
@@ -285,8 +291,9 @@ async function seed() {
           id: "vision",
           type: "text",
           title: "Vision",
-          content: "[PLACEHOLDER] A future where every dealership has access to modern, measurable marketing technology.",
-          isVisible: true,
+          content:
+            "We help dealerships find missed opportunity and turn insight into practical marketing, follow-up and consulting action.",
+          isVisible: false,
           order: 3,
         },
         {
@@ -294,11 +301,11 @@ async function seed() {
           type: "list",
           title: "Values",
           items: [
-            { title: "Innovation", description: "[PLACEHOLDER] Embracing new technology responsibly." },
-            { title: "Integrity", description: "[PLACEHOLDER] Honest communication and transparent results." },
-            { title: "Partnership", description: "[PLACEHOLDER] Working alongside dealership teams as an extension of their marketing department." },
+            { title: "Partnership", description: "We work alongside dealership teams as an extension of their growth strategy." },
+            { title: "Integrity", description: "Honest communication, measurable action and transparent reporting." },
+            { title: "Future Focus", description: "We study market, technology and consumer change so dealers can decide—not react." },
           ],
-          isVisible: true,
+          isVisible: false,
           order: 4,
         },
       ],
@@ -311,8 +318,9 @@ async function seed() {
         {
           id: "intro",
           type: "text",
-          title: "Get in Touch",
-          content: "Have questions about our solutions? We'd love to hear from you.",
+          title: "See What Your Dealership May Be Missing.",
+          content:
+            "Give us a short look at your goals. We'll show you how Rethink can identify and activate opportunities across marketing, follow-up, service-to-sales and future-fuel demand.",
           isVisible: true,
           order: 1,
         },

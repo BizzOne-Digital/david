@@ -7,14 +7,8 @@ import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { SectionBackground, GlassCard } from "@/components/sections/SectionBackground";
 import { ContactStrategyForm } from "./ContactStrategyForm";
-import { contactCopy, demoConfirmationMessage, homepageCopy } from "@/lib/content/revisions";
+import { contactCopy, homepageCopy } from "@/lib/content/revisions";
 import { contactFaqs } from "@/lib/content/contact-page";
-import type { PageSection } from "@/types";
-
-interface ContactPageContentProps {
-  introSection?: PageSection;
-  faqs?: { question: string; answer: string; order: number }[];
-}
 
 function ContactFaqAccordion({
   faqs,
@@ -57,17 +51,9 @@ function ContactFaqAccordion({
   );
 }
 
-export function ContactPageContent({
-  introSection,
-  faqs,
-}: ContactPageContentProps) {
+export function ContactPageContent() {
   const { settings } = useSiteSettings();
-  const displayFaqs: { question: string; answer: string }[] =
-    faqs?.length ?
-      faqs
-        .sort((a, b) => a.order - b.order)
-        .map(({ question, answer }) => ({ question, answer }))
-    : [...contactFaqs];
+  const displayFaqs = [...contactFaqs];
 
   return (
     <>
@@ -81,13 +67,11 @@ export function ContactPageContent({
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <h1 className="mt-5 font-heading text-4xl font-bold uppercase leading-[1.1] md:text-5xl">
-                {introSection?.title ?? contactCopy.headline}
+                {contactCopy.headline}
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="mt-6 text-lg text-silver">
-                {introSection?.content ?? contactCopy.subhead}
-              </p>
+              <p className="mt-6 text-lg text-silver">{contactCopy.subhead}</p>
             </ScrollReveal>
           </div>
         </div>

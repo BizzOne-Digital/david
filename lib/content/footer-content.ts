@@ -3,7 +3,6 @@ export const footerExploreLinks = [
   { id: "explore-solutions", label: "Solutions", href: "/products" },
   { id: "explore-consulting", label: "Consulting", href: "/consulting" },
   { id: "explore-future-fuel", label: "Future Fuel", href: "/future-fuel" },
-  { id: "explore-insights", label: "Insights", href: "/insights" },
   { id: "explore-about", label: "About Us", href: "/about" },
   { id: "explore-contact", label: "Contact", href: "/contact" },
 ] as const;

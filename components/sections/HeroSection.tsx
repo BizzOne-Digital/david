@@ -4,7 +4,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { getSectionBackgroundImageClass } from "@/lib/utils/background-image";
-import type { PageSection } from "@/types";
+import { DemoCtaButton, SecondaryCtaButton } from "@/components/ui/ConversionCta";
+import { homepageCopy } from "@/lib/content/revisions";
 
 const HERO_BACKGROUND = "/images/hero-bg.jpg";
 
@@ -53,7 +54,9 @@ function HeroSignature() {
   );
 }
 
-export function HeroSection(_props: { section?: PageSection }) {
+export function HeroSection() {
+  const copy = homepageCopy.hero;
+
   return (
     <section className="relative isolate w-full max-w-full overflow-hidden bg-black">
       <div className="absolute inset-0 overflow-hidden">
@@ -71,7 +74,6 @@ export function HeroSection(_props: { section?: PageSection }) {
         />
       </div>
 
-      {/* Left scrim so copy reads like mockup; lion stays visible on the right */}
       <div
         className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.35)_58%,rgba(0,0,0,0.08)_78%,transparent_100%)] max-md:bg-black/72"
         aria-hidden
@@ -85,6 +87,17 @@ export function HeroSection(_props: { section?: PageSection }) {
 
           <ScrollReveal delay={0.15}>
             <HeroSignature />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.25}>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-silver md:mt-8 md:text-lg">
+              {copy.supporting}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.35} className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <DemoCtaButton size="lg" />
+            <SecondaryCtaButton size="lg" />
           </ScrollReveal>
         </div>
       </div>

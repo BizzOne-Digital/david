@@ -9,15 +9,11 @@ import {
   AboutTeaserSection,
   FinalDemoCtaSection,
 } from "@/components/sections/HomeClosingSections";
-import { getPageContent } from "@/lib/data/page-content";
-import { getSection } from "@/lib/utils/page-content";
 
-export default async function HomePage() {
-  const content = await getPageContent("home");
-
+export default function HomePage() {
   return (
     <>
-      <HeroSection section={getSection(content, "hero")} />
+      <HeroSection />
       <DealerIntelligenceSection />
       <RethinkInActionSection />
       <FourCapabilitiesSection />

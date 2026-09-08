@@ -10,13 +10,8 @@ import {
   SectionHeading,
   GlassCard,
 } from "@/components/sections/SectionBackground";
-import type { PageSection } from "@/types";
 
-interface AboutPageContentProps {
-  storySection?: PageSection;
-}
-
-export function AboutPageContent({ storySection }: AboutPageContentProps) {
+export function AboutPageContent() {
   return (
     <>
       <SectionBackground overlay="dark" className="min-h-[70vh] py-24 md:py-32">
@@ -44,13 +39,9 @@ export function AboutPageContent({ storySection }: AboutPageContentProps) {
         <div className="container mx-auto max-w-4xl px-4">
           <SectionHeading eyebrow="Our Story" title="Why Rethink Exists" />
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-silver">
-            {storySection?.content ? (
-              <p>{storySection.content}</p>
-            ) : (
-              aboutCopy.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-              ))
-            )}
+            {aboutCopy.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+            ))}
           </div>
           <ScrollReveal delay={0.2} className="mt-10">
             <GlassCard className="border-white/10">

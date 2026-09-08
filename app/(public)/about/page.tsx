@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
 import { AboutPageContent } from "@/components/about/AboutPageContent";
-import { getPageContent } from "@/lib/data/page-content";
-import { getSection } from "@/lib/utils/page-content";
+import { aboutCopy } from "@/lib/content/revisions";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const content = await getPageContent("about");
-  return {
-    title: content?.seoTitle ?? "About Us",
-    description:
-      content?.seoDescription ??
-      "Learn about Rethink Automotive — smarter digital, email, and AI-driven marketing for modern dealerships.",
-  };
-}
+export const metadata: Metadata = {
+  title: "About Us | Rethink Automotive Inc.",
+  description: aboutCopy.paragraphs[0],
+};
 
-export default async function AboutPage() {
-  const content = await getPageContent("about");
-
-  return (
-    <AboutPageContent storySection={getSection(content, "story")} />
-  );
+export default function AboutPage() {
+  return <AboutPageContent />;
 }

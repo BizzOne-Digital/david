@@ -46,7 +46,6 @@ export const defaultNavigation: NavItem[] = [
   { label: "Solutions", href: "/products", order: 1, isActive: true },
   { label: "Consulting", href: "/consulting", order: 2, isActive: true },
   { label: "Future Fuel", href: "/future-fuel", order: 3, isActive: true },
-  { label: "Insights", href: "/insights", order: 4, isActive: true },
-  { label: "About Us", href: "/about", order: 5, isActive: true },
-  { label: "Contact", href: "/contact", order: 6, isActive: true },
+  { label: "About Us", href: "/about", order: 4, isActive: true },
+  { label: "Contact", href: "/contact", order: 5, isActive: true },
 ];

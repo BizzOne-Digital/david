@@ -10,13 +10,7 @@ import { MobileMenu } from "./MobileMenu";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { BrandLockup, DEFAULT_LOGO } from "./BrandLockup";
 import { DemoCtaButton } from "@/components/ui/ConversionCta";
-
-const mockupNav = [
-  { label: "Home", href: "/" },
-  { label: "Solutions", href: "/products" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "About", href: "/about" },
-];
+import { defaultNavigation } from "@/lib/content/defaults";
 
 function isNavActive(pathname: string, href: string): boolean {
   if (href.startsWith("/#")) {
@@ -42,7 +36,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = mockupNav;
+  const links = defaultNavigation
+    .filter((item) => item.isActive)
+    .sort((a, b) => a.order - b.order)
+    .map(({ label, href }) => ({ label, href }));
 
   return (
     <>
@@ -91,7 +88,7 @@ export function Header() {
             />
 
             <nav
-              className="flex items-center justify-center gap-8 xl:gap-10"
+              className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 xl:gap-5"
               aria-label="Main"
             >
               {links.map((item) => {
@@ -101,7 +98,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "relative pb-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors xl:text-xs",
+                      "relative whitespace-nowrap pb-1 text-[9px] font-semibold uppercase tracking-[0.14em] transition-colors xl:text-[10px] xl:tracking-[0.18em]",
                       active ?
                         "text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-electric after:content-['']"
                       : "text-white/75 hover:text-white"
