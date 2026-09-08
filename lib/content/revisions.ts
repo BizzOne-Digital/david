@@ -15,6 +15,10 @@ export const homepageCopy = {
     supporting:
       "The opportunities are already in your database, website traffic, service lane and follow-up. Rethink Automotive helps you find them, engage them and turn more of them into real sales conversations.",
   },
+  heroVideo: {
+    src: "/images/Jun_22__0247_33s_202506220550_0r2rl.mp4",
+    poster: "/images/hero-bg.jpg",
+  },
   dealerIntelligence: {
     eyebrow: "Dealer Intelligence",
     headline: "Dealer Intelligence That Sells.",
