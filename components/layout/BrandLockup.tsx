@@ -4,12 +4,26 @@ import { cn } from "@/lib/utils";
 
 export const DEFAULT_LOGO = "/images/rethink-logo.jpg";
 
+export type BrandLockupVariant = "header-mobile" | "header-desktop" | "footer" | "menu";
+
+const variantClasses: Record<BrandLockupVariant, string> = {
+  "header-mobile":
+    "h-[clamp(2.25rem,7.2vw,3.5rem)] w-auto max-w-[min(520px,calc(100vw-10.5rem))] object-contain object-left",
+  "header-desktop":
+    "h-[clamp(3.75rem,4.5vw,5rem)] w-auto max-w-[min(520px,36vw)] object-contain object-left",
+  footer:
+    "h-[clamp(4.5rem,14vw,8rem)] w-auto max-w-[min(520px,100%)] object-contain object-left",
+  menu:
+    "h-[clamp(2.5rem,8vw,3.75rem)] w-auto max-w-[min(520px,calc(100%-3rem))] object-contain object-left",
+};
+
 interface BrandLockupProps {
   href?: string;
   className?: string;
   logoSrc?: string;
   alt?: string;
   priority?: boolean;
+  variant?: BrandLockupVariant;
 }
 
 export function BrandLockup({
@@ -18,12 +32,13 @@ export function BrandLockup({
   logoSrc = DEFAULT_LOGO,
   alt = "Rethink Automotive",
   priority = false,
+  variant = "header-desktop",
 }: BrandLockupProps) {
   return (
     <Link
       href={href}
       className={cn(
-        "inline-flex shrink-0 transition-opacity hover:opacity-90",
+        "inline-flex max-w-full shrink transition-opacity hover:opacity-90",
         className
       )}
       aria-label={alt}
@@ -34,7 +49,8 @@ export function BrandLockup({
         width={520}
         height={302}
         priority={priority}
-        className="h-16 w-auto max-w-[220px] object-contain object-left sm:h-[4.5rem] sm:max-w-[280px] md:h-20 md:max-w-[360px] lg:h-24 lg:max-w-[440px] xl:max-w-[520px]"
+        sizes="(max-width: 1023px) min(520px, calc(100vw - 10.5rem)), min(520px, 36vw)"
+        className={variantClasses[variant]}
       />
     </Link>
   );

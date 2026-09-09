@@ -29,7 +29,7 @@ function HeroHeadline() {
           className={cn(
             "block font-bold leading-[0.92]",
             line.accent ?
-              "text-[2.35rem] text-[#ff6b00] sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]"
+              "text-[2.35rem] text-brand-orange sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]"
             : "text-[2rem] text-white sm:text-[2.15rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]"
           )}
         >
@@ -45,7 +45,7 @@ function HeroSignature() {
     <div className="hero-signature mt-6 md:mt-8">
       <p className="text-[1.75rem] leading-none text-white sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem]">
         I&apos;m not{" "}
-        <span className="text-[#ff6b00] underline decoration-[#ff6b00] decoration-[3px] underline-offset-[6px] md:underline-offset-[8px]">
+        <span className="text-brand-orange underline decoration-brand-orange decoration-[3px] underline-offset-[6px] md:underline-offset-[8px]">
           lion…
         </span>
       </p>

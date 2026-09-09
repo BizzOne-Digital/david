@@ -21,7 +21,7 @@ export function DemoCtaButton({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center justify-center rounded-md bg-[#ff6b00] font-semibold uppercase tracking-[0.08em] text-white shadow-[0_0_24px_rgba(255,107,0,0.35)] transition hover:bg-[#e85f00] hover:shadow-[0_0_32px_rgba(255,107,0,0.45)]",
+        "inline-flex items-center justify-center rounded-md bg-brand-orange font-semibold uppercase tracking-[0.08em] text-white shadow-[0_0_24px_rgba(255,102,0,0.35)] transition hover:bg-brand-orange-hover hover:shadow-[0_0_32px_rgba(255,102,0,0.45)]",
         size === "lg" ? "px-8 py-4 text-sm md:text-base" : "px-6 py-3 text-xs md:text-sm",
         className
       )}
@@ -66,7 +66,7 @@ export function DemoCtaBlock({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-[#ff6b00]/40 bg-[#ff6b00]/10 p-8 text-center md:p-10",
+        "rounded-2xl border border-brand-orange/40 bg-brand-orange/10 p-8 text-center md:p-10",
         className
       )}
     >

@@ -9,6 +9,11 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
 import { formatMoney } from "@/lib/utils/money";
 import { cn } from "@/lib/utils";
+import {
+  formErrorClass,
+  formInputClass,
+  formLabelClass,
+} from "@/lib/utils/form-styles";
 
 const checkoutSchema = z.object({
   email: z.string().email("Valid email required"),
@@ -85,28 +90,28 @@ export function CheckoutForm({ className }: CheckoutFormProps) {
         <h2 className="font-heading text-xl font-semibold">Billing Details</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <Field label="Full Name" error={errors.name?.message}>
-            <input {...register("name")} className={inputClass} />
+            <input {...register("name")} className={formInputClass} />
           </Field>
           <Field label="Email" error={errors.email?.message}>
-            <input {...register("email")} type="email" className={inputClass} />
+            <input {...register("email")} type="email" className={formInputClass} />
           </Field>
           <Field label="Phone" error={errors.phone?.message}>
-            <input {...register("phone")} className={inputClass} />
+            <input {...register("phone")} className={formInputClass} />
           </Field>
           <Field label="Company" error={errors.company?.message}>
-            <input {...register("company")} className={inputClass} />
+            <input {...register("company")} className={formInputClass} />
           </Field>
           <Field label="Address" error={errors.address?.message} className="md:col-span-2">
-            <input {...register("address")} className={inputClass} />
+            <input {...register("address")} className={formInputClass} />
           </Field>
           <Field label="City" error={errors.city?.message}>
-            <input {...register("city")} className={inputClass} />
+            <input {...register("city")} className={formInputClass} />
           </Field>
           <Field label="State" error={errors.state?.message}>
-            <input {...register("state")} className={inputClass} />
+            <input {...register("state")} className={formInputClass} />
           </Field>
           <Field label="ZIP" error={errors.zip?.message}>
-            <input {...register("zip")} className={inputClass} />
+            <input {...register("zip")} className={formInputClass} />
           </Field>
         </div>
       </div>
@@ -151,12 +156,10 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label className="mb-1.5 block text-sm font-medium text-silver">{label}</label>
+      <label className={formLabelClass}>{label}</label>
       {children}
-      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
+      {error && <p className={formErrorClass}>{error}</p>}
     </div>
   );
 }
 
-const inputClass =
-  "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white focus:border-cyan/50 focus:outline-none focus:ring-1 focus:ring-cyan/30";

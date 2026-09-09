@@ -19,7 +19,7 @@ export const defaultSiteSettings: SiteSettingsData = {
   headerCtaLabel: DEMO_CTA_LABEL,
   headerCtaUrl: DEMO_CTA_HREF,
   announcementBar: {
-    enabled: true,
+    enabled: false,
     text: "See what your dealership may be missing — request a demo today.",
     link: DEMO_CTA_HREF,
   },
@@ -31,7 +31,7 @@ export const defaultSiteSettings: SiteSettingsData = {
   brandColors: {
     primary: "#00d2ff",
     secondary: "#6b00ff",
-    accent: "#ff6b00",
+    accent: "#ff6600",
   },
   contactForPricingLabel: "Contact for Details",
   currency: "USD",

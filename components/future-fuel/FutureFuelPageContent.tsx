@@ -40,7 +40,7 @@ export function FutureFuelPageContent() {
             {futureFuelCopy.bullets.map((bullet, index) => (
               <ScrollReveal key={bullet} delay={index * 0.06}>
                 <GlassCard className="flex gap-3 border-white/10 py-5">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#ff6b00]" />
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
                   <p className="text-silver">{bullet}</p>
                 </GlassCard>
               </ScrollReveal>

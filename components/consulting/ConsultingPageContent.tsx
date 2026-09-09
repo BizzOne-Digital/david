@@ -48,7 +48,7 @@ export function ConsultingPageContent() {
               <ScrollReveal key={service.title} delay={index * 0.06}>
                 <GlassCard className="h-full border-white/10">
                   <div className="flex gap-3">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-[#ff6b00]" />
+                    <Check className="mt-1 h-5 w-5 shrink-0 text-brand-orange" />
                     <div>
                       <h3 className="font-heading text-lg font-semibold">{service.title}</h3>
                       <p className="mt-2 text-sm text-silver">{service.description}</p>

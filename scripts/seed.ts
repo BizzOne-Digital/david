@@ -57,7 +57,7 @@ async function seed() {
       headerCtaLabel: "Request Demo",
       headerCtaUrl: "/contact",
       announcementBar: {
-        enabled: true,
+        enabled: false,
         text: "See what your dealership may be missing — request a demo today.",
         link: "/contact",
       },

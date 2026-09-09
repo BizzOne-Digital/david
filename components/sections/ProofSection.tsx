@@ -17,7 +17,7 @@ export function ProofSection() {
             {copy.points.map((point, index) => (
               <ScrollReveal key={point} delay={index * 0.06}>
                 <div className="flex gap-3 rounded-xl border border-white/10 bg-black/30 p-4">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#ff6b00]" />
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
                   <p className="text-sm text-silver md:text-base">{point}</p>
                 </div>
               </ScrollReveal>

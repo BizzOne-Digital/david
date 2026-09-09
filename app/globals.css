@@ -12,9 +12,12 @@
   --color-cyan: #00ffff;
   --color-magenta: #ff00ff;
   --color-silver: #c0c0c0;
+  --color-brand-orange: #ff6600;
+  --color-brand-orange-hover: #e85a00;
   --font-heading: var(--font-space-grotesk);
   --font-body: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+  --breakpoint-xs: 24rem;
 }
 
 @layer base {

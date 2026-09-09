@@ -17,7 +17,7 @@ interface MagneticButtonProps {
 }
 
 const buttonClassName =
-  "relative inline-flex items-center justify-center rounded-lg bg-[#ff6b00] px-6 py-3 font-medium text-white transition-colors hover:bg-[#e85f00]";
+  "relative inline-flex items-center justify-center rounded-lg bg-brand-orange px-6 py-3 font-medium text-white transition-colors hover:bg-brand-orange-hover";
 
 export function MagneticButton({
   children,

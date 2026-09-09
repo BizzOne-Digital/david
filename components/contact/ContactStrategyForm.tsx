@@ -20,6 +20,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { contactCopy, demoConfirmationMessage } from "@/lib/content/revisions";
 import { GlassCard } from "@/components/sections/SectionBackground";
+import {
+  formErrorClass,
+  formInputClass,
+  formInputClassWithIcon,
+} from "@/lib/utils/form-styles";
 
 type DemoFormData = z.input<typeof demoRequestSchema>;
 
@@ -65,19 +70,19 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
         <div className="grid gap-4 md:grid-cols-2">
           <IconField icon={User} error={errors.name?.message}>
-            <input {...register("name")} className={inputClass} placeholder="Name" />
+            <input {...register("name")} className={formInputClassWithIcon} placeholder="Name" />
           </IconField>
           <IconField icon={Building2} error={errors.dealershipName?.message}>
             <input
               {...register("dealershipName")}
-              className={inputClass}
+              className={formInputClassWithIcon}
               placeholder="Dealership / Dealer Group"
             />
           </IconField>
           <IconField icon={Briefcase} error={errors.title?.message}>
             <input
               {...register("title")}
-              className={inputClass}
+              className={formInputClassWithIcon}
               placeholder="Title / Role"
             />
           </IconField>
@@ -85,12 +90,12 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
             <input
               {...register("workEmail")}
               type="email"
-              className={inputClass}
+              className={formInputClassWithIcon}
               placeholder="Email"
             />
           </IconField>
           <IconField icon={Phone} error={errors.phone?.message} className="md:col-span-2">
-            <input {...register("phone")} className={inputClass} placeholder="Phone" />
+            <input {...register("phone")} className={formInputClassWithIcon} placeholder="Phone" />
           </IconField>
         </div>
 
@@ -98,7 +103,7 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
           <textarea
             {...register("message")}
             rows={4}
-            className={cn(inputClass, "resize-none")}
+            className={cn(formInputClassWithIcon, "resize-none")}
             placeholder="What do you want to improve? (optional)"
           />
         </IconField>
@@ -107,7 +112,7 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
           <input
             type="checkbox"
             {...register("consentGiven")}
-            className="mt-1 h-4 w-4 rounded border-white/20 bg-white/5 accent-[#ff6b00]"
+            className="mt-1 h-4 w-4 rounded border-neutral-300 bg-white accent-brand-orange"
           />
           <span>
             I agree to be contacted about my demo request. Submission does not guarantee
@@ -115,13 +120,13 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
           </span>
         </label>
         {errors.consentGiven && (
-          <p className="text-xs text-red-400">{errors.consentGiven.message}</p>
+          <p className={formErrorClass}>{errors.consentGiven.message}</p>
         )}
 
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[#ff6b00] uppercase tracking-wider hover:bg-[#e85f00]"
+          className="w-full uppercase tracking-wider"
           size="lg"
         >
           {contactCopy.submitLabel}
@@ -134,7 +139,7 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
         </p>
 
         {status === "success" && (
-          <p className="text-center text-sm font-medium text-[#ff6b00]">
+          <p className="text-center text-sm font-medium text-brand-orange">
             {demoConfirmationMessage}
           </p>
         )}
@@ -160,13 +165,11 @@ function IconField({
   return (
     <div className={className}>
       <div className="relative">
-        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan/70" />
+        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
         {children}
       </div>
-      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
+      {error && <p className={formErrorClass}>{error}</p>}
     </div>
   );
 }
 
-const inputClass =
-  "w-full rounded-lg border border-white/10 bg-black/40 py-3 pl-10 pr-4 text-sm text-white placeholder:text-silver/50 backdrop-blur-sm focus:border-cyan/50 focus:outline-none focus:ring-1 focus:ring-cyan/30";

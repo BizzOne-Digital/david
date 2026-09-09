@@ -98,7 +98,7 @@ export function ProductsPageContent() {
                 className={cn(
                   "rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
                   filter === item.id
-                    ? "bg-[#ff6b00] text-white"
+                    ? "bg-brand-orange text-white"
                     : "border border-white/20 bg-graphite text-silver hover:border-white/40 hover:text-white"
                 )}
               >
@@ -124,7 +124,7 @@ export function ProductsPageContent() {
                   <ul className="mt-6 space-y-2">
                     {product.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-sm text-silver">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ff6b00]" />
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
                         {feature}
                       </li>
                     ))}

@@ -115,13 +115,13 @@ export function Footer() {
 
         <div className="container mx-auto px-4 py-12 md:py-14">
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr] xl:gap-6">
-            <div className="xl:border-r xl:border-white/10 xl:pr-6">
+            <div className="min-w-0 xl:border-r xl:border-white/10 xl:pr-6">
               <Logo
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
                 width={520}
                 height={302}
-                imageClassName="h-28 w-auto max-w-[360px] md:h-32 md:max-w-[440px] lg:max-w-[520px]"
+                imageClassName="h-[clamp(4.5rem,14vw,8rem)] w-full max-w-[min(520px,100%)] object-contain object-left"
               />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
                 {settings.footerContent.brandStatement ||

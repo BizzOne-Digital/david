@@ -7,7 +7,6 @@ import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { MobileMenu } from "./MobileMenu";
-import { AnnouncementBar } from "./AnnouncementBar";
 import { BrandLockup, DEFAULT_LOGO } from "./BrandLockup";
 import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { defaultNavigation } from "@/lib/content/defaults";
@@ -28,11 +27,6 @@ export function Header() {
   const headerStackRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [announcementDismissed, setAnnouncementDismissed] = useState(false);
-
-  const showAnnouncement =
-    !announcementDismissed &&
-    Boolean(settings.announcementBar?.enabled && settings.announcementBar?.text);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -58,7 +52,7 @@ export function Header() {
       observer.disconnect();
       root.style.setProperty("--site-header-offset", "4rem");
     };
-  }, [showAnnouncement]);
+  }, []);
 
   const links = defaultNavigation
     .filter((item) => item.isActive)
@@ -70,9 +64,6 @@ export function Header() {
   return (
     <>
       <div ref={headerStackRef} className="fixed inset-x-0 top-0 z-50">
-        {showAnnouncement ?
-          <AnnouncementBar onDismiss={() => setAnnouncementDismissed(true)} />
-        : null}
         <header
           className={cn(
             "border-b border-white/5 bg-[#12121c] transition-shadow duration-300",
@@ -80,19 +71,19 @@ export function Header() {
           )}
         >
           <div className="container mx-auto px-3 md:px-4">
-            {/* Mobile: logo left, menu + demo right */}
-            <div className="flex h-20 items-center justify-between gap-2 lg:hidden">
+            <div className="flex min-h-[4rem] items-center gap-1.5 py-2 xs:gap-2 sm:min-h-[4.5rem] lg:hidden">
               <BrandLockup
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
                 priority
-                className="min-w-0 shrink"
+                variant="header-mobile"
+                className="min-w-0 flex-1"
               />
 
-              <div className="flex shrink-0 items-center gap-2">
+              <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
                 <button
                   type="button"
-                  className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-[#0a1628] text-white hover:bg-[#121c30]"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-[#0a1628] text-white hover:bg-[#121c30] sm:h-10 sm:w-10"
                   onClick={() => setMenuOpen(true)}
                   aria-label="Open menu"
                 >
@@ -100,51 +91,51 @@ export function Header() {
                 </button>
 
                 {showHeaderDemo ?
-                  <DemoCtaButton className="px-3 py-2.5 text-[10px] tracking-[0.12em] sm:px-4 sm:text-[11px]" />
+                  <DemoCtaButton className="hidden px-2.5 py-2 text-[9px] tracking-[0.1em] xs:inline-flex sm:px-3 sm:py-2.5 sm:text-[10px] md:text-[11px]" />
                 : null}
               </div>
             </div>
 
-          {/* Desktop */}
-          <div className="hidden h-24 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 lg:grid xl:h-28">
-            <BrandLockup
-              logoSrc={settings.logo || DEFAULT_LOGO}
-              alt={settings.businessName}
-              priority
-              className="justify-self-start"
-            />
+            <div className="hidden h-24 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 lg:grid xl:h-28">
+              <BrandLockup
+                logoSrc={settings.logo || DEFAULT_LOGO}
+                alt={settings.businessName}
+                priority
+                variant="header-desktop"
+                className="min-w-0 justify-self-start"
+              />
 
-            <nav
-              className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 xl:gap-5"
-              aria-label="Main"
-            >
-              {links.map((item) => {
-                const active = isNavActive(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "relative whitespace-nowrap pb-1 text-[9px] font-semibold uppercase tracking-[0.14em] transition-colors xl:text-[10px] xl:tracking-[0.18em]",
-                      active ?
-                        "text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-electric after:content-['']"
-                      : "text-white/75 hover:text-white"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
+              <nav
+                className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 xl:gap-5"
+                aria-label="Main"
+              >
+                {links.map((item) => {
+                  const active = isNavActive(pathname, item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={cn(
+                        "relative whitespace-nowrap pb-1 text-[9px] font-semibold uppercase tracking-[0.14em] transition-colors xl:text-[10px] xl:tracking-[0.18em]",
+                        active ?
+                          "text-white after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-electric after:content-['']"
+                        : "text-white/75 hover:text-white"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
 
-            <div className="flex items-center justify-end">
-              {showHeaderDemo ?
-                <DemoCtaButton className="rounded-md px-5 py-2.5 text-[11px] tracking-[0.14em] xl:text-xs" />
-              : null}
+              <div className="flex items-center justify-end">
+                {showHeaderDemo ?
+                  <DemoCtaButton className="rounded-md px-5 py-2.5 text-[11px] tracking-[0.14em] xl:text-xs" />
+                : null}
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
       </div>
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>

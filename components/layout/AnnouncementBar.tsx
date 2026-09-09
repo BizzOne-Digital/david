@@ -22,7 +22,7 @@ export function AnnouncementBar({ onDismiss }: AnnouncementBarProps) {
   );
 
   return (
-    <div className="relative border-b border-[#e85f00]/40 bg-[#ff6b00] px-3 py-2 text-center text-white sm:px-4 sm:py-2.5">
+    <div className="relative border-b border-brand-orange-hover/40 bg-brand-orange px-3 py-2 text-center text-white sm:px-4 sm:py-2.5">
       {bar.link ? (
         <Link href={bar.link} className="hover:underline">
           {content}

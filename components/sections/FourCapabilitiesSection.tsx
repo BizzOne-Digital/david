@@ -43,7 +43,7 @@ export function FourCapabilitiesSection() {
           </div>
 
         <ScrollReveal delay={0.25} className="mx-auto mt-12 max-w-3xl">
-          <GlassCard className="border-[#ff6b00]/40 bg-[#ff6b00]/10 text-center">
+          <GlassCard className="border-brand-orange/40 bg-brand-orange/10 text-center">
             <p className="text-lg font-medium text-white md:text-xl">{copy.ctaBlock}</p>
           </GlassCard>
         </ScrollReveal>

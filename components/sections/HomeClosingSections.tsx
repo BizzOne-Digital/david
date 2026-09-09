@@ -22,7 +22,7 @@ export function ConsultingTeaserSection() {
               className="w-full"
             />
             <ScrollReveal delay={0.15} className="mt-8 flex w-full flex-col items-center gap-4 text-center">
-              <p className="font-mono text-sm text-[#ff6b00]">{copy.philosophy}</p>
+              <p className="font-mono text-sm text-brand-orange">{copy.philosophy}</p>
               <Link
                 href="/consulting"
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"

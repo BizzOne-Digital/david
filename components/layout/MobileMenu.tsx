@@ -41,8 +41,13 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             className="fixed right-0 top-0 z-50 flex h-full w-[min(100%,320px)] flex-col border-l border-white/10 bg-[#12121c] lg:hidden"
             aria-label="Mobile navigation"
           >
-            <div className="flex items-center justify-between border-b border-white/10 p-6">
-              <BrandLockup logoSrc={settings.logo || DEFAULT_LOGO} alt={settings.businessName} />
+            <div className="flex items-center justify-between gap-3 border-b border-white/10 p-4 sm:p-6">
+              <BrandLockup
+                logoSrc={settings.logo || DEFAULT_LOGO}
+                alt={settings.businessName}
+                variant="menu"
+                className="min-w-0 flex-1"
+              />
               <button
                 type="button"
                 onClick={onClose}

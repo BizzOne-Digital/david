@@ -6,6 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  formErrorClass,
+  formInputClass,
+  formLabelClass,
+} from "@/lib/utils/form-styles";
 
 const appointmentSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -54,22 +59,22 @@ export function AppointmentForm({ className }: AppointmentFormProps) {
     <form onSubmit={handleSubmit(onSubmit)} className={cn("space-y-4", className)}>
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="Name" error={errors.name?.message}>
-          <input {...register("name")} className={inputClass} />
+          <input {...register("name")} className={formInputClass} />
         </Field>
         <Field label="Email" error={errors.email?.message}>
-          <input {...register("email")} type="email" className={inputClass} />
+          <input {...register("email")} type="email" className={formInputClass} />
         </Field>
         <Field label="Phone" error={errors.phone?.message}>
-          <input {...register("phone")} className={inputClass} />
+          <input {...register("phone")} className={formInputClass} />
         </Field>
         <Field label="Dealership / Company" error={errors.company?.message}>
-          <input {...register("company")} className={inputClass} />
+          <input {...register("company")} className={formInputClass} />
         </Field>
         <Field label="Preferred Date" error={errors.preferredDate?.message}>
-          <input {...register("preferredDate")} type="date" className={inputClass} />
+          <input {...register("preferredDate")} type="date" className={formInputClass} />
         </Field>
         <Field label="Preferred Time" error={errors.preferredTime?.message}>
-          <select {...register("preferredTime")} className={inputClass}>
+          <select {...register("preferredTime")} className={formInputClass}>
             <option value="">Select a time</option>
             <option value="morning">Morning</option>
             <option value="afternoon">Afternoon</option>
@@ -81,7 +86,7 @@ export function AppointmentForm({ className }: AppointmentFormProps) {
         <textarea
           {...register("notes")}
           rows={4}
-          className={cn(inputClass, "resize-none")}
+          className={cn(formInputClass, "resize-none")}
           placeholder="Share context for your strategy call..."
         />
       </Field>
@@ -109,12 +114,10 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-medium text-silver">{label}</label>
+      <label className={formLabelClass}>{label}</label>
       {children}
-      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
+      {error && <p className={formErrorClass}>{error}</p>}
     </div>
   );
 }
 
-const inputClass =
-  "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white focus:border-cyan/50 focus:outline-none focus:ring-1 focus:ring-cyan/30";
