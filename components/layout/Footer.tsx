@@ -119,9 +119,9 @@ export function Footer() {
               <Logo
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
-                width={420}
-                height={244}
-                imageClassName="h-24 w-auto max-w-[320px] md:h-28 md:max-w-[380px] lg:max-w-[420px]"
+                width={520}
+                height={302}
+                imageClassName="h-28 w-auto max-w-[360px] md:h-32 md:max-w-[440px] lg:max-w-[520px]"
               />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
                 {settings.footerContent.brandStatement ||

@@ -31,10 +31,10 @@ export function BrandLockup({
       <Image
         src={logoSrc || DEFAULT_LOGO}
         alt={alt}
-        width={400}
-        height={233}
+        width={520}
+        height={302}
         priority={priority}
-        className="h-14 w-auto max-w-[196px] object-contain object-left sm:h-16 sm:max-w-[228px] md:h-[4.5rem] md:max-w-[280px] lg:h-20 lg:max-w-[340px] xl:max-w-[380px]"
+        className="h-16 w-auto max-w-[220px] object-contain object-left sm:h-[4.5rem] sm:max-w-[280px] md:h-20 md:max-w-[360px] lg:h-24 lg:max-w-[440px] xl:max-w-[520px]"
       />
     </Link>
   );

@@ -106,7 +106,7 @@ export function Header() {
             </div>
 
           {/* Desktop */}
-          <div className="hidden h-20 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 lg:grid xl:h-[5.25rem]">
+          <div className="hidden h-24 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 lg:grid xl:h-28">
             <BrandLockup
               logoSrc={settings.logo || DEFAULT_LOGO}
               alt={settings.businessName}
