@@ -8,7 +8,7 @@ export type BrandLockupVariant = "header-mobile" | "header-desktop" | "footer" |
 
 const variantClasses: Record<BrandLockupVariant, string> = {
   "header-mobile":
-    "h-[clamp(2.25rem,7.2vw,3.5rem)] w-auto max-w-[min(520px,calc(100vw-10.5rem))] object-contain object-left",
+    "h-[clamp(3rem,13vw,4.75rem)] w-auto max-w-[min(520px,calc(100vw-8.25rem))] object-contain object-left sm:max-w-[min(520px,calc(100vw-9.5rem))]",
   "header-desktop":
     "h-[clamp(3.75rem,4.5vw,5rem)] w-auto max-w-[min(520px,36vw)] object-contain object-left",
   footer:
@@ -49,7 +49,7 @@ export function BrandLockup({
         width={520}
         height={302}
         priority={priority}
-        sizes="(max-width: 1023px) min(520px, calc(100vw - 10.5rem)), min(520px, 36vw)"
+        sizes="(max-width: 1023px) min(520px, calc(100vw - 8.25rem)), min(520px, 36vw)"
         className={variantClasses[variant]}
       />
     </Link>

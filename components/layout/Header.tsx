@@ -71,7 +71,7 @@ export function Header() {
           )}
         >
           <div className="container mx-auto px-3 md:px-4">
-            <div className="flex min-h-[4rem] items-center gap-1.5 py-2 xs:gap-2 sm:min-h-[4.5rem] lg:hidden">
+            <div className="flex min-h-[4.75rem] items-center gap-1 py-2 sm:min-h-[5rem] sm:gap-2 lg:hidden">
               <BrandLockup
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
@@ -80,7 +80,16 @@ export function Header() {
                 className="min-w-0 flex-1"
               />
 
-              <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+              <div className="flex shrink-0 items-center gap-1 sm:gap-1.5">
+                {showHeaderDemo ?
+                  <DemoCtaButton
+                    showArrow
+                    className="inline-flex shrink-0 px-2 py-2 text-[8px] leading-tight tracking-[0.08em] sm:px-2.5 sm:py-2.5 sm:text-[9px] min-[390px]:px-3 min-[390px]:text-[10px]"
+                  >
+                    <span className="max-[359px]:hidden">Request Demo</span>
+                    <span className="min-[360px]:hidden">Demo</span>
+                  </DemoCtaButton>
+                : null}
                 <button
                   type="button"
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-[#0a1628] text-white hover:bg-[#121c30] sm:h-10 sm:w-10"
@@ -89,10 +98,6 @@ export function Header() {
                 >
                   <Menu className="h-5 w-5" />
                 </button>
-
-                {showHeaderDemo ?
-                  <DemoCtaButton className="hidden px-2.5 py-2 text-[9px] tracking-[0.1em] xs:inline-flex sm:px-3 sm:py-2.5 sm:text-[10px] md:text-[11px]" />
-                : null}
               </div>
             </div>
 
