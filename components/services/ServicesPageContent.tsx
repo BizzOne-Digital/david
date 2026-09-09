@@ -304,7 +304,7 @@ export function ServicesPageContent() {
                   className="relative z-10 h-20 w-auto object-contain md:h-24"
                 />
                 <div className="mt-10 grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
-                  {integrationNodes.map((node, index) => (
+                  {integrationNodes.map((node) => (
                     <GlassCard
                       key={node}
                       className="py-4 text-center text-sm font-semibold uppercase tracking-wider"

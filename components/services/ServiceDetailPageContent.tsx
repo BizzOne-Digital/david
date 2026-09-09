@@ -14,7 +14,7 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 import { Button } from "@/components/ui/button";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { getLucideIcon } from "@/lib/utils/icons";
+import { DynamicLucideIcon } from "@/components/ui/DynamicLucideIcon";
 import {
   SectionBackground,
   SectionHeading,
@@ -75,7 +75,6 @@ function ServiceDetailFaq({
 
 export function ServiceDetailPageContent({ service }: ServiceDetailPageContentProps) {
   const { settings } = useSiteSettings();
-  const Icon = getLucideIcon(service.icon);
   const relatedServices = getRelatedServices(service.slug);
   const heroTitle = service.title;
 
@@ -101,7 +100,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
           <div className="mt-8 max-w-3xl">
             <ScrollReveal delay={0.05}>
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-brand glow-cyan">
-                <Icon className="h-7 w-7 text-white" />
+                <DynamicLucideIcon name={service.icon} className="h-7 w-7 text-white" />
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>

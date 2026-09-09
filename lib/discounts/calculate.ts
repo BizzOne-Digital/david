@@ -164,7 +164,7 @@ export function calculateCouponDiscount(
   discountType: "percentage" | "fixed",
   discountValue: number
 ): number {
-  let discountCents =
+  const discountCents =
     discountType === "percentage"
       ? Math.round(subtotalCents * (discountValue / 100))
       : discountValue;
