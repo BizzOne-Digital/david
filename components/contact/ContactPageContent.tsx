@@ -3,11 +3,10 @@
 import { useState } from "react";
 import { ArrowRight, Mail, Minus, Phone, Plus } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { SectionBackground, GlassCard } from "@/components/sections/SectionBackground";
 import { ContactStrategyForm } from "./ContactStrategyForm";
-import { contactCopy, homepageCopy } from "@/lib/content/revisions";
+import { contactCopy } from "@/lib/content/revisions";
 import { contactFaqs } from "@/lib/content/contact-page";
 
 function ContactFaqAccordion({
@@ -124,19 +123,6 @@ export function ContactPageContent() {
           </h2>
           <div className="mt-10">
             <ContactFaqAccordion faqs={displayFaqs} />
-          </div>
-        </div>
-      </SectionBackground>
-
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <h2 className="font-heading text-3xl font-bold uppercase md:text-4xl">
-              {homepageCopy.finalCta.headline}
-            </h2>
-            <div className="mt-8">
-              <DemoCtaButton size="lg" />
-            </div>
           </div>
         </div>
       </SectionBackground>

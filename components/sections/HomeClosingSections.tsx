@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { SectionBackground, SectionHeading, GlassCard } from "./SectionBackground";
-import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { homepageCopy } from "@/lib/content/revisions";
 
 export function ConsultingTeaserSection() {
@@ -54,9 +53,13 @@ export function FutureFuelTeaserSection() {
             className="w-full"
           />
           <ScrollReveal delay={0.2} className="mt-8 flex w-full justify-center">
-            <DemoCtaButton href="/future-fuel" size="lg">
-              Request a Future Fuel Demo
-            </DemoCtaButton>
+            <Link
+              href="/future-fuel"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"
+            >
+              Explore Future Fuel
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </ScrollReveal>
         </div>
       </div>
@@ -104,9 +107,6 @@ export function FinalDemoCtaSection() {
             <h2 className="font-heading text-3xl font-bold uppercase leading-tight md:text-4xl lg:text-5xl">
               {copy.headline}
             </h2>
-            <div className="mt-8 flex w-full justify-center">
-              <DemoCtaButton size="lg" />
-            </div>
           </ScrollReveal>
         </div>
       </div>

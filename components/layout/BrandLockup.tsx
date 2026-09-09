@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-export const DEFAULT_LOGO = "/images/rethink-logo.png";
+export const DEFAULT_LOGO = "/images/rethink-logo.jpg";
 
 interface BrandLockupProps {
   href?: string;
@@ -31,10 +31,10 @@ export function BrandLockup({
       <Image
         src={logoSrc || DEFAULT_LOGO}
         alt={alt}
-        width={260}
-        height={72}
+        width={320}
+        height={186}
         priority={priority}
-        className="h-8 w-auto max-w-[112px] object-contain object-left sm:h-9 sm:max-w-[132px] md:h-11 md:max-w-[180px] lg:max-w-[210px]"
+        className="h-12 w-auto max-w-[168px] object-contain object-left sm:h-14 sm:max-w-[196px] md:h-16 md:max-w-[240px] lg:h-[4.5rem] lg:max-w-[280px]"
       />
     </Link>
   );

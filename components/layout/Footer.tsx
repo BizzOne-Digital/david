@@ -9,7 +9,6 @@ import {
   Phone,
 } from "lucide-react";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { GradientText } from "@/components/sections/SectionBackground";
 import { Logo, DEFAULT_LOGO } from "./Logo";
 import {
@@ -96,9 +95,13 @@ export function Footer() {
                 </p>
               </div>
 
-              <DemoCtaButton href={settings.headerCtaUrl} className="w-full shrink-0 justify-center uppercase tracking-[0.08em] sm:w-auto sm:tracking-[0.1em]">
-                {settings.headerCtaLabel}
-              </DemoCtaButton>
+              <Link
+                href={settings.headerCtaUrl}
+                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition hover:border-cyan/40 hover:text-cyan sm:w-auto"
+              >
+                Contact Us
+                <ArrowRight className="h-4 w-4" />
+              </Link>
 
               <div className="hidden items-center gap-4 xl:flex">
                 <span className="h-10 w-px bg-white/15" aria-hidden />
@@ -116,9 +119,9 @@ export function Footer() {
               <Logo
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
-                width={240}
-                height={96}
-                imageClassName="h-14 w-auto md:h-16"
+                width={360}
+                height={210}
+                imageClassName="h-20 w-auto max-w-[280px] md:h-24 md:max-w-[340px]"
               />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
                 {settings.footerContent.brandStatement ||

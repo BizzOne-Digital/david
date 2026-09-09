@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const DEFAULT_LOGO = "/images/rethink-logo.png";
+const DEFAULT_LOGO = "/images/rethink-logo.jpg";
 
 interface LogoProps {
   href?: string;
@@ -19,8 +19,8 @@ export function Logo({
   href = "/",
   className,
   imageClassName,
-  width = 180,
-  height = 72,
+  width = 320,
+  height = 186,
   priority = false,
   logoSrc = DEFAULT_LOGO,
   alt = "Rethink Automotive",

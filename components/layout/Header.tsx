@@ -65,6 +65,8 @@ export function Header() {
     .sort((a, b) => a.order - b.order)
     .map(({ label, href }) => ({ label, href }));
 
+  const showHeaderDemo = pathname !== "/contact";
+
   return (
     <>
       <div ref={headerStackRef} className="fixed inset-x-0 top-0 z-50">
@@ -79,7 +81,7 @@ export function Header() {
         >
           <div className="container mx-auto px-3 md:px-4">
             {/* Mobile: logo left, menu + demo right */}
-            <div className="flex h-16 items-center justify-between gap-2 lg:hidden">
+            <div className="flex h-[4.5rem] items-center justify-between gap-2 lg:hidden">
               <BrandLockup
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
@@ -97,7 +99,9 @@ export function Header() {
                   <Menu className="h-5 w-5" />
                 </button>
 
-                <DemoCtaButton className="px-3 py-2.5 text-[10px] tracking-[0.12em] sm:px-4 sm:text-[11px]" />
+                {showHeaderDemo ?
+                  <DemoCtaButton className="px-3 py-2.5 text-[10px] tracking-[0.12em] sm:px-4 sm:text-[11px]" />
+                : null}
               </div>
             </div>
 
@@ -134,7 +138,9 @@ export function Header() {
             </nav>
 
             <div className="flex items-center justify-end">
-              <DemoCtaButton className="rounded-md px-5 py-2.5 text-[11px] tracking-[0.14em] xl:text-xs" />
+              {showHeaderDemo ?
+                <DemoCtaButton className="rounded-md px-5 py-2.5 text-[11px] tracking-[0.14em] xl:text-xs" />
+              : null}
             </div>
           </div>
         </div>

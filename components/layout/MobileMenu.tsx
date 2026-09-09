@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { BrandLockup, DEFAULT_LOGO } from "./BrandLockup";
 import { defaultNavigation } from "@/lib/content/defaults";
 
@@ -66,9 +65,6 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 </li>
               ))}
             </ul>
-            <div className="border-t border-white/10 p-4" onClick={onClose}>
-              <DemoCtaButton className="w-full" />
-            </div>
           </motion.nav>
         </>
       )}

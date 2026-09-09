@@ -8,7 +8,7 @@ import {
   SectionHeading,
   GlassCard,
 } from "@/components/sections/SectionBackground";
-import { DemoCtaButton, SecondaryCtaButton } from "@/components/ui/ConversionCta";
+import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import { consultingCopy } from "@/lib/content/revisions";
 
 export function ConsultingPageContent() {
@@ -26,7 +26,6 @@ export function ConsultingPageContent() {
                 className="w-full"
               />
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <DemoCtaButton size="lg" />
                 <SecondaryCtaButton href="/contact" size="lg">
                   {consultingCopy.secondaryCta}
                 </SecondaryCtaButton>
@@ -67,7 +66,6 @@ export function ConsultingPageContent() {
           <GlassCard className="mx-auto max-w-3xl border-white/10 text-center">
             <p className="text-lg text-silver">{consultingCopy.transition}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <DemoCtaButton size="lg" />
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"

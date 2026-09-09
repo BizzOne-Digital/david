@@ -5,7 +5,7 @@ import {
   SectionBackground,
   SectionHeading,
 } from "./SectionBackground";
-import { DemoCtaButton, SecondaryCtaButton } from "@/components/ui/ConversionCta";
+import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import { homepageCopy } from "@/lib/content/revisions";
 
 export function DealerIntelligenceSection() {
@@ -26,7 +26,6 @@ export function DealerIntelligenceSection() {
             delay={0.2}
             className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <DemoCtaButton size="lg" />
             <SecondaryCtaButton size="lg" />
           </ScrollReveal>
         </div>

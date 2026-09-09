@@ -33,7 +33,7 @@ export interface ISiteSettings extends Document {
 const SiteSettingsSchema = new Schema<ISiteSettings>(
   {
     businessName: { type: String, default: "Rethink Automotive Inc." },
-    logo: { type: String, default: "/images/rethink-logo.png" },
+    logo: { type: String, default: "/images/rethink-logo.jpg" },
     favicon: { type: String },
     contactEmail: { type: String, default: "contact@rethinkautomotive.com" },
     contactPhone: { type: String, default: "(615) 571-9900" },

@@ -72,7 +72,7 @@ export function ProductPricing({
             Add to Cart
           </Button>
         ) : (
-          <Button asChild className="w-full">
+          <Button asChild variant="outline" className="w-full">
             <Link href={ctaUrl ?? "/contact"}>{ctaLabel}</Link>
           </Button>
         )}

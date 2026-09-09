@@ -48,7 +48,7 @@ async function seed() {
   if (!existingSettings) {
     await SiteSettings.create({
       businessName: "Rethink Automotive Inc.",
-      logo: "/images/rethink-logo.png",
+      logo: "/images/rethink-logo.jpg",
       contactEmail: "contact@rethinkautomotive.com",
       contactPhone: "(615) 571-9900",
       defaultSeoTitle: "Rethink Automotive Inc. | Dealership Marketing Solutions",

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { DemoCtaButton, SecondaryCtaButton } from "@/components/ui/ConversionCta";
+import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import { aboutCopy } from "@/lib/content/revisions";
 import {
   SectionBackground,
@@ -25,7 +25,6 @@ export function AboutPageContent() {
                 {aboutCopy.headline}
               </h1>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <DemoCtaButton size="lg" />
                 <SecondaryCtaButton href="#our-story" size="lg">
                   Read Our Story
                 </SecondaryCtaButton>
@@ -58,7 +57,6 @@ export function AboutPageContent() {
               {aboutCopy.closingHeadline}
             </h2>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <DemoCtaButton size="lg" />
               <Link
                 href="/consulting"
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"

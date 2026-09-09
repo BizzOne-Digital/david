@@ -3,7 +3,7 @@ import { DEMO_CTA_HREF, DEMO_CTA_LABEL } from "@/lib/content/revisions";
 
 export const defaultSiteSettings: SiteSettingsData = {
   businessName: "Rethink Automotive Inc.",
-  logo: "/images/rethink-logo.png",
+  logo: "/images/rethink-logo.jpg",
   contactEmail: "contact@rethinkautomotive.com",
   contactPhone: "(615) 571-9900",
   address: "Your dealership address",
@@ -33,7 +33,7 @@ export const defaultSiteSettings: SiteSettingsData = {
     secondary: "#6b00ff",
     accent: "#ff6b00",
   },
-  contactForPricingLabel: "Request Demo",
+  contactForPricingLabel: "Contact for Details",
   currency: "USD",
   taxRate: 0,
   purchasingEnabled: false,
