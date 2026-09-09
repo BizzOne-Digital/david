@@ -67,7 +67,7 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
         All demo requests route to contact@rethinkautomotive.com
       </p>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4 scheme-light">
         <div className="grid gap-4 md:grid-cols-2">
           <IconField icon={User} error={errors.name?.message}>
             <input {...register("name")} className={formInputClassWithIcon} placeholder="Name" />
@@ -99,11 +99,11 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
           </IconField>
         </div>
 
-        <IconField icon={MessageSquare} error={errors.message?.message}>
+        <IconField icon={MessageSquare} error={errors.message?.message} multiline>
           <textarea
             {...register("message")}
             rows={4}
-            className={cn(formInputClassWithIcon, "resize-none")}
+            className={cn(formInputClassWithIcon, "resize-none pt-3")}
             placeholder="What do you want to improve? (optional)"
           />
         </IconField>
@@ -156,16 +156,23 @@ function IconField({
   error,
   children,
   className,
+  multiline = false,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   error?: string;
   children: React.ReactNode;
   className?: string;
+  multiline?: boolean;
 }) {
   return (
     <div className={className}>
       <div className="relative">
-        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
+        <Icon
+          className={cn(
+            "pointer-events-none absolute left-3 h-4 w-4 text-neutral-500",
+            multiline ? "top-4" : "top-1/2 -translate-y-1/2"
+          )}
+        />
         {children}
       </div>
       {error && <p className={formErrorClass}>{error}</p>}
