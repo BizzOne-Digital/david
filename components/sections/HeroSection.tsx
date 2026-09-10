@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { homepageCopy } from "@/lib/content/revisions";
 
 const HERO_BACKGROUND = "/images/hero-bg.jpg";
@@ -19,17 +18,17 @@ const HEADLINE_LINES = [
 function HeroHeadline() {
   return (
     <h1
-      className="font-heading uppercase tracking-tight"
+      className="hero-headline font-heading uppercase tracking-normal md:tracking-tight"
       aria-label="You're sitting on deals you're not closing."
     >
       {HEADLINE_LINES.map((line) => (
         <span
           key={line.text}
           className={cn(
-            "block font-bold leading-[0.92]",
+            "block font-bold leading-[0.95] [transform:translateZ(0)]",
             line.accent ?
-              "text-[2.35rem] text-brand-orange sm:text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]"
-            : "text-[2rem] text-white sm:text-[2.15rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]"
+              "text-[38px] text-brand-orange sm:text-[40px] md:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]"
+            : "text-[32px] text-white sm:text-[34px] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]"
           )}
         >
           {line.text}
@@ -42,7 +41,7 @@ function HeroHeadline() {
 function HeroSignature() {
   return (
     <div className="hero-signature mt-6 md:mt-8">
-      <p className="text-[1.75rem] leading-none text-white sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem]">
+      <p className="text-[28px] leading-none text-white sm:text-[32px] md:text-[2.25rem] lg:text-[2.5rem]">
         I&apos;m not{" "}
         <span className="text-brand-orange underline decoration-brand-orange decoration-[3px] underline-offset-[6px] md:underline-offset-[8px]">
           lion…
@@ -81,19 +80,13 @@ export function HeroSection() {
 
       <div className="container relative z-10 mx-auto flex min-h-[calc(100svh-var(--site-header-offset,4rem))] items-start px-4 pb-28 pt-6 sm:items-center sm:py-10 md:min-h-[calc(100vh-var(--site-header-offset,4rem))] md:py-16">
         <div className="w-full max-w-[34rem] lg:max-w-[38rem]">
-          <ScrollReveal>
-            <HeroHeadline />
-          </ScrollReveal>
+          <HeroHeadline />
 
-          <ScrollReveal delay={0.15}>
-            <HeroSignature />
-          </ScrollReveal>
+          <HeroSignature />
 
-          <ScrollReveal delay={0.25}>
-            <p className="mt-5 max-w-xl text-base font-bold leading-relaxed text-white sm:mt-6 md:mt-8 md:text-lg md:font-normal md:text-silver">
-              {copy.supporting}
-            </p>
-          </ScrollReveal>
+          <p className="mt-5 max-w-xl text-base font-bold leading-relaxed text-white sm:mt-6 md:mt-8 md:text-lg md:font-normal md:text-silver">
+            {copy.supporting}
+          </p>
         </div>
       </div>
 
