@@ -30,7 +30,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   if (!product) notFound();
 
   return (
-    <section className="container mx-auto px-4 py-16 md:py-24">
+    <section className="container mx-auto px-4 page-hero-section">
       <div className="grid gap-12 lg:grid-cols-2">
         <ProductGallery productName={product.name} />
         <div>

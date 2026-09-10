@@ -13,14 +13,14 @@ export function FourCapabilitiesSection() {
   const copy = homepageCopy.capabilities;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="pb-24 pt-6 md:pb-28 md:pt-8">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             eyebrow="Four Core Capabilities"
             title={copy.headline}
             align="center"
-            className="mx-auto mb-14 w-full text-center"
+            className="mx-auto mb-10 w-full text-center md:mb-12"
           />
 
           <div className="grid gap-6 sm:grid-cols-2">

@@ -57,7 +57,7 @@ export function ContactPageContent() {
   return (
     <>
       <SectionBackground overlay="dark" className="relative min-h-[50vh]">
-        <div className="container mx-auto px-4 pb-12 pt-28 md:pt-32">
+        <div className="container mx-auto px-4 pb-12 page-hero-top">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <ScrollReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">

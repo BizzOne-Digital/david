@@ -68,15 +68,15 @@ export function HeroSection() {
           sizes="100vw"
           className={cn(
             "h-full w-full object-cover",
-            "origin-[78%_38%] object-[78%_38%] max-md:scale-[1.12]",
-            "sm:object-[74%_40%] md:scale-100 md:object-[78%_center] lg:object-[72%_center]"
+            "origin-[78%_38%] object-[78%_38%] max-md:scale-[1.12] max-md:brightness-[1.12] max-md:saturate-[1.08]",
+            "sm:object-[74%_40%] md:scale-100 md:brightness-100 md:saturate-100 md:object-[78%_center] lg:object-[72%_center]"
           )}
           aria-hidden
         />
       </div>
 
       <div
-        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.35)_58%,rgba(0,0,0,0.08)_78%,transparent_100%)] max-md:bg-[linear-gradient(165deg,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.72)_28%,rgba(0,0,0,0.28)_52%,rgba(0,0,0,0.08)_72%,transparent_88%)]"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.35)_58%,rgba(0,0,0,0.08)_78%,transparent_100%)] max-md:bg-[linear-gradient(165deg,rgba(0,0,0,0.52)_0%,rgba(0,0,0,0.32)_30%,rgba(0,0,0,0.12)_55%,rgba(0,0,0,0.03)_75%,transparent_90%)]"
         aria-hidden
       />
 
@@ -97,7 +97,7 @@ export function HeroSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.35} className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
-            <SecondaryCtaButton size="lg" />
+            <SecondaryCtaButton size="lg" href="#rethink-in-action" />
           </ScrollReveal>
         </div>
       </div>

@@ -16,9 +16,9 @@ export default function HomePage() {
     <>
       <HeroSection />
       <HeroVideoSection />
-      <DealerIntelligenceSection />
       <RethinkInActionSection />
       <FourCapabilitiesSection />
+      <DealerIntelligenceSection />
       <ProofSection />
       <ConsultingTeaserSection />
       <FutureFuelTeaserSection />

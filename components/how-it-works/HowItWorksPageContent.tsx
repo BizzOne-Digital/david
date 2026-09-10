@@ -9,7 +9,7 @@ import { homepageCopy, howItWorksPageCopy } from "@/lib/content/revisions";
 export function HowItWorksPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
+      <SectionBackground overlay="dark" className="page-hero-section">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <SectionHeading
@@ -31,7 +31,7 @@ export function HowItWorksPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground id="workflow" overlay="dark" className="py-24 md:py-32">
+      <SectionBackground id="workflow" overlay="dark" className="page-section-after-hero">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="The Workflow"

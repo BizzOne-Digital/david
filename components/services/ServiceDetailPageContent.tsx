@@ -86,7 +86,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
         position="object-cover object-right"
         className="relative min-h-[70vh]"
       >
-        <div className="container mx-auto px-4 pb-16 pt-28 md:pt-32">
+        <div className="container mx-auto px-4 pb-16 page-hero-top">
           <ScrollReveal>
             <Link
               href="/services"

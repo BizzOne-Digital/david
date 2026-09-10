@@ -12,7 +12,7 @@ export function DealerIntelligenceSection() {
   const copy = homepageCopy.dealerIntelligence;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="pb-12 pt-14 md:pb-16 md:pt-16">
       <div className="container mx-auto px-4">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <SectionHeading

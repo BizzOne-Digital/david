@@ -29,7 +29,7 @@ export function RethinkInActionWorkflow() {
         })}
       </div>
 
-      <ScrollReveal delay={0.3} className="mx-auto mt-12 max-w-3xl text-center">
+      <ScrollReveal delay={0.3} className="mx-auto mt-8 max-w-3xl text-center">
         <p className="text-lg text-silver">{copy.tagline}</p>
       </ScrollReveal>
     </>

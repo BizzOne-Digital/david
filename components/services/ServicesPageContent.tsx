@@ -80,7 +80,7 @@ export function ServicesPageContent() {
         position="object-cover object-right"
         className="relative min-h-[80vh]"
       >
-        <div className="container mx-auto px-4 pb-16 pt-28 md:pt-32">
+        <div className="container mx-auto px-4 pb-16 page-hero-top">
           <div className="max-w-2xl">
             <ScrollReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">

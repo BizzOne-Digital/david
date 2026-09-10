@@ -12,8 +12,8 @@ import { futureFuelCopy } from "@/lib/content/revisions";
 export function FutureFuelPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="min-h-[60vh] py-24 md:py-32">
-        <div className="container mx-auto px-4 pt-16">
+      <SectionBackground overlay="dark" className="page-hero-section">
+        <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <ScrollReveal className="w-full">
               <SectionHeading
@@ -28,7 +28,7 @@ export function FutureFuelPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
+      <SectionBackground overlay="dark" className="page-section-after-hero">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="What We Cover"

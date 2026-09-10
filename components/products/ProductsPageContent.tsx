@@ -62,7 +62,7 @@ export function ProductsPageContent() {
 
   return (
     <>
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
+      <SectionBackground overlay="dark" className="page-hero-section">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <SectionHeading
@@ -79,7 +79,7 @@ export function ProductsPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
+      <SectionBackground overlay="dark" className="page-section-after-hero">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="Solutions"
