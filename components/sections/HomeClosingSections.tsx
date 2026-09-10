@@ -10,7 +10,7 @@ export function ConsultingTeaserSection() {
   const copy = homepageCopy.consultingTeaser;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <GlassCard className="mx-auto max-w-4xl border-white/10">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -42,7 +42,7 @@ export function FutureFuelTeaserSection() {
   const copy = homepageCopy.futureFuelTeaser;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <SectionHeading
@@ -71,7 +71,7 @@ export function AboutTeaserSection() {
   const copy = homepageCopy.aboutTeaser;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <SectionHeading
@@ -100,7 +100,7 @@ export function FinalDemoCtaSection() {
   const copy = homepageCopy.finalCta;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <ScrollReveal className="w-full">

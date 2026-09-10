@@ -37,6 +37,11 @@ export const featuredProductsPage = [
       "Creative support and rapid deployment",
       "Campaign dashboard and results visibility",
     ],
+    visual: {
+      icon: "Mail",
+      accent: "orange",
+      chips: ["Inventory", "Conquest", "Lifecycle"],
+    },
     cta: "Request a Targeted Marketing Demo",
   },
   {
@@ -54,6 +59,11 @@ export const featuredProductsPage = [
       "Management dashboard controls",
       "Qualified handoff to dealership staff",
     ],
+    visual: {
+      icon: "MessageCircle",
+      accent: "electric",
+      chips: ["Fast Reply", "Follow-Up", "Appointments"],
+    },
     cta: "See the AI Chaser Demo",
   },
   {
@@ -70,6 +80,11 @@ export const featuredProductsPage = [
       "Communication and follow-up strategy",
       "Management dashboard visibility",
     ],
+    visual: {
+      icon: "Wrench",
+      accent: "violet",
+      chips: ["Service Lane", "Upgrade Signals", "Handoff"],
+    },
     cta: "Show Me Service-to-Sales",
   },
 ] as const;

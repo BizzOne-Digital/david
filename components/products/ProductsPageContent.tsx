@@ -18,6 +18,7 @@ import {
   type ProductFilter,
 } from "@/lib/content/products-page";
 import { homepageCopy, solutionsPageCopy } from "@/lib/content/revisions";
+import { SolutionCardVisual } from "./SolutionCardVisual";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -35,17 +36,15 @@ function FaqAccordion() {
               aria-expanded={isOpen}
             >
               <span className="font-medium text-white">{faq.question}</span>
-              {isOpen ? (
+              {isOpen ?
                 <Minus className="h-4 w-4 shrink-0 text-electric" />
-              ) : (
-                <Plus className="h-4 w-4 shrink-0 text-electric" />
-              )}
+              : <Plus className="h-4 w-4 shrink-0 text-electric" />}
             </button>
-            {isOpen && (
+            {isOpen ?
               <div className="border-t border-white/10 px-5 pb-5 md:px-6 md:pb-6">
                 <p className="text-sm leading-relaxed text-silver">{faq.answer}</p>
               </div>
-            )}
+            : null}
           </GlassCard>
         );
       })}
@@ -72,7 +71,10 @@ export function ProductsPageContent() {
               align="center"
               className="w-full"
             />
-            <ScrollReveal delay={0.15} className="mt-8 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+            <ScrollReveal
+              delay={0.15}
+              className="mt-6 flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
+            >
               <SecondaryCtaButton size="lg" />
             </ScrollReveal>
           </div>
@@ -86,10 +88,10 @@ export function ProductsPageContent() {
             title={solutionsPageCopy.featuredTitle}
             subtitle="Dealer outcomes first — not technical feature lists."
             align="center"
-            className="mx-auto mb-10 w-full text-center"
+            className="mx-auto mb-8 w-full text-center"
           />
 
-          <ScrollReveal className="mb-10 flex flex-wrap justify-center gap-3">
+          <ScrollReveal className="mb-8 flex flex-wrap justify-center gap-3">
             {productFilters.map((item) => (
               <button
                 key={item.id}
@@ -97,9 +99,9 @@ export function ProductsPageContent() {
                 onClick={() => setFilter(item.id)}
                 className={cn(
                   "rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
-                  filter === item.id
-                    ? "bg-brand-orange text-white"
-                    : "border border-white/20 bg-graphite text-silver hover:border-white/40 hover:text-white"
+                  filter === item.id ?
+                    "bg-brand-orange text-white"
+                  : "border border-white/20 bg-graphite text-silver hover:border-white/40 hover:text-white"
                 )}
               >
                 {item.label}
@@ -107,37 +109,46 @@ export function ProductsPageContent() {
             ))}
           </ScrollReveal>
 
-          <div className="mx-auto flex max-w-3xl flex-col gap-8">
+          <div className="mx-auto flex max-w-4xl flex-col gap-6">
             {visibleProducts.map((product, index) => (
               <ScrollReveal key={product.id} delay={index * 0.08}>
-                <GlassCard className="flex h-full flex-col border-white/10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
-                    {product.category}
-                  </p>
-                  <h3 className="mt-3 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
-                    {product.name}
-                  </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-silver">
-                    {product.description}
-                  </p>
+                <GlassCard className="grid h-full overflow-hidden border-white/10 p-0 md:grid-cols-[minmax(0,34%)_1fr]">
+                  <SolutionCardVisual
+                    icon={product.visual.icon}
+                    accent={product.visual.accent}
+                    chips={product.visual.chips}
+                    category={product.category}
+                  />
 
-                  <ul className="mt-6 space-y-2">
-                    {product.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-silver">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex flex-col p-6 md:p-7">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric md:hidden">
+                      {product.category}
+                    </p>
+                    <h3 className="mt-2 font-heading text-xl font-bold uppercase tracking-wide md:mt-0 md:text-2xl">
+                      {product.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-silver">
+                      {product.description}
+                    </p>
 
-                  <div className="mt-8 flex flex-wrap items-center gap-4">
-                    <Link
-                      href={`/products/${product.slug}`}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    <ul className="mt-5 space-y-2">
+                      {product.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2 text-sm text-silver">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
+                      >
+                        Learn More
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
                 </GlassCard>
               </ScrollReveal>
@@ -146,19 +157,19 @@ export function ProductsPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
+      <SectionBackground overlay="dark" className="page-section-compact">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="FAQ"
             title="Your Questions, Answered."
             align="center"
-            className="mx-auto mb-12 w-full text-center"
+            className="mx-auto mb-8 w-full text-center"
           />
           <FaqAccordion />
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
+      <SectionBackground overlay="dark" className="page-section-compact">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <h2 className="font-heading text-3xl font-bold uppercase leading-tight md:text-4xl lg:text-5xl">

@@ -13,14 +13,14 @@ export function FourCapabilitiesSection() {
   const copy = homepageCopy.capabilities;
 
   return (
-    <SectionBackground overlay="dark" className="pb-24 pt-6 md:pb-28 md:pt-8">
+    <SectionBackground overlay="dark" className="page-section-after-hero">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             eyebrow="Four Core Capabilities"
             title={copy.headline}
             align="center"
-            className="mx-auto mb-10 w-full text-center md:mb-12"
+            className="mx-auto mb-8 w-full text-center"
           />
 
           <div className="grid gap-6 sm:grid-cols-2">
@@ -42,7 +42,7 @@ export function FourCapabilitiesSection() {
             })}
           </div>
 
-        <ScrollReveal delay={0.25} className="mx-auto mt-12 max-w-3xl">
+        <ScrollReveal delay={0.25} className="mx-auto mt-8 max-w-3xl">
           <GlassCard className="border-brand-orange/40 bg-brand-orange/10 text-center">
             <p className="text-lg font-medium text-white md:text-xl">{copy.ctaBlock}</p>
           </GlassCard>

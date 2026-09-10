@@ -9,7 +9,7 @@ export function ProofSection() {
   const copy = homepageCopy.proof;
 
   return (
-    <SectionBackground overlay="dark" className="py-24 md:py-32">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <SectionHeading eyebrow={copy.eyebrow} title={copy.headline} subtitle={copy.copy} />

@@ -8,13 +8,13 @@ export type BrandLockupVariant = "header-mobile" | "header-desktop" | "footer" |
 
 const variantClasses: Record<BrandLockupVariant, string> = {
   "header-mobile":
-    "h-[clamp(2rem,7vw,2.75rem)] w-auto max-w-[min(180px,calc(100vw-8rem))] object-contain object-left sm:max-w-[min(200px,calc(100vw-9rem))]",
+    "h-[clamp(2.25rem,7.85vw,3.1rem)] w-auto max-w-[min(200px,calc(100vw-8rem))] object-contain object-left sm:max-w-[min(225px,calc(100vw-9rem))]",
   "header-desktop":
-    "h-[clamp(2.25rem,3.5vw,3rem)] w-auto max-w-[180px] object-contain object-left lg:max-w-[200px] xl:max-w-[220px]",
+    "h-[clamp(2.5rem,3.9vw,3.35rem)] w-auto max-w-[200px] object-contain object-left lg:max-w-[225px] xl:max-w-[245px]",
   footer:
-    "h-[clamp(3rem,10vw,5rem)] w-auto max-w-[min(240px,100%)] object-contain object-left",
+    "h-[clamp(3.35rem,11.2vw,5.6rem)] w-auto max-w-[min(270px,100%)] object-contain object-left",
   menu:
-    "h-[clamp(2rem,6vw,2.75rem)] w-auto max-w-[min(200px,calc(100%-3rem))] object-contain object-left",
+    "h-[clamp(2.25rem,6.7vw,3.1rem)] w-auto max-w-[min(225px,calc(100%-3rem))] object-contain object-left",
 };
 
 interface BrandLockupProps {
@@ -49,7 +49,7 @@ export function BrandLockup({
         width={520}
         height={302}
         priority={priority}
-        sizes="(max-width: 1023px) 200px, 220px"
+        sizes="(max-width: 1023px) 225px, 245px"
         className={variantClasses[variant]}
       />
     </Link>
