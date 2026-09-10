@@ -71,7 +71,7 @@ export function Header() {
           )}
         >
           <div className="container mx-auto px-3 md:px-4">
-            <div className="flex min-h-[4.25rem] items-center gap-1 py-2 sm:min-h-[4.5rem] sm:gap-2 lg:hidden">
+            <div className="flex min-h-[5.25rem] items-center gap-1 py-2 sm:min-h-[5.5rem] sm:gap-2 lg:hidden">
               <BrandLockup
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}
@@ -101,7 +101,7 @@ export function Header() {
               </div>
             </div>
 
-            <div className="hidden h-[4.25rem] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 py-2 lg:grid xl:h-[4.75rem]">
+            <div className="hidden h-[5.25rem] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 py-2 lg:grid xl:h-[5.5rem]">
               <BrandLockup
                 logoSrc={settings.logo || DEFAULT_LOGO}
                 alt={settings.businessName}

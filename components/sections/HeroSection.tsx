@@ -91,7 +91,7 @@ export function HeroSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.25}>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-black sm:mt-6 sm:text-base md:mt-8 md:text-lg md:text-silver">
+            <p className="mt-5 max-w-xl text-base font-bold leading-relaxed text-white sm:mt-6 md:mt-8 md:text-lg md:font-normal md:text-silver">
               {copy.supporting}
             </p>
           </ScrollReveal>
