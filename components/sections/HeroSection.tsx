@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import { homepageCopy } from "@/lib/content/revisions";
 
 const HERO_BACKGROUND = "/images/hero-bg.jpg";
@@ -94,10 +93,6 @@ export function HeroSection() {
             <p className="mt-5 max-w-xl text-base font-bold leading-relaxed text-white sm:mt-6 md:mt-8 md:text-lg md:font-normal md:text-silver">
               {copy.supporting}
             </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.35} className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
-            <SecondaryCtaButton size="lg" href="#rethink-in-action" />
           </ScrollReveal>
         </div>
       </div>
