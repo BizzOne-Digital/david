@@ -89,6 +89,94 @@ export const featuredProductsPage = [
   },
 ] as const;
 
+export type SolutionAccent = "orange" | "electric" | "violet";
+
+export interface SolutionDetail {
+  id: string;
+  slug: string;
+  category: string;
+  name: string;
+  description: string;
+  fullDescription: string;
+  features: readonly string[];
+  benefits: readonly string[];
+  outcomes: readonly string[];
+  visual: {
+    icon: string;
+    accent: SolutionAccent;
+    chips: readonly string[];
+  };
+  cta: string;
+}
+
+const solutionOutcomes: Record<string, readonly string[]> = {
+  "email-campaign-engine": [
+    "More targeted sends with less list fatigue",
+    "Inventory and lifecycle campaigns tied to real opportunity",
+    "Management visibility into campaign performance",
+  ],
+  "ai-lead-response-suite": [
+    "Faster first response without adding headcount",
+    "Persistent follow-up that keeps qualified leads alive",
+    "Appointments and handoffs your team can see and control",
+  ],
+  "service-to-sales": [
+    "Service-lane signals turned into sales conversations",
+    "Lifecycle and repair triggers your team can act on",
+    "Fixed ops and sales aligned under one visibility layer",
+  ],
+};
+
+const solutionBenefits: Record<string, readonly string[]> = {
+  "email-campaign-engine": [
+    "Reach the right customers with the right message",
+    "Measure what happens next with dashboard visibility",
+    "Launch applicable programs in as little as 3 days",
+  ],
+  "ai-lead-response-suite": [
+    "Keep qualified opportunities from disappearing",
+    "Management visibility and control over every conversation",
+    "Qualified handoff when your team is ready to close",
+  ],
+  "service-to-sales": [
+    "Connect fixed ops signals to sales conversations",
+    "Activate opportunities already in your dealership",
+    "Communication strategy built around real service data",
+  ],
+};
+
+const solutionFullDescriptions: Record<string, string> = {
+  "email-campaign-engine":
+    "Stop blasting. Start targeting. Rethink helps create the audience, message and campaign around your inventory, database and dealership objective — then measures what happens next with management visibility.",
+  "ai-lead-response-suite":
+    "The lead should not die because your team got busy. Rethink keeps conversations alive with fast, personalized engagement, persistent follow-up and appointment-oriented conversations — while management retains dashboard control.",
+  "service-to-sales":
+    "Your next deal may already be in the service drive. Rethink identifies customers whose repair, ownership or lifecycle signals may justify a sales conversation — then builds the communication and follow-up strategy to act on it.",
+};
+
+export function getSolutionBySlug(slug: string): SolutionDetail | undefined {
+  const product = featuredProductsPage.find((item) => item.slug === slug);
+  if (!product) return undefined;
+
+  return {
+    id: product.id,
+    slug: product.slug,
+    category: product.category,
+    name: product.name,
+    description: product.description,
+    fullDescription: solutionFullDescriptions[product.slug] ?? product.description,
+    features: product.features,
+    benefits: solutionBenefits[product.slug] ?? [],
+    outcomes: solutionOutcomes[product.slug] ?? [],
+    visual: product.visual,
+    cta: product.cta,
+  };
+}
+
+export function getAllSolutionSlugs(): string[] {
+  return featuredProductsPage.map((product) => product.slug);
+}
+
 export const productComparisonRows = [
   { feature: "AI-Powered Audience Targeting", ai: true, email: false },
   { feature: "Automated Campaigns", ai: true, email: true },
