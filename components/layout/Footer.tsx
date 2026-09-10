@@ -121,7 +121,7 @@ export function Footer() {
                 alt={settings.businessName}
                 width={520}
                 height={302}
-                imageClassName="h-[clamp(4.5rem,14vw,8rem)] w-full max-w-[min(520px,100%)] object-contain object-left"
+                imageClassName="h-[clamp(3rem,10vw,4.5rem)] w-full max-w-[min(240px,100%)] object-contain object-left"
               />
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
                 {settings.footerContent.brandStatement ||
