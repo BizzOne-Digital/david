@@ -9,6 +9,7 @@ import {
 } from "@/components/sections/SectionBackground";
 import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { SolutionCardVisual } from "@/components/products/SolutionCardVisual";
+import { EmailMarketingSlideshow } from "@/components/products/EmailMarketingSlideshow";
 import type { SolutionDetail } from "@/lib/content/products-page";
 
 interface ProductDetailPageContentProps {
@@ -65,6 +66,12 @@ export function ProductDetailPageContent({
               </GlassCard>
             </div>
           </div>
+        </div>
+      </SectionBackground>
+
+      <SectionBackground overlay="dark" className="page-section-after-hero">
+        <div className="container mx-auto px-4">
+          <EmailMarketingSlideshow showHeading={product.slug === "email-campaign-engine"} />
         </div>
       </SectionBackground>
 

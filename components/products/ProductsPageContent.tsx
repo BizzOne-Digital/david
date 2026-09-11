@@ -19,6 +19,7 @@ import {
 } from "@/lib/content/products-page";
 import { homepageCopy, solutionsPageCopy } from "@/lib/content/revisions";
 import { SolutionCardVisual } from "./SolutionCardVisual";
+import { EmailMarketingSlideshow } from "./EmailMarketingSlideshow";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -154,6 +155,12 @@ export function ProductsPageContent() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </SectionBackground>
+
+      <SectionBackground overlay="dark" className="page-section-compact">
+        <div className="container mx-auto px-4">
+          <EmailMarketingSlideshow />
         </div>
       </SectionBackground>
 

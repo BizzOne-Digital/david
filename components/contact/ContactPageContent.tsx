@@ -56,8 +56,8 @@ export function ContactPageContent() {
 
   return (
     <>
-      <SectionBackground overlay="dark" className="relative min-h-[50vh]">
-        <div className="container mx-auto px-4 pb-12 page-hero-top">
+      <SectionBackground overlay="dark" className="page-hero-section">
+        <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <ScrollReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">
@@ -65,18 +65,20 @@ export function ContactPageContent() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <h1 className="mt-5 font-heading text-4xl font-bold uppercase leading-[1.1] md:text-5xl">
+              <h1 className="mt-4 font-heading text-4xl font-bold uppercase leading-[1.1] md:text-5xl">
                 {contactCopy.headline}
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="mt-6 text-lg text-silver">{contactCopy.subhead}</p>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-silver md:text-lg">
+                {contactCopy.subhead}
+              </p>
             </ScrollReveal>
           </div>
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="py-16 md:py-24">
+      <SectionBackground overlay="dark" className="page-section-after-hero pb-16 md:pb-20">
         <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <ScrollReveal>

@@ -177,7 +177,7 @@ export const aboutCopy = {
 export const contactCopy = {
   headline: "See What Your Dealership May Be Missing.",
   subhead:
-    "Give us a short look at your goals. We'll show you how Rethink can identify and activate opportunities across marketing, follow-up, service-to-sales and future-fuel demand.",
+    "Share your goals — we'll show you where opportunity may already exist in your store.",
   formTitle: "Request My Demo",
   submitLabel: "Request My Demo",
 } as const;
