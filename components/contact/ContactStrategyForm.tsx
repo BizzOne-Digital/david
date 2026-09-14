@@ -60,14 +60,14 @@ export function ContactStrategyForm({ className }: ContactStrategyFormProps) {
 
   return (
     <GlassCard className={cn("border-white/10", className)}>
-      <h2 className="font-heading text-2xl font-bold md:text-3xl">
+      <h2 className="font-heading text-xl font-bold md:text-2xl">
         {contactCopy.formTitle}
       </h2>
-      <p className="mt-2 text-sm text-silver">
+      <p className="mt-1.5 text-sm text-silver">
         All demo requests route to contact@rethinkautomotive.com
       </p>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-4 scheme-light">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4 scheme-light">
         <div className="grid gap-4 md:grid-cols-2">
           <IconField icon={User} error={errors.name?.message}>
             <input {...register("name")} className={formInputClassWithIcon} placeholder="Name" />

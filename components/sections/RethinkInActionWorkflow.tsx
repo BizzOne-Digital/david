@@ -10,14 +10,14 @@ export function RethinkInActionWorkflow() {
 
   return (
     <>
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {copy.steps.map((step, index) => {
           const Icon = getLucideIcon(step.icon);
           return (
             <ScrollReveal key={step.label} delay={index * 0.1}>
-              <GlassCard className="relative h-full border-white/10 bg-graphite text-center shadow-none">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/40">
-                  <Icon className="h-5 w-5 text-white" />
+              <GlassCard className="relative h-full border-white/10 bg-graphite p-5 text-center shadow-none md:p-5">
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40">
+                  <Icon className="h-4 w-4 text-white" />
                 </div>
                 <h3 className="font-heading text-base font-semibold uppercase tracking-wider">
                   {step.label}
@@ -29,8 +29,8 @@ export function RethinkInActionWorkflow() {
         })}
       </div>
 
-      <ScrollReveal delay={0.3} className="mx-auto mt-8 max-w-3xl text-center">
-        <p className="text-lg text-silver">{copy.tagline}</p>
+      <ScrollReveal delay={0.3} className="mx-auto mt-5 max-w-2xl text-center">
+        <p className="text-sm text-silver md:text-base">{copy.tagline}</p>
       </ScrollReveal>
     </>
   );

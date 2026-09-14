@@ -164,10 +164,9 @@ export const aboutCopy = {
   headline:
     "We Built Rethink for Dealers Who Know Yesterday's Playbook Isn't Enough.",
   paragraphs: [
-    "Rethink Automotive was created around a simple belief: dealerships do not need another vendor telling them to buy more technology. They need partners who understand automotive retail, recognize where opportunity is being missed, and can help turn insight into action.",
-    "Our approach combines automotive experience, targeted marketing, AI-enabled follow-up, dealer-controlled technology and consultative analysis. We begin with practical solutions that can create opportunity now, then use the results to help dealership leadership determine what should be improved next.",
-    "We are deliberately future-focused. Consumer behavior, artificial intelligence, vehicle powertrains, marketing channels and OEM strategies are changing quickly. Rethink continuously studies those changes so our dealer partners can make informed decisions instead of reacting after the market has moved.",
-    "We do not believe every dealership needs the same solution. We believe in asking better questions, identifying the real problem and recommending the right action.",
+    "Rethink Automotive was created on the belief that dealers need partners who understand the automobile business and can turn information into action.",
+    "We use AI follow-up, contact targeted to specific consumer behavior, and future-focused marketing channels that get response and results.",
+    "We continuously study change and don't believe every dealer needs the same solution. We help identify the problem and focus on the right action.",
   ],
   philosophy:
     "If yesterday's approach is no longer producing tomorrow's result — Rethink It.",

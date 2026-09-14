@@ -20,6 +20,7 @@ import {
 import { homepageCopy, solutionsPageCopy } from "@/lib/content/revisions";
 import { SolutionCardVisual } from "./SolutionCardVisual";
 import { EmailMarketingSlideshow } from "./EmailMarketingSlideshow";
+import { ProofSection } from "@/components/sections/ProofSection";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -178,13 +179,15 @@ export function ProductsPageContent() {
 
       <SectionBackground overlay="dark" className="page-section-compact">
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <h2 className="font-heading text-3xl font-bold uppercase leading-tight md:text-4xl lg:text-5xl">
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+            <h2 className="font-heading text-xl font-bold leading-snug sm:text-2xl md:text-[1.75rem]">
               {homepageCopy.finalCta.headline}
             </h2>
           </div>
         </div>
       </SectionBackground>
+
+      <ProofSection />
     </>
   );
 }

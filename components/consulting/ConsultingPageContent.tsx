@@ -3,69 +3,66 @@
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import {
-  SectionBackground,
-  SectionHeading,
-  GlassCard,
-} from "@/components/sections/SectionBackground";
+import { SectionBackground, GlassCard } from "@/components/sections/SectionBackground";
 import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import { consultingCopy } from "@/lib/content/revisions";
 
 export function ConsultingPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section">
+      <SectionBackground overlay="dark" className="page-hero-section pb-10 md:pb-12">
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <ScrollReveal className="w-full">
-              <SectionHeading
-                eyebrow="Consulting Services"
-                title={consultingCopy.headline}
-                subtitle={consultingCopy.intro}
-                align="center"
-                className="w-full"
-              />
-              <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mx-auto max-w-3xl text-center">
+            <ScrollReveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">
+                Consulting Services
+              </p>
+              <h1 className="mt-3 font-heading text-2xl font-bold leading-snug sm:text-3xl md:text-[2rem]">
+                {consultingCopy.headline}
+              </h1>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-silver md:text-base">
+                {consultingCopy.intro}
+              </p>
+              <div className="mt-5 flex justify-center">
                 <SecondaryCtaButton href="/contact" size="lg">
                   {consultingCopy.secondaryCta}
                 </SecondaryCtaButton>
               </div>
             </ScrollReveal>
+
+            <ScrollReveal delay={0.08} className="mt-8 md:mt-10">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+                What We Help With
+              </p>
+              <GlassCard className="border-white/10 p-5 text-left md:p-6">
+                <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                  {consultingCopy.services.map((service) => (
+                    <li key={service.title} className="flex gap-2.5">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                      <div className="min-w-0">
+                        <p className="font-heading text-sm font-semibold leading-snug">
+                          {service.title}
+                        </p>
+                        <p className="mt-0.5 text-xs leading-relaxed text-silver">
+                          {service.description}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
+            </ScrollReveal>
           </div>
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-after-hero">
+      <SectionBackground overlay="dark" className="page-section-compact">
         <div className="container mx-auto px-4">
-          <SectionHeading
-            eyebrow="What We Help With"
-            title="Consulting Services"
-            align="center"
-            className="mx-auto mb-14 w-full text-center"
-          />
-          <div className="grid gap-6 md:grid-cols-2">
-            {consultingCopy.services.map((service, index) => (
-              <ScrollReveal key={service.title} delay={index * 0.06}>
-                <GlassCard className="h-full border-white/10">
-                  <div className="flex gap-3">
-                    <Check className="mt-1 h-5 w-5 shrink-0 text-brand-orange" />
-                    <div>
-                      <h3 className="font-heading text-lg font-semibold">{service.title}</h3>
-                      <p className="mt-2 text-sm text-silver">{service.description}</p>
-                    </div>
-                  </div>
-                </GlassCard>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </SectionBackground>
-
-      <SectionBackground overlay="dark" className="py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <GlassCard className="mx-auto max-w-3xl border-white/10 text-center">
-            <p className="text-lg text-silver">{consultingCopy.transition}</p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <GlassCard className="mx-auto max-w-3xl border-white/10 p-5 text-center md:p-6">
+            <p className="text-sm leading-relaxed text-silver md:text-base">
+              {consultingCopy.transition}
+            </p>
+            <div className="mt-5 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"

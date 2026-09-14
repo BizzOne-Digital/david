@@ -11,6 +11,15 @@ export function HeroVideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
+  const resetToPoster = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.pause();
+    video.currentTime = 0;
+    video.load();
+    setPlaying(false);
+  };
+
   const handlePlay = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -22,7 +31,7 @@ export function HeroVideoSection() {
     <section aria-label="Rethink Automotive overview video" className="relative isolate w-full bg-black">
       <div className="container mx-auto px-4 pb-4 pt-2 md:pb-5 md:pt-3">
         <ScrollReveal>
-          <div className="group relative mx-auto max-w-5xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0a12] shadow-[0_24px_64px_rgba(0,0,0,0.55)]">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0a12] shadow-[0_24px_64px_rgba(0,0,0,0.55)]">
             <video
               ref={videoRef}
               className="aspect-video h-auto w-full bg-black object-cover"
@@ -31,40 +40,41 @@ export function HeroVideoSection() {
               preload="metadata"
               poster={poster}
               onPlay={() => setPlaying(true)}
-              onEnded={() => {
-                setPlaying(false);
-                if (videoRef.current) {
-                  videoRef.current.currentTime = 0;
-                }
-              }}
+              onEnded={resetToPoster}
             >
               <source src={src} type="video/mp4" />
               Your browser does not support embedded video playback.
             </video>
 
-            {!playing ?
-              <button
-                type="button"
-                onClick={handlePlay}
-                className={cn(
-                  "absolute inset-0 flex cursor-pointer items-center justify-center",
-                  "bg-black/15 transition-all duration-300",
-                  "max-md:bg-black/25",
-                  "md:bg-black/10 md:opacity-0 md:group-hover:opacity-100"
-                )}
-                aria-label="Play overview video"
-              >
-                <span
+            {!playing ? (
+              <>
+                <img
+                  src={poster}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 z-[1] h-full w-full object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={handlePlay}
                   className={cn(
-                    "flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange text-white",
-                    "shadow-[0_0_32px_rgba(255,102,0,0.45)] transition-transform duration-300",
-                    "md:h-[4.75rem] md:w-[4.75rem] md:group-hover:scale-110"
+                    "absolute inset-0 z-[2] flex cursor-pointer items-center justify-center",
+                    "bg-black/20 transition-colors duration-300 hover:bg-black/30"
                   )}
+                  aria-label="Play overview video"
                 >
-                  <Play className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8" />
-                </span>
-              </button>
-            : null}
+                  <span
+                    className={cn(
+                      "flex h-[4.75rem] w-[4.75rem] items-center justify-center rounded-full bg-brand-orange text-white",
+                      "shadow-[0_0_32px_rgba(255,102,0,0.45)] transition-transform duration-300",
+                      "hover:scale-105 active:scale-95"
+                    )}
+                  >
+                    <Play className="ml-1 h-8 w-8 fill-current" />
+                  </span>
+                </button>
+              </>
+            ) : null}
           </div>
         </ScrollReveal>
       </div>
