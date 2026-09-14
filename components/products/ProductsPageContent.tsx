@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight, Check, Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import {
   SectionBackground,
   SectionHeading,
@@ -63,9 +62,9 @@ export function ProductsPageContent() {
 
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section">
+      <SectionBackground overlay="dark" className="page-hero-section pb-8 md:pb-10">
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <SectionHeading
               eyebrow={solutionsPageCopy.eyebrow}
               title={solutionsPageCopy.headline}
@@ -73,27 +72,24 @@ export function ProductsPageContent() {
               align="center"
               className="w-full"
             />
-            <ScrollReveal
-              delay={0.15}
-              className="mt-6 flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
-            >
-              <SecondaryCtaButton size="lg" />
+            <ScrollReveal delay={0.1} className="mt-5 w-full">
+              <EmailMarketingSlideshow showHeading={false} compact />
             </ScrollReveal>
           </div>
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-after-hero">
+      <SectionBackground overlay="dark" className="page-section-after-hero pb-8 pt-4 md:pb-10 md:pt-5">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="Solutions"
             title={solutionsPageCopy.featuredTitle}
             subtitle="Dealer outcomes first — not technical feature lists."
             align="center"
-            className="mx-auto mb-8 w-full text-center"
+            className="mx-auto mb-6 w-full text-center"
           />
 
-          <ScrollReveal className="mb-8 flex flex-wrap justify-center gap-3">
+          <ScrollReveal className="mb-6 flex flex-wrap justify-center gap-3">
             {productFilters.map((item) => (
               <button
                 key={item.id}
@@ -159,25 +155,19 @@ export function ProductsPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-compact">
-        <div className="container mx-auto px-4">
-          <EmailMarketingSlideshow />
-        </div>
-      </SectionBackground>
-
-      <SectionBackground overlay="dark" className="page-section-compact">
+      <SectionBackground overlay="dark" className="pb-8 pt-6 md:pb-10 md:pt-8">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="FAQ"
             title="Your Questions, Answered."
             align="center"
-            className="mx-auto mb-8 w-full text-center"
+            className="mx-auto mb-6 w-full text-center"
           />
           <FaqAccordion />
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-compact">
+      <SectionBackground overlay="dark" className="pb-8 pt-4 md:pb-10 md:pt-6">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <h2 className="font-heading text-xl font-bold leading-snug sm:text-2xl md:text-[1.75rem]">

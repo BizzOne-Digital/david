@@ -8,7 +8,7 @@ import { futureFuelCopy } from "@/lib/content/revisions";
 export function FutureFuelPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section pb-10 md:pb-12">
+      <SectionBackground overlay="dark" className="page-hero-section pb-8 md:pb-10">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
@@ -23,8 +23,8 @@ export function FutureFuelPageContent() {
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.08} className="mt-5 md:mt-6">
-              <GlassCard className="border-white/10 p-4 text-left md:p-5">
+            <ScrollReveal delay={0.08} className="mt-4 md:mt-5">
+              <GlassCard className="border-white/10 p-3 text-left md:p-4">
                 <ul className="space-y-1">
                   {futureFuelCopy.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-2">

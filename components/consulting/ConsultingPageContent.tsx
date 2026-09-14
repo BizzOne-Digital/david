@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { SectionBackground, GlassCard } from "@/components/sections/SectionBackground";
 import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
@@ -10,7 +9,7 @@ import { consultingCopy } from "@/lib/content/revisions";
 export function ConsultingPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section pb-10 md:pb-12">
+      <SectionBackground overlay="dark" className="page-hero-section pb-8 md:pb-10">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
@@ -23,19 +22,19 @@ export function ConsultingPageContent() {
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-silver md:text-base">
                 {consultingCopy.intro}
               </p>
-              <div className="mt-5 flex justify-center">
+              <div className="mt-4 flex justify-center">
                 <SecondaryCtaButton href="/contact" size="lg">
                   {consultingCopy.secondaryCta}
                 </SecondaryCtaButton>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.08} className="mt-8 md:mt-10">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+            <ScrollReveal delay={0.08} className="mt-6 md:mt-7">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-electric">
                 What We Help With
               </p>
-              <GlassCard className="border-white/10 p-5 text-left md:p-6">
-                <ul className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+              <GlassCard className="border-white/10 p-4 text-left md:p-5">
+                <ul className="grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
                   {consultingCopy.services.map((service) => (
                     <li key={service.title} className="flex gap-2.5">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
@@ -53,25 +52,6 @@ export function ConsultingPageContent() {
               </GlassCard>
             </ScrollReveal>
           </div>
-        </div>
-      </SectionBackground>
-
-      <SectionBackground overlay="dark" className="page-section-compact">
-        <div className="container mx-auto px-4">
-          <GlassCard className="mx-auto max-w-3xl border-white/10 p-5 text-center md:p-6">
-            <p className="text-sm leading-relaxed text-silver md:text-base">
-              {consultingCopy.transition}
-            </p>
-            <div className="mt-5 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-electric hover:text-white"
-              >
-                {consultingCopy.secondaryCta}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </GlassCard>
         </div>
       </SectionBackground>
     </>
