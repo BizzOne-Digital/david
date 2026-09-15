@@ -14,11 +14,10 @@ import {
   productsFaqs,
 } from "@/lib/content/products-page";
 import { homepageCopy, solutionsPageCopy } from "@/lib/content/revisions";
-import { SolutionCardVisual } from "./SolutionCardVisual";
 import { EmailMarketingSlideshow } from "./EmailMarketingSlideshow";
 import { ProofSection } from "@/components/sections/ProofSection";
 import { ImageSlideshow } from "@/components/sections/ImageSlideshow";
-import { ghostShopperSlides } from "@/lib/content/ghost-shopper-slides";
+import { getSolutionCardSlides } from "@/lib/content/solution-card-slides";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -57,7 +56,7 @@ export function ProductsPageContent() {
     <>
       <SectionBackground overlay="dark" className="page-hero-section pb-6 pt-6 md:pb-8 md:pt-8">
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+          <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
             <SectionHeading
               eyebrow={solutionsPageCopy.eyebrow}
               title={solutionsPageCopy.headline}
@@ -74,32 +73,28 @@ export function ProductsPageContent() {
 
       <SectionBackground overlay="dark" className="page-section-after-hero pb-8 pt-2 md:pb-10 md:pt-3">
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex max-w-4xl flex-col gap-6">
-            {featuredProductsPage.map((product, index) => (
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
+            {featuredProductsPage.map((product, index) => {
+              const slides = getSolutionCardSlides(product.slug);
+              return (
               <ScrollReveal key={product.id} delay={index * 0.08}>
-                <GlassCard className="grid h-full overflow-hidden border-white/10 p-0 md:grid-cols-[minmax(0,34%)_1fr]">
-                  {product.slug === "ai-lead-response-suite" ?
-                    <div className="min-h-[280px] border-b border-white/10 md:min-h-full md:border-b-0 md:border-r">
+                <GlassCard className="flex flex-col overflow-hidden border-white/10 p-0">
+                  {slides.length > 0 ?
+                    <div className="w-full border-b border-white/10 bg-[#0a0a12]">
                       <ImageSlideshow
-                        slides={ghostShopperSlides}
+                        slides={slides}
                         embedded
-                        compact
                         showSlideCounter={false}
+                        className="w-full"
                       />
                     </div>
-                  : <SolutionCardVisual
-                      icon={product.visual.icon}
-                      accent={product.visual.accent}
-                      chips={product.visual.chips}
-                      category={product.category}
-                    />
-                  }
+                  : null}
 
-                  <div className="flex flex-col p-6 md:p-7">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric md:hidden">
+                  <div className="flex flex-col p-6 md:p-8">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
                       {product.category}
                     </p>
-                    <h3 className="mt-2 font-heading text-xl font-bold uppercase tracking-wide md:mt-0 md:text-2xl">
+                    <h3 className="mt-2 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
                       {product.name}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-silver">
@@ -127,7 +122,8 @@ export function ProductsPageContent() {
                   </div>
                 </GlassCard>
               </ScrollReveal>
-            ))}
+            );
+            })}
           </div>
         </div>
       </SectionBackground>

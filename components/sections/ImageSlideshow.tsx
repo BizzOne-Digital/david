@@ -65,12 +65,18 @@ export function ImageSlideshow({
             width={600}
             height={900}
             className={cn(
-              "w-auto max-w-full object-contain px-2",
+              "mx-auto object-contain px-3 py-2",
               compact ?
-                "h-auto max-h-[min(42vh,340px)] py-1"
-              : "h-full max-h-[min(70vh,680px)] py-3"
+                "h-auto max-h-[min(42vh,340px)] w-auto max-w-full"
+              : embedded ?
+                "h-auto max-h-[min(72vh,620px)] w-full max-w-[min(100%,720px)]"
+              : "h-auto max-h-[min(72vh,680px)] w-auto max-w-full py-3"
             )}
-            sizes="(max-width: 768px) 100vw, 480px"
+            sizes={
+              embedded ?
+                "(max-width: 768px) 100vw, 1120px"
+              : "(max-width: 768px) 100vw, 720px"
+            }
             priority={index === 0}
           />
 
@@ -103,7 +109,7 @@ export function ImageSlideshow({
               </p>
             : null}
 
-            <div className="mt-3 flex gap-1.5 overflow-x-auto pb-0.5">
+            <div className="mt-3 flex flex-wrap justify-center gap-2 px-1">
               {slides.map((item, i) => (
                 <button
                   key={item.src}
