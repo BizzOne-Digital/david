@@ -3,13 +3,10 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import {
-  ArrowRight,
-  Calendar,
   Mail,
   Phone,
 } from "lucide-react";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { GradientText } from "@/components/sections/SectionBackground";
 import { Logo, DEFAULT_LOGO } from "./Logo";
 import {
   footerExploreLinks,
@@ -82,37 +79,6 @@ export function Footer() {
 
   return (
     <footer className="relative isolate w-full max-w-full overflow-hidden border-t border-white/10 bg-black">
-        <div className="container mx-auto px-4 pt-10 md:pt-12">
-          <div className="rounded-2xl border border-white/10 bg-graphite p-4 md:p-5">
-            <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-              <div className="flex items-start gap-4 xl:flex-1">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-graphite">
-                  <Calendar className="h-5 w-5 text-cyan" />
-                </div>
-                <p className="max-w-md font-heading text-lg font-semibold leading-snug text-white md:text-xl">
-                  Ready to <GradientText>Rethink</GradientText> Your Dealership&apos;s
-                  Growth?
-                </p>
-              </div>
-
-              <Link
-                href={settings.headerCtaUrl}
-                className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition hover:border-cyan/40 hover:text-cyan sm:w-auto"
-              >
-                Contact Us
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <div className="hidden items-center gap-4 xl:flex">
-                <span className="h-10 w-px bg-white/15" aria-hidden />
-                <p className="max-w-[11rem] text-[10px] font-medium uppercase leading-relaxed tracking-[0.22em] text-white/45">
-                  A Brighter Tomorrow for Dealerships
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="container mx-auto px-4 py-12 md:py-14">
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr] xl:gap-6">
             <div className="min-w-0 xl:border-r xl:border-white/10 xl:pr-6">

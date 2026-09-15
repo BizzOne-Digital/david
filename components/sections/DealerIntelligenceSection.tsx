@@ -1,33 +1,26 @@
 "use client";
 
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
   SectionBackground,
-  SectionHeading,
 } from "./SectionBackground";
-import { SecondaryCtaButton } from "@/components/ui/ConversionCta";
 import { homepageCopy } from "@/lib/content/revisions";
 
 export function DealerIntelligenceSection() {
   const copy = homepageCopy.dealerIntelligence;
 
   return (
-    <SectionBackground overlay="dark" className="page-section-compact">
+    <SectionBackground overlay="dark" className="pb-8 pt-6 md:pb-10 md:pt-8">
       <div className="container mx-auto px-4">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <SectionHeading
-            eyebrow={copy.eyebrow}
-            title={copy.headline}
-            subtitle={copy.copy}
-            align="center"
-            className="w-full"
-          />
-          <ScrollReveal
-            delay={0.2}
-            className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <SecondaryCtaButton size="lg" />
-          </ScrollReveal>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric md:tracking-[0.3em]">
+            {copy.eyebrow}
+          </p>
+          <h2 className="mt-2 font-heading text-xl font-bold leading-snug sm:text-2xl md:text-[1.75rem]">
+            {copy.headline}
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-silver md:text-base">
+            {copy.copy}
+          </p>
         </div>
       </div>
     </SectionBackground>
