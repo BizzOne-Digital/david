@@ -43,6 +43,10 @@ export const featuredProductsPage = [
       chips: ["Inventory", "Conquest", "Lifecycle"],
     },
     cta: "Request a Targeted Marketing Demo",
+    narratives: [
+      "Rethink works with dealership leadership to evaluate marketing performance, reduce vendor overlap, and find where email and database programs should create measurable action.",
+      "We help scope the right combination of targeted campaigns, creative and follow-up — aligned to inventory, conquest goals and what your store can actually execute.",
+    ],
   },
   {
     id: "ai-suite",
@@ -87,6 +91,10 @@ export const featuredProductsPage = [
       chips: ["Service Lane", "Upgrade Signals", "Handoff"],
     },
     cta: "Show Me Service-to-Sales",
+    narratives: [
+      "Fixed operations holds customers your sales team may never see again. Rethink helps connect service signals to the right replacement or upgrade conversation.",
+      "We advise on service-to-sales strategy, communication and follow-up — so opportunity in the lane becomes a qualified handoff, not a missed visit.",
+    ],
   },
 ] as const;
 

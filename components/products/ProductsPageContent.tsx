@@ -17,7 +17,7 @@ import { homepageCopy, solutionsPageCopy } from "@/lib/content/revisions";
 import { EmailMarketingSlideshow } from "./EmailMarketingSlideshow";
 import { ProofSection } from "@/components/sections/ProofSection";
 import { ImageSlideshow } from "@/components/sections/ImageSlideshow";
-import { getSolutionCardSlides } from "@/lib/content/solution-card-slides";
+import { getSolutionCardSlides, solutionUsesSlideshow } from "@/lib/content/solution-card-slides";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -76,10 +76,13 @@ export function ProductsPageContent() {
           <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
             {featuredProductsPage.map((product, index) => {
               const slides = getSolutionCardSlides(product.slug);
+              const hasSlideshow = solutionUsesSlideshow(product.slug);
+              const narratives =
+                "narratives" in product && product.narratives ? product.narratives : null;
               return (
               <ScrollReveal key={product.id} delay={index * 0.08}>
                 <GlassCard className="flex flex-col overflow-hidden border-white/10 p-0">
-                  {slides.length > 0 ?
+                  {hasSlideshow && slides.length > 0 ?
                     <div className="w-full border-b border-white/10 bg-[#0a0a12]">
                       <ImageSlideshow
                         slides={slides}
@@ -97,28 +100,64 @@ export function ProductsPageContent() {
                     <h3 className="mt-2 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
                       {product.name}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-silver">
+                    <p className="mt-3 text-sm leading-relaxed text-silver md:text-base">
                       {product.description}
                     </p>
 
-                    <ul className="mt-5 space-y-2">
-                      {product.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2 text-sm text-silver">
-                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                    {narratives ?
+                      <>
+                        <div className="mt-4 space-y-3 border-t border-white/10 pt-4">
+                          {narratives.map((paragraph) => (
+                            <p
+                              key={paragraph.slice(0, 48)}
+                              className="text-sm leading-relaxed text-silver md:text-base"
+                            >
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
+                        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                          <Link
+                            href={`/products/${product.slug}`}
+                            className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
+                          >
+                            Learn More
+                            <ArrowRight className="h-4 w-4" />
+                          </Link>
+                          <Link
+                            href="/consulting"
+                            className="inline-flex items-center gap-1 text-sm font-medium text-silver hover:text-white"
+                          >
+                            Explore Consulting
+                            <ArrowRight className="h-4 w-4" />
+                          </Link>
+                        </div>
+                      </>
+                    : (
+                      <>
+                        <ul className="mt-5 space-y-2">
+                          {product.features.map((feature) => (
+                            <li
+                              key={feature}
+                              className="flex items-start gap-2 text-sm text-silver"
+                            >
+                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
 
-                    <div className="mt-6 flex flex-wrap items-center gap-4">
-                      <Link
-                        href={`/products/${product.slug}`}
-                        className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
-                      >
-                        Learn More
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </div>
+                        <div className="mt-6 flex flex-wrap items-center gap-4">
+                          <Link
+                            href={`/products/${product.slug}`}
+                            className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
+                          >
+                            Learn More
+                            <ArrowRight className="h-4 w-4" />
+                          </Link>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </GlassCard>
               </ScrollReveal>
