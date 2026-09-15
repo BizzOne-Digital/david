@@ -1,0 +1,51 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SectionBackground, GlassCard } from "./SectionBackground";
+import { ImageSlideshow } from "./ImageSlideshow";
+import {
+  ghostShopperShowcaseCopy,
+  ghostShopperSlides,
+} from "@/lib/content/ghost-shopper-slides";
+
+export function GhostShopperSection() {
+  const copy = ghostShopperShowcaseCopy;
+
+  return (
+    <SectionBackground overlay="dark" className="page-section-compact pb-8 pt-4 md:pb-10 md:pt-6">
+      <div className="container mx-auto px-4">
+        <ScrollReveal>
+          <GlassCard className="mx-auto grid max-w-4xl overflow-hidden border-white/10 p-0 md:grid-cols-[minmax(0,42%)_1fr]">
+            <div className="min-h-[280px] border-b border-white/10 md:min-h-0 md:border-b-0 md:border-r">
+              <ImageSlideshow
+                slides={ghostShopperSlides}
+                embedded
+                compact
+                showSlideCounter={false}
+              />
+            </div>
+
+            <div className="flex flex-col justify-center p-5 md:p-6 lg:p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+                {copy.eyebrow}
+              </p>
+              <h2 className="mt-2 font-heading text-lg font-bold uppercase leading-snug tracking-wide md:text-xl">
+                {copy.headline}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-silver">{copy.description}</p>
+              <Link
+                href="/products/ai-lead-response-suite"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
+              >
+                Learn More
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </GlassCard>
+        </ScrollReveal>
+      </div>
+    </SectionBackground>
+  );
+}

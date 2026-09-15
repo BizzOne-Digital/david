@@ -10,6 +10,8 @@ import {
 import { DemoCtaButton } from "@/components/ui/ConversionCta";
 import { SolutionCardVisual } from "@/components/products/SolutionCardVisual";
 import { EmailMarketingSlideshow } from "@/components/products/EmailMarketingSlideshow";
+import { ImageSlideshow } from "@/components/sections/ImageSlideshow";
+import { ghostShopperSlides } from "@/lib/content/ghost-shopper-slides";
 import type { SolutionDetail } from "@/lib/content/products-page";
 
 interface ProductDetailPageContentProps {
@@ -34,13 +36,23 @@ export function ProductDetailPageContent({
           </Link>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_1fr] lg:items-start lg:gap-10">
-            <SolutionCardVisual
-              variant="detail"
-              icon={product.visual.icon}
-              accent={product.visual.accent}
-              chips={product.visual.chips}
-              category={product.category}
-            />
+            {product.slug === "ai-lead-response-suite" ?
+              <div className="overflow-hidden rounded-2xl border border-white/10">
+                <ImageSlideshow
+                  slides={ghostShopperSlides}
+                  embedded
+                  compact
+                  showSlideCounter={false}
+                />
+              </div>
+            : <SolutionCardVisual
+                variant="detail"
+                icon={product.visual.icon}
+                accent={product.visual.accent}
+                chips={product.visual.chips}
+                category={product.category}
+              />
+            }
 
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
@@ -69,11 +81,13 @@ export function ProductDetailPageContent({
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-after-hero">
-        <div className="container mx-auto px-4">
-          <EmailMarketingSlideshow showHeading={product.slug === "email-campaign-engine"} />
-        </div>
-      </SectionBackground>
+      {product.slug === "email-campaign-engine" ?
+        <SectionBackground overlay="dark" className="page-section-after-hero">
+          <div className="container mx-auto px-4">
+            <EmailMarketingSlideshow showHeading />
+          </div>
+        </SectionBackground>
+      : null}
 
       <SectionBackground overlay="dark" className="page-section-after-hero">
         <div className="container mx-auto px-4">

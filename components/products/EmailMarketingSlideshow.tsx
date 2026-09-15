@@ -49,7 +49,9 @@ export function EmailMarketingSlideshow({
         <div
           className={cn(
             "relative flex items-center justify-center bg-[#0a0a12]",
-            compact ? "min-h-[420px] sm:min-h-[480px]" : "min-h-[480px] sm:min-h-[560px] md:min-h-[620px]"
+            compact ?
+              "min-h-0 py-1"
+            : "min-h-[480px] sm:min-h-[560px] md:min-h-[620px]"
           )}
         >
           <Image
@@ -58,7 +60,12 @@ export function EmailMarketingSlideshow({
             alt={slide.alt}
             width={600}
             height={900}
-            className="h-full max-h-[min(72vh,720px)] w-auto max-w-full object-contain px-2 py-4"
+            className={cn(
+              "w-auto max-w-full object-contain px-2",
+              compact ?
+                "h-auto max-h-[min(42vh,340px)] py-1"
+              : "h-full max-h-[min(72vh,720px)] py-4"
+            )}
             sizes="(max-width: 768px) 100vw, 600px"
             priority={index === 0}
           />

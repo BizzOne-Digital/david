@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Minus, Plus } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
   SectionBackground,
@@ -11,15 +10,15 @@ import {
   GlassCard,
 } from "@/components/sections/SectionBackground";
 import {
-  productFilters,
   featuredProductsPage,
   productsFaqs,
-  type ProductFilter,
 } from "@/lib/content/products-page";
 import { homepageCopy, solutionsPageCopy } from "@/lib/content/revisions";
 import { SolutionCardVisual } from "./SolutionCardVisual";
 import { EmailMarketingSlideshow } from "./EmailMarketingSlideshow";
 import { ProofSection } from "@/components/sections/ProofSection";
+import { ImageSlideshow } from "@/components/sections/ImageSlideshow";
+import { ghostShopperSlides } from "@/lib/content/ghost-shopper-slides";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -54,15 +53,9 @@ function FaqAccordion() {
 }
 
 export function ProductsPageContent() {
-  const [filter, setFilter] = useState<ProductFilter>("all");
-
-  const visibleProducts = featuredProductsPage.filter(
-    (p) => filter === "all" || p.filter === filter
-  );
-
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section pb-8 md:pb-10">
+      <SectionBackground overlay="dark" className="page-hero-section pb-6 pt-6 md:pb-8 md:pt-8">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
             <SectionHeading
@@ -70,53 +63,37 @@ export function ProductsPageContent() {
               title={solutionsPageCopy.headline}
               subtitle={solutionsPageCopy.subhead}
               align="center"
-              className="w-full"
+              className="w-full [&_h2]:mt-2 [&_p]:mt-2"
             />
-            <ScrollReveal delay={0.1} className="mt-5 w-full">
+            <ScrollReveal delay={0.1} className="mt-2 w-full md:mt-3">
               <EmailMarketingSlideshow showHeading={false} compact />
             </ScrollReveal>
           </div>
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-after-hero pb-8 pt-4 md:pb-10 md:pt-5">
+      <SectionBackground overlay="dark" className="page-section-after-hero pb-8 pt-2 md:pb-10 md:pt-3">
         <div className="container mx-auto px-4">
-          <SectionHeading
-            eyebrow="Solutions"
-            title={solutionsPageCopy.featuredTitle}
-            subtitle="Dealer outcomes first — not technical feature lists."
-            align="center"
-            className="mx-auto mb-6 w-full text-center"
-          />
-
-          <ScrollReveal className="mb-6 flex flex-wrap justify-center gap-3">
-            {productFilters.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setFilter(item.id)}
-                className={cn(
-                  "rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
-                  filter === item.id ?
-                    "bg-brand-orange text-white"
-                  : "border border-white/20 bg-graphite text-silver hover:border-white/40 hover:text-white"
-                )}
-              >
-                {item.label}
-              </button>
-            ))}
-          </ScrollReveal>
-
           <div className="mx-auto flex max-w-4xl flex-col gap-6">
-            {visibleProducts.map((product, index) => (
+            {featuredProductsPage.map((product, index) => (
               <ScrollReveal key={product.id} delay={index * 0.08}>
                 <GlassCard className="grid h-full overflow-hidden border-white/10 p-0 md:grid-cols-[minmax(0,34%)_1fr]">
-                  <SolutionCardVisual
-                    icon={product.visual.icon}
-                    accent={product.visual.accent}
-                    chips={product.visual.chips}
-                    category={product.category}
-                  />
+                  {product.slug === "ai-lead-response-suite" ?
+                    <div className="min-h-[280px] border-b border-white/10 md:min-h-full md:border-b-0 md:border-r">
+                      <ImageSlideshow
+                        slides={ghostShopperSlides}
+                        embedded
+                        compact
+                        showSlideCounter={false}
+                      />
+                    </div>
+                  : <SolutionCardVisual
+                      icon={product.visual.icon}
+                      accent={product.visual.accent}
+                      chips={product.visual.chips}
+                      category={product.category}
+                    />
+                  }
 
                   <div className="flex flex-col p-6 md:p-7">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric md:hidden">

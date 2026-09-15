@@ -14,8 +14,8 @@ export const footerSolutionLinks = [
     href: "/products/email-campaign-engine",
   },
   {
-    id: "solution-ai-chaser",
-    label: "AI Chaser / Follow-Up",
+    id: "solution-ai-ghost-shopper",
+    label: "AI Ghost Shopper",
     href: "/products/ai-lead-response-suite",
   },
   {

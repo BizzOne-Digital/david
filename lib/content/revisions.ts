@@ -45,9 +45,9 @@ export const homepageCopy = {
         icon: "Mail",
       },
       {
-        title: "AI Follow-Up",
+        title: "AI Ghost Shopper",
         description:
-          "Persistent, intelligent engagement designed to keep qualified opportunities from disappearing.",
+          "Identify anonymous website visitors, engage with intent, and convert hidden shoppers into appointments.",
         icon: "Bot",
       },
       {
@@ -214,15 +214,16 @@ export const solutionsCopy = {
   aiChaser: {
     slug: "ai-lead-response-suite",
     headline: "The Lead Should Not Die Because Your Team Got Busy.",
-    copy: "AI-supported engagement helps keep conversations alive, responds quickly, nurtures interest and moves qualified customers toward an appointment — while management retains visibility.",
+    copy: "Ghost Shopper A.I. captures shoppers your store cannot see today — identifies interest, engages with relevance, and moves qualified customers toward appointments while management retains visibility.",
     bullets: [
-      "Fast personalized engagement",
-      "Persistent follow-up",
-      "Appointment-oriented conversations",
+      "Identify anonymous website visitors",
+      "Engage shoppers with relevant offers",
+      "Increase lead volume and quality",
+      "Re-engage missed opportunities",
       "Management dashboard controls",
-      "Qualified handoff to dealership staff",
+      "Appointment-oriented conversations",
     ],
-    cta: "See the AI Chaser Demo",
+    cta: "Request a Ghost Shopper Demo",
   },
   serviceToSales: {
     slug: "service-to-sales",

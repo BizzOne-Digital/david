@@ -13,17 +13,17 @@ export function FourCapabilitiesSection() {
   const copy = homepageCopy.capabilities;
 
   return (
-    <SectionBackground overlay="dark" className="page-section-after-hero">
+    <SectionBackground overlay="dark" className="pb-8 pt-4 md:pb-10 md:pt-6">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-5xl">
           <SectionHeading
             eyebrow="Four Core Capabilities"
             title={copy.headline}
             align="center"
-            className="mx-auto mb-8 w-full text-center"
+            className="mx-auto mb-6 w-full text-center"
           />
 
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
             {copy.items.map((item, index) => {
               const Icon = getLucideIcon(item.icon);
               return (
