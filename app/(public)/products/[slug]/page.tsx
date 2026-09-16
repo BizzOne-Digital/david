@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductDetailPageContent } from "@/components/products/ProductDetailPageContent";
-import { featuredProductsPage, getAllSolutionSlugs, getSolutionBySlug } from "@/lib/content/products-page";
+import { getAllSolutionSlugs, getSolutionBySlug } from "@/lib/content/products-page";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -26,11 +26,5 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   const product = getSolutionBySlug(slug);
   if (!product) notFound();
 
-  const related = featuredProductsPage
-    .filter((item) => item.slug !== slug)
-    .map((item) => getSolutionBySlug(item.slug))
-    .filter((item): item is NonNullable<typeof item> => item != null)
-    .slice(0, 2);
-
-  return <ProductDetailPageContent product={product} related={related} />;
+  return <ProductDetailPageContent product={product} />;
 }

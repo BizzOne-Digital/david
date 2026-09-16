@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import {
   SectionBackground,
   SectionHeading,
@@ -15,7 +15,6 @@ import type { SolutionDetail } from "@/lib/content/products-page";
 
 interface ProductDetailPageContentProps {
   product: SolutionDetail;
-  related: SolutionDetail[];
 }
 
 const CONTENT_ONLY_DETAIL_SLUGS = new Set([
@@ -124,56 +123,11 @@ function ContentOnlySolutionDetail({ product }: { product: SolutionDetail }) {
   );
 }
 
-export function ProductDetailPageContent({
-  product,
-  related,
-}: ProductDetailPageContentProps) {
+export function ProductDetailPageContent({ product }: ProductDetailPageContentProps) {
   if (CONTENT_ONLY_DETAIL_SLUGS.has(product.slug)) {
     return (
       <>
         <ContentOnlySolutionDetail product={product} />
-        {related.length > 0 ?
-          <SectionBackground overlay="dark" className="page-section-compact pt-0">
-            <div className="container mx-auto px-4">
-              <SectionHeading
-                eyebrow="More Solutions"
-                title="Explore Other Rethink Programs"
-                className="mb-4"
-              />
-              <div className="grid gap-4 md:grid-cols-2">
-                {related.map((item) => (
-                  <GlassCard
-                    key={item.slug}
-                    className="grid overflow-hidden border-white/10 p-0 md:grid-cols-[minmax(0,38%)_1fr]"
-                  >
-                    <SolutionCardVisual
-                      icon={item.visual.icon}
-                      accent={item.visual.accent}
-                      chips={item.visual.chips}
-                      category={item.category}
-                    />
-                    <div className="flex flex-col justify-center p-4 md:p-5">
-                      <h3 className="font-heading text-base font-bold uppercase tracking-wide md:text-lg">
-                        {item.name}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-silver line-clamp-3">
-                        {item.description}
-                      </p>
-                      <Link
-                        href={`/products/${item.slug}`}
-                        className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
-                      >
-                        Learn More
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </div>
-                  </GlassCard>
-                ))}
-              </div>
-            </div>
-          </SectionBackground>
-        : null}
-
         <SectionBackground overlay="dark" className="page-section-compact pt-0">
           <div className="container mx-auto px-4">
             <GlassCard className="mx-auto max-w-3xl border-brand-orange/30 bg-brand-orange/10 p-5 text-center md:p-6">
@@ -310,48 +264,6 @@ export function ProductDetailPageContent({
           </div>
         </div>
       </SectionBackground>
-
-      {related.length > 0 ?
-        <SectionBackground overlay="dark" className="page-section-compact">
-          <div className="container mx-auto px-4">
-            <SectionHeading
-              eyebrow="More Solutions"
-              title="Explore Other Rethink Programs"
-              className="mb-4"
-            />
-            <div className="grid gap-4 md:grid-cols-2">
-              {related.map((item) => (
-                <GlassCard
-                  key={item.slug}
-                  className="grid overflow-hidden border-white/10 p-0 md:grid-cols-[minmax(0,38%)_1fr]"
-                >
-                  <SolutionCardVisual
-                    icon={item.visual.icon}
-                    accent={item.visual.accent}
-                    chips={item.visual.chips}
-                    category={item.category}
-                  />
-                  <div className="flex flex-col justify-center p-4 md:p-5">
-                    <h3 className="font-heading text-base font-bold uppercase tracking-wide md:text-lg">
-                      {item.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-silver line-clamp-3">
-                      {item.description}
-                    </p>
-                    <Link
-                      href={`/products/${item.slug}`}
-                      className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-                </GlassCard>
-              ))}
-            </div>
-          </div>
-        </SectionBackground>
-      : null}
 
       <SectionBackground overlay="dark" className="page-section-compact pt-0">
         <div className="container mx-auto px-4">
