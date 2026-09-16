@@ -94,7 +94,7 @@ export function ContactPageContent() {
                   >
                     <span className="flex items-center gap-3">
                       <Mail className="h-4 w-4 text-cyan" />
-                      {settings.contactEmail}
+                      <span className="font-semibold">{settings.contactEmail}</span>
                     </span>
                     <ArrowRight className="h-4 w-4 text-silver group-hover:text-cyan" />
                   </a>
@@ -104,7 +104,7 @@ export function ContactPageContent() {
                   >
                     <span className="flex items-center gap-3">
                       <Phone className="h-4 w-4 text-cyan" />
-                      {settings.contactPhone}
+                      <span className="font-semibold">{settings.contactPhone}</span>
                     </span>
                     <ArrowRight className="h-4 w-4 text-silver group-hover:text-cyan" />
                   </a>

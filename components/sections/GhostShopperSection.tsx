@@ -18,6 +18,15 @@ export function GhostShopperSection() {
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <GlassCard className="mx-auto flex max-w-6xl flex-col overflow-hidden border-white/10 p-0">
+            <div className="border-b border-white/10 px-5 pb-3 pt-5 md:px-6 md:pb-4 md:pt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+                {copy.eyebrow}
+              </p>
+              <h2 className="mt-2 font-heading text-lg font-bold uppercase leading-snug tracking-wide md:text-xl">
+                {copy.headline}
+              </h2>
+            </div>
+
             <div className="w-full border-b border-white/10 bg-[#0a0a12]">
               <ImageSlideshow
                 slides={ghostShopperSlides}
@@ -29,13 +38,7 @@ export function GhostShopperSection() {
             </div>
 
             <div className="flex flex-col p-5 md:p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
-                {copy.eyebrow}
-              </p>
-              <h2 className="mt-2 font-heading text-lg font-bold uppercase leading-snug tracking-wide md:text-xl">
-                {copy.headline}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-silver md:text-base">
+              <p className="text-sm leading-relaxed text-silver md:text-base">
                 {copy.description}
               </p>
               <Link

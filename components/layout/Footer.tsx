@@ -122,7 +122,7 @@ export function Footer() {
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-graphite">
                       <Mail className="h-4 w-4 text-electric" />
                     </span>
-                    <span className="whitespace-nowrap">{settings.contactEmail}</span>
+                    <span className="whitespace-nowrap font-semibold">{settings.contactEmail}</span>
                   </a>
                 </li>
                 <li>
@@ -133,7 +133,7 @@ export function Footer() {
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-graphite">
                       <Phone className="h-4 w-4 text-electric" />
                     </span>
-                    {settings.contactPhone}
+                    <span className="font-semibold">{settings.contactPhone}</span>
                   </a>
                 </li>
               </ul>
