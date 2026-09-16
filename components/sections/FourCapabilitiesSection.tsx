@@ -13,7 +13,7 @@ export function FourCapabilitiesSection() {
   const copy = homepageCopy.capabilities;
 
   return (
-    <SectionBackground overlay="dark" className="pb-8 pt-4 md:pb-10 md:pt-6">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-5xl">
           <SectionHeading

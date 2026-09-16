@@ -23,7 +23,7 @@ function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-3 md:grid-cols-2">
       {productsFaqs.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
@@ -31,7 +31,7 @@ function FaqAccordion() {
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center justify-between gap-4 p-5 text-left md:p-6"
+              className="flex w-full items-center justify-between gap-4 p-4 text-left md:p-5"
               aria-expanded={isOpen}
             >
               <span className="font-medium text-white">{faq.question}</span>
@@ -54,7 +54,7 @@ function FaqAccordion() {
 export function ProductsPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section pb-6 pt-6 md:pb-8 md:pt-8">
+      <SectionBackground overlay="dark" className="page-hero-section">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
             <SectionHeading
@@ -71,9 +71,9 @@ export function ProductsPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="page-section-after-hero pb-8 pt-2 md:pb-10 md:pt-3">
+      <SectionBackground overlay="dark" className="page-section-after-hero">
         <div className="container mx-auto px-4">
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 md:gap-5">
             {featuredProductsPage.map((product, index) => {
               const slides = getSolutionCardSlides(product.slug);
               const hasSlideshow = solutionUsesSlideshow(product.slug);
@@ -94,20 +94,20 @@ export function ProductsPageContent() {
                     </div>
                   : null}
 
-                  <div className="flex flex-col p-6 md:p-8">
+                  <div className="flex flex-col p-5 md:p-6">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
                       {product.category}
                     </p>
-                    <h3 className="mt-2 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
+                    <h3 className="mt-1.5 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
                       {product.name}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-silver md:text-base">
+                    <p className="mt-2 text-sm leading-relaxed text-silver md:text-base">
                       {product.description}
                     </p>
 
                     {narratives ?
                       <>
-                        <div className="mt-4 space-y-3 border-t border-white/10 pt-4">
+                        <div className="mt-3 space-y-2 border-t border-white/10 pt-3">
                           {narratives.map((paragraph) => (
                             <p
                               key={paragraph.slice(0, 48)}
@@ -117,7 +117,7 @@ export function ProductsPageContent() {
                             </p>
                           ))}
                         </div>
-                        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
                           <Link
                             href={`/products/${product.slug}`}
                             className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
@@ -136,7 +136,7 @@ export function ProductsPageContent() {
                       </>
                     : (
                       <>
-                        <ul className="mt-5 space-y-2">
+                        <ul className="mt-3 space-y-1">
                           {product.features.map((feature) => (
                             <li
                               key={feature}
@@ -148,7 +148,7 @@ export function ProductsPageContent() {
                           ))}
                         </ul>
 
-                        <div className="mt-6 flex flex-wrap items-center gap-4">
+                        <div className="mt-3 flex flex-wrap items-center gap-4">
                           <Link
                             href={`/products/${product.slug}`}
                             className="inline-flex items-center gap-1 text-sm font-medium text-electric hover:text-white"
@@ -168,19 +168,19 @@ export function ProductsPageContent() {
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="pb-8 pt-6 md:pb-10 md:pt-8">
+      <SectionBackground overlay="dark" className="page-section-compact">
         <div className="container mx-auto px-4">
           <SectionHeading
             eyebrow="FAQ"
             title="Your Questions, Answered."
             align="center"
-            className="mx-auto mb-6 w-full text-center"
+            className="mx-auto mb-3 w-full text-center [&_h2]:mt-2"
           />
           <FaqAccordion />
         </div>
       </SectionBackground>
 
-      <SectionBackground overlay="dark" className="pb-8 pt-4 md:pb-10 md:pt-6">
+      <SectionBackground overlay="dark" className="pb-3 pt-1 md:pb-4 md:pt-2">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <h2 className="font-heading text-xl font-bold leading-snug sm:text-2xl md:text-[1.75rem]">

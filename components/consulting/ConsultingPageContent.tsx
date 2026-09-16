@@ -9,27 +9,27 @@ import { consultingCopy } from "@/lib/content/revisions";
 export function ConsultingPageContent() {
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section pb-8 md:pb-10">
+      <SectionBackground overlay="dark" className="page-hero-section pb-6 md:pb-7">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-electric">
                 Consulting Services
               </p>
-              <h1 className="mt-3 font-heading text-2xl font-bold leading-snug sm:text-3xl md:text-[2rem]">
+              <h1 className="mt-2 font-heading text-2xl font-bold leading-snug sm:text-3xl md:text-[2rem]">
                 {consultingCopy.headline}
               </h1>
-              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-silver md:text-base">
+              <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-silver md:text-base">
                 {consultingCopy.intro}
               </p>
-              <div className="mt-4 flex justify-center">
+              <div className="mt-3 flex justify-center">
                 <SecondaryCtaButton href="/contact" size="lg">
                   {consultingCopy.secondaryCta}
                 </SecondaryCtaButton>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.08} className="mt-6 md:mt-7">
+            <ScrollReveal delay={0.08} className="mt-4 md:mt-5">
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-electric">
                 What We Help With
               </p>

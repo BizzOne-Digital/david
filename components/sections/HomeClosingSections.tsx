@@ -17,7 +17,7 @@ export function FinalDemoCtaSection() {
               {copy.headline}
             </h2>
           </ScrollReveal>
-          <ScrollReveal delay={0.1} className="mt-5 flex w-full justify-center md:mt-6">
+          <ScrollReveal delay={0.1} className="mt-3 flex w-full justify-center md:mt-4">
             <DemoCtaButton size="lg" />
           </ScrollReveal>
         </div>

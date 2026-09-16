@@ -116,6 +116,7 @@ export interface SolutionDetail {
     chips: readonly string[];
   };
   cta: string;
+  narratives?: readonly string[];
 }
 
 const solutionOutcomes: Record<string, readonly string[]> = {
@@ -167,6 +168,9 @@ export function getSolutionBySlug(slug: string): SolutionDetail | undefined {
   const product = featuredProductsPage.find((item) => item.slug === slug);
   if (!product) return undefined;
 
+  const narratives =
+    "narratives" in product && product.narratives ? product.narratives : undefined;
+
   return {
     id: product.id,
     slug: product.slug,
@@ -179,6 +183,7 @@ export function getSolutionBySlug(slug: string): SolutionDetail | undefined {
     outcomes: solutionOutcomes[product.slug] ?? [],
     visual: product.visual,
     cta: product.cta,
+    narratives,
   };
 }
 

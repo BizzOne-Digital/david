@@ -232,19 +232,19 @@
 
 @layer components {
   .page-hero-section {
-    @apply pb-10 pt-6 md:pb-12 md:pt-8;
+    @apply pb-5 pt-4 md:pb-6 md:pt-5;
   }
 
   .page-hero-top {
-    @apply pt-8 md:pt-10;
+    @apply pt-5 md:pt-6;
   }
 
   .page-section-after-hero {
-    @apply pb-12 pt-4 md:pb-14 md:pt-6;
+    @apply pb-5 pt-1 md:pb-6 md:pt-2;
   }
 
   .page-section-compact {
-    @apply py-12 md:py-16;
+    @apply py-5 md:py-6;
   }
 }
 

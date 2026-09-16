@@ -14,7 +14,7 @@ export function GhostShopperSection() {
   const copy = ghostShopperShowcaseCopy;
 
   return (
-    <SectionBackground overlay="dark" className="page-section-compact pb-8 pt-4 md:pb-10 md:pt-6">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <GlassCard className="mx-auto flex max-w-6xl flex-col overflow-hidden border-white/10 p-0">
@@ -28,7 +28,7 @@ export function GhostShopperSection() {
               />
             </div>
 
-            <div className="flex flex-col p-5 md:p-8">
+            <div className="flex flex-col p-5 md:p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
                 {copy.eyebrow}
               </p>

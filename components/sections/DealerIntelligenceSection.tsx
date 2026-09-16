@@ -9,7 +9,7 @@ export function DealerIntelligenceSection() {
   const copy = homepageCopy.dealerIntelligence;
 
   return (
-    <SectionBackground overlay="dark" className="pb-8 pt-6 md:pb-10 md:pt-8">
+    <SectionBackground overlay="dark" className="page-section-compact">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric md:tracking-[0.3em]">

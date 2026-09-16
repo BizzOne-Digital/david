@@ -57,7 +57,7 @@ function FooterLinkColumn({
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/45">
         {title}
       </p>
-      <ul className="mt-5 space-y-3">
+      <ul className="mt-3 space-y-2">
         {links.map((link) => (
           <li key={`${columnKey}-${link.id}`}>
             <Link
@@ -79,8 +79,8 @@ export function Footer() {
 
   return (
     <footer className="relative isolate w-full max-w-full overflow-hidden border-t border-white/10 bg-black">
-        <div className="container mx-auto px-4 py-12 md:py-14">
-          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr] xl:gap-6">
+        <div className="container mx-auto px-4 py-8 md:py-10">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr] xl:gap-5">
             <div className="min-w-0 xl:border-r xl:border-white/10 xl:pr-6">
               <Logo
                 logoSrc={settings.logo || DEFAULT_LOGO}
@@ -89,7 +89,7 @@ export function Footer() {
                 height={302}
                 imageClassName="h-[clamp(3.35rem,11.2vw,5rem)] w-full max-w-[min(270px,100%)] object-contain object-left"
               />
-              <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/65">
                 {settings.footerContent.brandStatement ||
                   "Smarter marketing systems for modern dealerships."}
               </p>
@@ -113,7 +113,7 @@ export function Footer() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/45">
                 Let&apos;s Connect
               </p>
-              <ul className="mt-5 space-y-4">
+              <ul className="mt-3 space-y-3">
                 <li>
                   <a
                     href={`mailto:${settings.contactEmail}`}
@@ -140,7 +140,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col items-center justify-between gap-5 border-t border-white/10 pt-6 md:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-4 md:flex-row">
             <p className="text-xs text-white/45">{settings.footerContent.copyright}</p>
 
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/45">

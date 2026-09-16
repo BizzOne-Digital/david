@@ -56,7 +56,7 @@ export function ContactPageContent() {
 
   return (
     <>
-      <SectionBackground overlay="dark" className="page-hero-section pb-10 md:pb-12">
+      <SectionBackground overlay="dark" className="page-hero-section">
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
             <ScrollReveal>
@@ -65,18 +65,18 @@ export function ContactPageContent() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <h1 className="mt-3 font-heading text-2xl font-bold uppercase leading-snug sm:text-3xl md:text-[2rem]">
+              <h1 className="mt-2 font-heading text-2xl font-bold uppercase leading-snug sm:text-3xl md:text-[2rem]">
                 {contactCopy.headline}
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-silver md:text-base">
+              <p className="mt-2 max-w-lg text-sm leading-relaxed text-silver md:text-base">
                 {contactCopy.subhead}
               </p>
             </ScrollReveal>
           </div>
 
-          <div className="mx-auto mt-6 grid max-w-6xl gap-6 px-0 md:mt-8 lg:grid-cols-3">
+          <div className="mx-auto mt-4 grid max-w-6xl gap-5 px-0 md:mt-5 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <ScrollReveal>
               <ContactStrategyForm />
@@ -118,10 +118,10 @@ export function ContactPageContent() {
 
       <SectionBackground overlay="dark" className="page-section-compact">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl font-bold md:text-4xl">
+          <h2 className="font-heading text-2xl font-bold md:text-3xl">
             Frequently Asked Questions
           </h2>
-          <div className="mt-8">
+          <div className="mt-4">
             <ContactFaqAccordion faqs={displayFaqs} />
           </div>
         </div>
