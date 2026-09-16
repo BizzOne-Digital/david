@@ -87,6 +87,7 @@ export function ProductsPageContent() {
                       <ImageSlideshow
                         slides={slides}
                         embedded
+                        compact
                         showSlideCounter={false}
                         className="w-full"
                       />

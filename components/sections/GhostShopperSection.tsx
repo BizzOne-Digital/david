@@ -22,6 +22,7 @@ export function GhostShopperSection() {
               <ImageSlideshow
                 slides={ghostShopperSlides}
                 embedded
+                compact
                 showSlideCounter={false}
                 className="w-full"
               />

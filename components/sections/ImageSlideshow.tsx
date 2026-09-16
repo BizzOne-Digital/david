@@ -55,7 +55,9 @@ export function ImageSlideshow({
         <div
           className={cn(
             "relative flex items-center justify-center",
-            compact ? "min-h-0 py-1" : "min-h-[380px] sm:min-h-[440px] md:min-h-[480px]"
+            compact || embedded ?
+              "min-h-0 py-0"
+            : "min-h-[380px] sm:min-h-[440px] md:min-h-[480px]"
           )}
         >
           <Image
@@ -65,16 +67,14 @@ export function ImageSlideshow({
             width={600}
             height={900}
             className={cn(
-              "mx-auto object-contain px-3 py-2",
-              compact ?
-                "h-auto max-h-[min(42vh,340px)] w-auto max-w-full"
-              : embedded ?
-                "h-auto max-h-[min(72vh,620px)] w-full max-w-[min(100%,720px)]"
-              : "h-auto max-h-[min(72vh,680px)] w-auto max-w-full py-3"
+              "mx-auto object-contain",
+              compact || embedded ?
+                "h-auto max-h-[min(50vh,400px)] w-auto max-w-full px-2 py-0 sm:max-h-[min(52vh,440px)]"
+              : "max-h-[min(72vh,680px)] w-auto max-w-full px-3 py-3"
             )}
             sizes={
-              embedded ?
-                "(max-width: 768px) 100vw, 1120px"
+              embedded || compact ?
+                "(max-width: 768px) 100vw, 560px"
               : "(max-width: 768px) 100vw, 720px"
             }
             priority={index === 0}
@@ -99,17 +99,17 @@ export function ImageSlideshow({
         </div>
 
         {(showCaption || showSlideCounter) && (
-          <div className="border-t border-white/10 px-3 py-3 sm:px-4">
+          <div className="border-t border-white/10 px-3 py-2 sm:px-4">
             {showCaption && slide.caption ?
               <p className="text-center text-xs text-silver sm:text-sm">{slide.caption}</p>
             : null}
             {showSlideCounter ?
-              <p className="mt-2 text-center text-xs text-white/50">
+              <p className="mt-1.5 text-center text-xs text-white/50">
                 {index + 1} / {total}
               </p>
             : null}
 
-            <div className="mt-3 flex flex-wrap justify-center gap-2 px-1">
+            <div className="mt-2 flex flex-wrap justify-center gap-1.5 px-1">
               {slides.map((item, i) => (
                 <button
                   key={item.src}
