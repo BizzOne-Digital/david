@@ -85,11 +85,11 @@ export function ProductsPageContent() {
                 <GlassCard className="flex flex-col overflow-hidden border-white/10 p-0">
                   {hasSlideshow && slides.length > 0 ?
                     <>
-                      <div className="border-b border-white/10 px-5 pb-3 pt-5 md:px-6 md:pb-4 md:pt-6">
+                      <div className="border-b border-white/10 px-5 pb-3 pt-5 text-center md:px-6 md:pb-4 md:pt-6">
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
                           {product.category}
                         </p>
-                        <h3 className="mt-2 font-heading text-lg font-bold uppercase leading-snug tracking-wide md:text-xl">
+                        <h3 className="mx-auto mt-2 max-w-3xl font-heading text-lg font-bold uppercase leading-snug tracking-wide md:text-xl">
                           {product.name}
                         </h3>
                       </div>
