@@ -18,6 +18,7 @@ import { EmailMarketingSlideshow } from "./EmailMarketingSlideshow";
 import { ProofSection } from "@/components/sections/ProofSection";
 import { ImageSlideshow } from "@/components/sections/ImageSlideshow";
 import { getSolutionCardSlides, solutionUsesSlideshow } from "@/lib/content/solution-card-slides";
+import { cn } from "@/lib/utils";
 
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -83,25 +84,44 @@ export function ProductsPageContent() {
               <ScrollReveal key={product.id} delay={index * 0.08}>
                 <GlassCard className="flex flex-col overflow-hidden border-white/10 p-0">
                   {hasSlideshow && slides.length > 0 ?
-                    <div className="w-full border-b border-white/10 bg-[#0a0a12]">
-                      <ImageSlideshow
-                        slides={slides}
-                        embedded
-                        compact
-                        showSlideCounter={false}
-                        className="w-full"
-                      />
-                    </div>
+                    <>
+                      <div className="border-b border-white/10 px-5 pb-3 pt-5 md:px-6 md:pb-4 md:pt-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+                          {product.category}
+                        </p>
+                        <h3 className="mt-2 font-heading text-lg font-bold uppercase leading-snug tracking-wide md:text-xl">
+                          {product.name}
+                        </h3>
+                      </div>
+                      <div className="w-full border-b border-white/10 bg-[#0a0a12]">
+                        <ImageSlideshow
+                          slides={slides}
+                          embedded
+                          compact
+                          showSlideCounter={false}
+                          className="w-full"
+                        />
+                      </div>
+                    </>
                   : null}
 
                   <div className="flex flex-col p-5 md:p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
-                      {product.category}
-                    </p>
-                    <h3 className="mt-1.5 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
-                      {product.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-silver md:text-base">
+                    {!hasSlideshow ?
+                      <>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">
+                          {product.category}
+                        </p>
+                        <h3 className="mt-1.5 font-heading text-xl font-bold uppercase tracking-wide md:text-2xl">
+                          {product.name}
+                        </h3>
+                      </>
+                    : null}
+                    <p
+                      className={cn(
+                        "text-sm leading-relaxed text-silver md:text-base",
+                        !hasSlideshow && "mt-2"
+                      )}
+                    >
                       {product.description}
                     </p>
 
