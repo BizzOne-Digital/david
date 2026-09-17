@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { LocalImageField } from "@/components/admin/LocalImageField";
 import { createProductAction, updateProductAction } from "@/actions/products";
+import { parseStoredUploadUrl } from "@/lib/uploads/upload-url";
 import type { PurchaseMode } from "@/types";
 
 interface Category {
@@ -56,6 +58,7 @@ interface ProductData {
   isPlaceholder?: boolean;
   features?: string[];
   benefits?: string[];
+  coverImage?: { url: string; publicId?: string };
 }
 
 interface ProductFormProps {
@@ -66,6 +69,7 @@ interface ProductFormProps {
 export function ProductForm({ product, categories = [] }: ProductFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [coverImageUrl, setCoverImageUrl] = useState(product?.coverImage?.url ?? "");
   const isEditing = !!product?._id;
 
   const categoryId =
@@ -74,7 +78,7 @@ export function ProductForm({ product, categories = [] }: ProductFormProps) {
       : product?.category ?? "";
 
   const handleSubmit = (formData: FormData) => {
-    const data = parseProductFormData(formData);
+    const data = parseProductFormData(formData, coverImageUrl);
     startTransition(async () => {
       const result = isEditing
         ? await updateProductAction(product!._id!, data)
@@ -156,6 +160,21 @@ export function ProductForm({ product, categories = [] }: ProductFormProps) {
               rows={4}
             />
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Cover Image</CardTitle>
+          <CardDescription>Stored in MongoDB — survives Vercel redeploys.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <LocalImageField
+            folder="products"
+            value={coverImageUrl}
+            onChange={setCoverImageUrl}
+            label="Product cover"
+          />
         </CardContent>
       </Card>
 
@@ -423,7 +442,7 @@ function formatDateInput(date?: string): string {
   return d.toISOString().slice(0, 16);
 }
 
-function parseProductFormData(formData: FormData) {
+function parseProductFormData(formData: FormData, coverImageUrl: string) {
   const optionalInt = (key: string) => {
     const n = parseInt(String(formData.get(key) ?? ""), 10);
     return isNaN(n) ? undefined : n;
@@ -433,11 +452,21 @@ function parseProductFormData(formData: FormData) {
     return str ? new Date(str) : undefined;
   };
 
+  const parsedUpload = parseStoredUploadUrl(coverImageUrl);
+
   return {
     name: String(formData.get("name") ?? "").trim(),
     slug: String(formData.get("slug") ?? "").trim() || undefined,
     shortDescription: String(formData.get("shortDescription") ?? "").trim(),
     fullDescription: String(formData.get("fullDescription") ?? "").trim(),
+    coverImage:
+      coverImageUrl ?
+        {
+          url: coverImageUrl,
+          publicId: parsedUpload ? `${parsedUpload.folder}/${parsedUpload.filename}` : coverImageUrl,
+          order: 0,
+        }
+      : undefined,
     priceCents: optionalInt("priceCents"),
     compareAtPriceCents: optionalInt("compareAtPriceCents"),
     showPricing: formData.get("showPricing") === "on",

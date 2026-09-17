@@ -10,5 +10,6 @@ export { default as CouponUsage } from "./CouponUsage";
 export { default as SiteSettings } from "./SiteSettings";
 export { default as PageContent } from "./PageContent";
 export { default as MediaAsset } from "./MediaAsset";
+export { default as StoredUpload } from "./StoredUpload";
 export { default as NewsletterSubscriber } from "./NewsletterSubscriber";
 export { default as AuditLog } from "./AuditLog";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useRef, useTransition } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { Trash2, Upload } from "lucide-react";
@@ -21,6 +21,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { deleteMediaAsset, uploadMediaAsset } from "@/actions/media";
+import { resolveImageSrc } from "@/lib/images/resolve-image-src";
 import { formatDateTime } from "@/lib/utils";
 
 interface MediaAsset {
@@ -37,12 +38,17 @@ interface MediaAsset {
 
 export function MediaLibrary({ assets }: { assets: MediaAsset[] }) {
   const [isPending, startTransition] = useTransition();
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const handleUpload = (formData: FormData) => {
     startTransition(async () => {
       const result = await uploadMediaAsset(formData);
-      if (result.success) toast.success("Media uploaded");
-      else toast.error(result.error);
+      if (result.success) {
+        toast.success("Media uploaded");
+        if (fileRef.current) fileRef.current.value = "";
+      } else {
+        toast.error(result.error ?? "Upload failed");
+      }
     });
   };
 
@@ -65,7 +71,7 @@ export function MediaLibrary({ assets }: { assets: MediaAsset[] }) {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold text-white">Media Library</h2>
-          <p className="text-sm text-silver">{assets.length} assets</p>
+          <p className="text-sm text-silver">{assets.length} assets (MongoDB-backed)</p>
         </div>
         <Dialog>
           <DialogTrigger>
@@ -80,30 +86,19 @@ export function MediaLibrary({ assets }: { assets: MediaAsset[] }) {
             </DialogHeader>
             <form action={handleUpload} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="url">Image URL *</Label>
-                <Input id="url" name="url" type="url" required placeholder="https://..." />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="publicId">Public ID *</Label>
-                <Input id="publicId" name="publicId" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="filename">Filename *</Label>
-                <Input id="filename" name="filename" required />
+                <Label htmlFor="file">Image file *</Label>
+                <Input
+                  ref={fileRef}
+                  id="file"
+                  name="file"
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/gif"
+                  required
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="alt">Alt Text</Label>
                 <Input id="alt" name="alt" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="mimeType">MIME Type</Label>
-                  <Input id="mimeType" name="mimeType" defaultValue="image/jpeg" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="size">Size (bytes)</Label>
-                  <Input id="size" name="size" type="number" defaultValue={0} />
-                </div>
               </div>
               <Button type="submit" disabled={isPending}>
                 {isPending ? "Uploading..." : "Upload"}
@@ -113,53 +108,56 @@ export function MediaLibrary({ assets }: { assets: MediaAsset[] }) {
         </Dialog>
       </div>
 
-      {assets.length === 0 ? (
+      {assets.length === 0 ?
         <Card>
           <CardContent className="py-12 text-center text-silver">
             No media assets yet. Upload your first image.
           </CardContent>
         </Card>
-      ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {assets.map((asset) => (
-            <Card key={asset._id} className="overflow-hidden">
-              <div className="relative aspect-video bg-charcoal">
-                {asset.mimeType.startsWith("image/") ? (
-                  <Image
-                    src={asset.url}
-                    alt={asset.alt ?? asset.filename}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center text-silver">
-                    {asset.mimeType}
-                  </div>
-                )}
-              </div>
-              <CardHeader className="p-4 pb-2">
-                <CardTitle className="truncate text-sm">{asset.filename}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2 p-4 pt-0">
-                <p className="text-xs text-silver">
-                  {formatSize(asset.size)} · {formatDateTime(asset.createdAt)}
-                </p>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full text-red-400"
-                  disabled={isPending}
-                  onClick={() => handleDelete(asset._id)}
-                >
-                  <Trash2 className="h-4 w-4" />
-                  Delete
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+      : <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {assets.map((asset) => {
+            const src = resolveImageSrc(asset.url);
+            return (
+              <Card key={asset._id} className="overflow-hidden">
+                <div className="relative aspect-video bg-charcoal">
+                  {asset.mimeType.startsWith("image/") ?
+                    <Image
+                      src={src}
+                      alt={asset.alt ?? asset.filename}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      unoptimized={asset.url.startsWith("/api/uploads/")}
+                    />
+                  : <div className="flex h-full items-center justify-center text-silver">
+                      {asset.mimeType}
+                    </div>
+                  }
+                </div>
+                <CardHeader className="p-4 pb-2">
+                  <CardTitle className="truncate text-sm">{asset.filename}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 p-4 pt-0">
+                  <p className="break-all text-xs text-silver">{asset.url}</p>
+                  <p className="text-xs text-silver">
+                    {formatSize(asset.size)} · {formatDateTime(asset.createdAt)}
+                  </p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full text-red-400"
+                    disabled={isPending}
+                    onClick={() => handleDelete(asset._id)}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                    Delete
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
-      )}
+      }
     </div>
   );
 }

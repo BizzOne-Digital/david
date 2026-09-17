@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { resolveImageSrc } from "@/lib/images/resolve-image-src";
 
 const DEFAULT_LOGO = "/images/rethink-logo.jpg";
 
@@ -25,13 +26,15 @@ export function Logo({
   logoSrc = DEFAULT_LOGO,
   alt = "Rethink Automotive",
 }: LogoProps) {
+  const src = resolveImageSrc(logoSrc);
   const image = (
     <Image
-      src={logoSrc}
+      src={src}
       alt={alt}
       width={width}
       height={height}
       priority={priority}
+      unoptimized={src.startsWith("/api/uploads/")}
       className={cn("h-auto w-auto object-contain", imageClassName)}
     />
   );

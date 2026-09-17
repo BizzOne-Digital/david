@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { LocalImageField } from "@/components/admin/LocalImageField";
 import { updatePageContentAction } from "@/actions/content";
 import type { PageSection } from "@/types";
 
@@ -194,6 +195,14 @@ export function PageContentEditor({ page }: PageContentEditorProps) {
                 value={section.content ?? ""}
                 onChange={(e) => updateSection(index, "content", e.target.value)}
                 rows={4}
+              />
+            </div>
+            <div className="space-y-2 md:col-span-2">
+              <LocalImageField
+                label="Section image (optional)"
+                folder="pages"
+                value={section.imageUrl ?? ""}
+                onChange={(url) => updateSection(index, "imageUrl", url || undefined)}
               />
             </div>
             <div className="flex items-center gap-3">

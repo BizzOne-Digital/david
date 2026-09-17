@@ -124,6 +124,7 @@ export interface PageSection {
   eyebrow?: string;
   ctaLabel?: string;
   ctaUrl?: string;
+  imageUrl?: string;
   items?: Record<string, unknown>[];
   isVisible: boolean;
   order: number;

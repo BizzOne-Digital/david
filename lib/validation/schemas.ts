@@ -19,8 +19,8 @@ export const resetPasswordSchema = z.object({
 });
 
 const productImageSchema = z.object({
-  url: z.string().url(),
-  publicId: z.string(),
+  url: z.string().min(1),
+  publicId: z.string().min(1),
   alt: z.string().optional(),
   order: z.number().default(0),
 });

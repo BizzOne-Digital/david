@@ -7,10 +7,12 @@ import { cn } from "@/lib/utils";
 
 const defaultPages = [
   { slug: "home", title: "Homepage" },
+  { slug: "products", title: "Solutions" },
+  { slug: "consulting", title: "Consulting" },
+  { slug: "future-fuel", title: "Future Fuel" },
   { slug: "about", title: "About" },
-  { slug: "services", title: "Services" },
-  { slug: "products", title: "Products" },
   { slug: "contact", title: "Contact" },
+  { slug: "services", title: "Services" },
 ];
 
 interface ContentPageClientProps {

@@ -6,7 +6,8 @@ import Product from "@/models/Product";
 import { requireRole } from "@/lib/auth/session";
 import { productSchema } from "@/lib/validation/schemas";
 import { slugify } from "@/lib/utils";
-import { deleteImage } from "@/lib/cloudinary/upload";
+import { deleteImage, isCloudinaryConfigured } from "@/lib/cloudinary/upload";
+import { deleteStoredUploadByUrl } from "@/lib/uploads/stored-uploads";
 import type { ActionResult } from "@/actions/auth";
 
 export async function createProductAction(
@@ -91,11 +92,17 @@ export async function deleteProductAction(id: string): Promise<ActionResult> {
       return { success: false, error: "Product not found" };
     }
 
-    if (product.coverImage?.publicId) {
-      await deleteImage(product.coverImage.publicId);
+    if (product.coverImage?.url) {
+      await deleteStoredUploadByUrl(product.coverImage.url);
+      if (isCloudinaryConfigured() && product.coverImage.publicId && !product.coverImage.url.startsWith("/api/uploads/")) {
+        await deleteImage(product.coverImage.publicId);
+      }
     }
     for (const img of product.gallery) {
-      if (img.publicId) await deleteImage(img.publicId);
+      await deleteStoredUploadByUrl(img.url);
+      if (isCloudinaryConfigured() && img.publicId && !img.url.startsWith("/api/uploads/")) {
+        await deleteImage(img.publicId);
+      }
     }
 
     await product.deleteOne();

@@ -14,6 +14,7 @@ export interface IPageContent extends Document {
     eyebrow?: string;
     ctaLabel?: string;
     ctaUrl?: string;
+    imageUrl?: string;
     items?: Record<string, unknown>[];
     isVisible: boolean;
     order: number;
@@ -32,6 +33,7 @@ const SectionSchema = new Schema(
     eyebrow: String,
     ctaLabel: String,
     ctaUrl: String,
+    imageUrl: String,
     items: { type: [Schema.Types.Mixed], default: undefined },
     isVisible: { type: Boolean, default: true },
     order: { type: Number, default: 0 },

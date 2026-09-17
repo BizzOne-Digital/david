@@ -7,7 +7,8 @@ import ProductCategory from "../models/ProductCategory";
 import Service from "../models/Service";
 import SiteSettings from "../models/SiteSettings";
 import PageContent from "../models/PageContent";
-import { placeholderProducts, placeholderServices } from "../lib/content/placeholders";
+import { getAdminSeedPages, getSeedProductsFromFeatured, getSiteSettingsSyncFields } from "../lib/content/admin-seed-pages";
+import { placeholderServices } from "../lib/content/placeholders";
 
 async function seed() {
   console.log("🌱 Starting seed...");
@@ -43,29 +44,13 @@ async function seed() {
     console.log(`⏭️  Admin user already exists: ${adminEmail}`);
   }
 
-  // Seed site settings
+  // Seed / sync site settings
+  const settingsSync = getSiteSettingsSyncFields();
   const existingSettings = await SiteSettings.findOne();
   if (!existingSettings) {
     await SiteSettings.create({
-      businessName: "Rethink Automotive Inc.",
+      ...settingsSync,
       logo: "/images/rethink-logo.jpg",
-      contactEmail: "contact@rethinkautomotive.com",
-      contactPhone: "(615) 571-9900",
-      defaultSeoTitle: "Rethink Automotive Inc. | Dealership Marketing Solutions",
-      defaultSeoDescription:
-        "AI-powered and email-driven marketing systems designed to help automotive dealers attract, nurture, and convert more opportunities.",
-      headerCtaLabel: "Request Demo",
-      headerCtaUrl: "/contact",
-      announcementBar: {
-        enabled: false,
-        text: "See what your dealership may be missing — request a demo today.",
-        link: "/contact",
-      },
-      footerContent: {
-        brandStatement:
-          "Creative + Campaign + AI + Dashboard + Advisory for dealership growth.",
-        copyright: `© ${new Date().getFullYear()} Rethink Automotive Inc. All rights reserved.`,
-      },
       brandColors: {
         primary: "#00d2ff",
         secondary: "#6b00ff",
@@ -76,31 +61,11 @@ async function seed() {
         via: "#0033ff",
         to: "#ff00ff",
       },
-      homepageSections: [
-        { sectionId: "hero", isVisible: true, order: 1 },
-        { sectionId: "brandStatement", isVisible: true, order: 2 },
-        { sectionId: "flagshipProducts", isVisible: true, order: 3 },
-        { sectionId: "aiJourney", isVisible: true, order: 4 },
-        { sectionId: "services", isVisible: true, order: 5 },
-        { sectionId: "whyRethink", isVisible: true, order: 6 },
-        { sectionId: "process", isVisible: true, order: 7 },
-        { sectionId: "productsPreview", isVisible: true, order: 8 },
-        { sectionId: "conversion", isVisible: true, order: 9 },
-      ],
-      contactForPricingLabel: "Request Demo",
       currency: "USD",
       taxRate: 0,
       purchasingEnabled: false,
       maintenanceMode: false,
       cookieBannerEnabled: true,
-      navigation: [
-        { label: "Home", href: "/", order: 0, isActive: true },
-        { label: "Solutions", href: "/products", order: 1, isActive: true },
-        { label: "Consulting", href: "/consulting", order: 2, isActive: true },
-        { label: "Future Fuel", href: "/future-fuel", order: 3, isActive: true },
-        { label: "About Us", href: "/about", order: 4, isActive: true },
-        { label: "Contact", href: "/contact", order: 5, isActive: true },
-      ],
       socialLinks: [
         { platform: "LinkedIn", url: "#", isActive: true },
         { platform: "X", url: "#", isActive: true },
@@ -109,7 +74,8 @@ async function seed() {
     });
     console.log("✅ Site settings created");
   } else {
-    console.log("⏭️  Site settings already exist");
+    await SiteSettings.findOneAndUpdate({}, { $set: settingsSync });
+    console.log("✅ Site settings synced from revisions");
   }
 
   // Seed categories
@@ -129,33 +95,21 @@ async function seed() {
     categoryMap[cat.name] = category._id.toString();
   }
 
-  // Seed products (only placeholder flagship products)
-  for (const [index, product] of placeholderProducts.entries()) {
-    const existing = await Product.findOne({ slug: product.slug });
-    if (!existing) {
-      await Product.create({
-        name: product.name,
-        slug: product.slug,
-        shortDescription: product.shortDescription,
-        fullDescription: product.fullDescription,
-        features: product.features,
-        benefits: product.benefits,
-        showPricing: product.showPricing,
-        contactForPricing: product.contactForPricing,
-        purchaseMode: product.purchaseMode,
-        isFeatured: product.isFeatured,
-        isActive: true,
-        displayOrder: index,
-        ctaLabel: product.ctaLabel,
-        category: categoryMap[product.category] || undefined,
-        isPlaceholder: true,
-        seoTitle: `${product.name} | Rethink Automotive`,
-        seoDescription: product.shortDescription,
-      });
-      console.log(`✅ Product created: ${product.name}`);
-    } else {
-      console.log(`⏭️  Product already exists: ${product.slug}`);
-    }
+  // Seed / sync flagship products from live solutions content
+  for (const product of getSeedProductsFromFeatured()) {
+    const { categoryName, ...productData } = product;
+    const categoryId = categoryName ? categoryMap[categoryName] : undefined;
+    await Product.findOneAndUpdate(
+      { slug: product.slug },
+      {
+        $set: {
+          ...productData,
+          ...(categoryId ? { category: categoryId } : {}),
+        },
+      },
+      { upsert: true, new: true }
+    );
+    console.log(`✅ Product synced: ${product.slug}`);
   }
 
   // Seed services
@@ -181,176 +135,15 @@ async function seed() {
     }
   }
 
-  // Seed page content
-  const pages = [
-    {
-      pageSlug: "home",
-      pageTitle: "Home",
-      sections: [
-        {
-          id: "hero",
-          type: "hero",
-          eyebrow: "I'm not lion…",
-          title: "You're Sitting on Deals You're Not Closing.",
-          subtitle:
-            "The opportunities are already in your database, website traffic, service lane and follow-up. Rethink Automotive helps you find them, engage them and turn more of them into real sales conversations.",
-          ctaLabel: "Request Demo",
-          ctaUrl: "/contact",
-          isVisible: true,
-          order: 1,
-        },
-        {
-          id: "brandStatement",
-          type: "brandStatement",
-          title: "Dealer Intelligence That Sells.",
-          content:
-            "AI-powered targeting, follow-up and service-to-sales conversion built to capture the opportunities already inside your dealership — with dealer-controlled dashboards and campaigns designed around measurable action.",
-          isVisible: false,
-          order: 2,
-        },
-        {
-          id: "whyRethink",
-          type: "whyRethink",
-          title: "Four Core Capabilities",
-          items: [
-            {
-              title: "Smart Email Targeting",
-              description:
-                "Reach the right customers with the right message, inventory and reason to act.",
-            },
-            {
-              title: "AI Follow-Up",
-              description:
-                "Persistent, intelligent engagement designed to keep qualified opportunities from disappearing.",
-            },
-            {
-              title: "Dealer Control",
-              description:
-                "See campaigns, engagement and opportunities through management dashboard controls.",
-            },
-            {
-              title: "Service to Sales",
-              description:
-                "Identify service customers who may be ready for a replacement, upgrade or trade conversation.",
-            },
-          ],
-          isVisible: true,
-          order: 3,
-        },
-        {
-          id: "process",
-          type: "process",
-          title: "Watch One Missed Lead Become a Real Opportunity.",
-          items: [
-            { step: "New Lead", description: "A qualified opportunity enters your pipeline." },
-            { step: "AI Engages", description: "Intelligent follow-up keeps the conversation alive." },
-            { step: "Appointment", description: "Interest moves toward a scheduled conversation." },
-            { step: "Opportunity", description: "Management sees progress and qualified handoff." },
-          ],
-          isVisible: false,
-          order: 4,
-        },
-        {
-          id: "conversion",
-          type: "conversion",
-          title: "You're Already Sitting on the Opportunity. Let's Find It.",
-          subtitle: "Request a demo to see what your dealership should rethink.",
-          ctaLabel: "Request Demo",
-          ctaUrl: "/contact",
-          isVisible: false,
-          order: 5,
-        },
-      ],
-    },
-    {
-      pageSlug: "about",
-      pageTitle: "About Us",
-      seoTitle: "About Us | Rethink Automotive Inc.",
-      seoDescription:
-        "Learn about Rethink Automotive — partners who help dealerships find missed opportunity and turn insight into action.",
-      sections: [
-        {
-          id: "story",
-          type: "text",
-          title: "Our Story",
-          content:
-            "Rethink Automotive was created around a simple belief: dealerships do not need another vendor telling them to buy more technology. They need partners who understand automotive retail, recognize where opportunity is being missed, and can help turn insight into action.",
-          isVisible: true,
-          order: 1,
-        },
-        {
-          id: "mission",
-          type: "text",
-          title: "Mission",
-          content:
-            "To help automotive dealerships generate, nurture, and convert leads through intelligent digital marketing systems and consultative partnership.",
-          isVisible: true,
-          order: 2,
-        },
-        {
-          id: "vision",
-          type: "text",
-          title: "Vision",
-          content:
-            "We help dealerships find missed opportunity and turn insight into practical marketing, follow-up and consulting action.",
-          isVisible: false,
-          order: 3,
-        },
-        {
-          id: "values",
-          type: "list",
-          title: "Values",
-          items: [
-            { title: "Partnership", description: "We work alongside dealership teams as an extension of their growth strategy." },
-            { title: "Integrity", description: "Honest communication, measurable action and transparent reporting." },
-            { title: "Future Focus", description: "We study market, technology and consumer change so dealers can decide—not react." },
-          ],
-          isVisible: false,
-          order: 4,
-        },
-      ],
-    },
-    {
-      pageSlug: "contact",
-      pageTitle: "Contact",
-      seoTitle: "Contact | Rethink Automotive Inc.",
-      sections: [
-        {
-          id: "intro",
-          type: "text",
-          title: "See What Your Dealership May Be Missing.",
-          content:
-            "Give us a short look at your goals. We'll show you how Rethink can identify and activate opportunities across marketing, follow-up, service-to-sales and future-fuel demand.",
-          isVisible: true,
-          order: 1,
-        },
-      ],
-    },
-    {
-      pageSlug: "book-appointment",
-      pageTitle: "Book a Strategy Call",
-      seoTitle: "Book a Strategy Call | Rethink Automotive Inc.",
-      sections: [
-        {
-          id: "intro",
-          type: "text",
-          title: "Schedule Your Strategy Call",
-          content: "Tell us about your dealership and we'll reach out to confirm your appointment. Submission does not guarantee confirmation until reviewed by our team.",
-          isVisible: true,
-          order: 1,
-        },
-      ],
-    },
-  ];
-
-  for (const page of pages) {
-    const existing = await PageContent.findOne({ pageSlug: page.pageSlug });
-    if (!existing) {
-      await PageContent.create(page);
-      console.log(`✅ Page content created: ${page.pageSlug}`);
-    } else {
-      console.log(`⏭️  Page content already exists: ${page.pageSlug}`);
-    }
+  // Sync page content for admin editor
+  for (const page of getAdminSeedPages()) {
+    const pageDoc = JSON.parse(JSON.stringify(page));
+    await PageContent.findOneAndUpdate(
+      { pageSlug: page.pageSlug },
+      { $set: pageDoc },
+      { upsert: true }
+    );
+    console.log(`✅ Page content synced: ${page.pageSlug}`);
   }
 
   console.log("\n🎉 Seed completed successfully!");

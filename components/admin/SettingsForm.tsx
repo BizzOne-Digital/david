@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,10 +14,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { LocalImageField } from "@/components/admin/LocalImageField";
 import { updateSiteSettingsAction } from "@/actions/settings";
 
 interface SettingsData {
   businessName?: string;
+  logo?: string;
+  ogImage?: string;
   contactEmail?: string;
   contactPhone?: string;
   address?: string;
@@ -46,10 +49,14 @@ interface SettingsFormProps {
 
 export function SettingsForm({ settings }: SettingsFormProps) {
   const [isPending, startTransition] = useTransition();
+  const [logo, setLogo] = useState(settings?.logo ?? "");
+  const [ogImage, setOgImage] = useState(settings?.ogImage ?? "");
 
   const handleSubmit = (formData: FormData) => {
     const data = {
       businessName: String(formData.get("businessName") ?? "").trim(),
+      logo: logo || undefined,
+      ogImage: ogImage || undefined,
       contactEmail: String(formData.get("contactEmail") ?? "").trim(),
       contactPhone: String(formData.get("contactPhone") ?? "").trim(),
       address: String(formData.get("address") ?? "") || undefined,
@@ -143,6 +150,22 @@ export function SettingsForm({ settings }: SettingsFormProps) {
               defaultValue={settings?.businessHours}
             />
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Brand Assets</CardTitle>
+          <CardDescription>Uploads are stored in MongoDB and work on Vercel after deploy.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-6 md:grid-cols-2">
+          <LocalImageField label="Site Logo" folder="misc" value={logo} onChange={setLogo} />
+          <LocalImageField
+            label="Default OG / Share Image"
+            folder="pages"
+            value={ogImage}
+            onChange={setOgImage}
+          />
         </CardContent>
       </Card>
 
